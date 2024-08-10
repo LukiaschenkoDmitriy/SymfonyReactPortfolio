@@ -1,0 +1,13 @@
+@import "../../styles/color";
+
+.sr-header {
+    width: 100vw;
+    background: $primary-color;
+
+    .sr-button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0px;
+    }
+}
