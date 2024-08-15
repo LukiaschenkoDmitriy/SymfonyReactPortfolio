@@ -1,5 +1,6 @@
-import APIService from "@services/APIService";
 import React from "react";
+
+import APIService from "@api/APIService";
 
 export interface AppRouterInterface {
     name: string,

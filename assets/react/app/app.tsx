@@ -1,14 +1,17 @@
 import "bootstrap";
-import "./styles/bootstrap.css";
-import "./styles/base.scss";
 
-import React, { createContext, StrictMode, useEffect, useState } from "react";
+import "@styles/bootstrap.css"
+import "@styles/base.scss"
 
 import ReactLoading from 'react-loading';
 import { createRoot } from "react-dom/client";
-import Header from "@components/header/Header";
-import { AppRouterInterface, getAppRouters } from "./routers";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import React, { createContext, StrictMode, useEffect, useState } from "react";
+
+import { AppRouterInterface, getAppRouters } from "@app/routers";
+
+import Header from "@components/header/Header";
+
 import { RouterService } from "@services/RouterService";
 
 export interface AppContextInterface { 

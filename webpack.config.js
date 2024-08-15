@@ -21,7 +21,7 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addEntry('app', './assets/react/app.tsx')
+    .addEntry('app', './assets/react/app/app.tsx')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -71,12 +71,14 @@ Encore
     //.autoProvidejQuery()
 
     .addAliases({
+        '@app': path.resolve(__dirname, 'assets/react/app'),
         '@components': path.resolve(__dirname, 'assets/react/components'),
         "@api": path.resolve(__dirname, "assets/react/api"),
         "@data": path.resolve(__dirname, "assets/react/data"),
         "@utils": path.resolve(__dirname, "assets/react/utils"),
         "@services": path.resolve(__dirname, "assets/react/services"),
-        "@enum": path.resolve(__dirname, "assets/react/enum")
+        "@enum": path.resolve(__dirname, "assets/react/enum"),
+        '@styles': path.resolve(__dirname, 'assets/react/styles')
     })
 ;
 

@@ -1,10 +1,11 @@
-import "./header_button.scss";
+import "./HeaderButton.scss";
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { AppRouterInterface } from "routers";
 
-import i18next from "../../i18n";
+import i18next from "@app/i18n";
+import { AppRouterInterface } from "@app/routers";
+
 
 export interface HeaderButtonProps { 
     router: AppRouterInterface,

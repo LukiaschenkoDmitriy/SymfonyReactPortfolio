@@ -1,5 +1,4 @@
-import { AppContextInterface } from "app";
-import { AppRouterInterface } from "routers";
+import { AppRouterInterface } from "@app/routers";
 
 export class RouterService {
     public static actualiseRoutersActive(appRouters: AppRouterInterface[], routerPath: string): AppRouterInterface[] {

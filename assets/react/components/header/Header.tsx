@@ -1,11 +1,13 @@
-import "./header_component.scss";
+import "./Header.scss";
 
 import React, { useContext, useEffect } from "react";
-
-import { AppContext } from "../../app";
-import HeaderButton from "./HeaderButton";
 import { IoIosMenu, IoMdClose } from "react-icons/io";
-import HeaderButtonMobile from "./HeaderButtonMobile";
+
+import { AppContext } from "@app/app";
+
+import HeaderButton from "@components/header/header-button/HeaderButton";
+import HeaderButtonMobile from "@components/header/header-button-mobile/HeaderButtonMobile";
+
 import { RouterService } from "@services/RouterService";
 
 const Header: React.FC = () => {

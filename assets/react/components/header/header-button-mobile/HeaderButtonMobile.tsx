@@ -1,9 +1,9 @@
-import "./header_button_mobile.scss";
+import "./HeaderButtonMobile.scss";
 
 import React, { CSSProperties, useState } from "react";
 
 import { Link } from "react-router-dom";
-import { AppRouterInterface } from "routers";
+import { AppRouterInterface } from "app/routers";
 import { IoIosArrowUp } from "react-icons/io";
 
 export interface HeaderButtonMobileProps {
