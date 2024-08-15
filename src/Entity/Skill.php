@@ -22,39 +22,46 @@ class Skill
     #[ORM\GeneratedValue]
     #[ORM\Column]
 
-    #[Groups(["project.read", "skill.read"])]
+    #[Groups(["project.read", "skill.read", "experience.read"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["project.read", "skill.read", "skill.write"])]
+    #[Groups(["project.read", "skill.read", "skill.write", "experience.read"])]
     private ?string $name = null;
-    
-    #[Groups(["project.read", "skill.read", "skill.write"])]
+
+    #[Groups(["project.read", "skill.read", "skill.write", "experience.read"])]
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["project.read", "skill.read", "skill.write"])]
+    #[Groups(["project.read", "skill.read", "skill.write", "experience.read"])]
     private ?int $points = null;
 
     #[ORM\Column(length: 999, nullable: true)]
-    #[Groups(["project.read", "skill.read", "skill.write"])]
+    #[Groups(["project.read", "skill.read", "skill.write", "experience.read"])]
     private ?string $image = null;
 
     #[ORM\Column(length: 999, nullable: true)]
-    #[Groups(["project.read", "skill.read", "skill.write"])]
+    #[Groups(["project.read", "skill.read", "skill.write", "experience.read"])]
     private ?string $icon = null;
 
     /**
      * @var Collection<int, Project>
      */
-    #[ORM\ManyToMany(targetEntity: Project::class, mappedBy: 'skills', cascade:["persist"])]
+    #[ORM\ManyToMany(targetEntity: Project::class, mappedBy: 'skills', cascade: ["persist"])]
     #[Groups(["skill.read", "skill.write"])]
     private Collection $projects;
+
+    /**
+     * @var Collection<int, Experience>
+     */
+    #[ORM\ManyToMany(targetEntity: Experience::class, mappedBy: 'skills')]
+    private Collection $experiences;
 
     public function __construct()
     {
         $this->projects = new ArrayCollection();
+        $this->experiences = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -144,6 +151,33 @@ class Skill
     {
         if ($this->projects->removeElement($project)) {
             $project->removeSkill($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Experience>
+     */
+    public function getExperiences(): Collection
+    {
+        return $this->experiences;
+    }
+
+    public function addExperience(Experience $experience): static
+    {
+        if (!$this->experiences->contains($experience)) {
+            $this->experiences->add($experience);
+            $experience->addSkill($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExperience(Experience $experience): static
+    {
+        if ($this->experiences->removeElement($experience)) {
+            $experience->removeSkill($this);
         }
 
         return $this;

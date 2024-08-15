@@ -1,0 +1,44 @@
+@import "../../styles/color";
+
+.sr-header-button-mobile-container {
+    color: white;
+
+    .title {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 30px;
+        font-size: 20px;
+        background: $primary-color;
+
+        svg {
+            color: white;
+            width: 50px;
+            height: 30px;
+        }
+    }
+
+    .inner-button {
+        a {
+            padding-left: 60px;
+        }
+    }
+
+    .sr-header-button-mobile {
+        padding: 20px 30px;
+        display: block;
+        width: 100%;
+        background: $second-color;
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        transition: all .5s ease;
+
+        &:hover {
+            background: $hover-color;
+        }
+    }
+
+    .sr-header-button-mobile-active {
+        background: $hover-color !important;
+    }
+}

@@ -3,60 +3,61 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
-use App\Repository\ProjectRepository;
+use App\Repository\ExperienceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;
 
+#[ORM\Entity(repositoryClass: ExperienceRepository::class)]
 #[ApiResource(
     security: "is_granted('IS_AUTHENTICATED_FULLY')",
-    normalizationContext: ["groups" => ['project.read']],
-    denormalizationContext: ["groups" => ["project.write"]]
+    normalizationContext: ["groups" => ['experience.read']],
+    denormalizationContext: ["groups" => ["experience.write"]]
 )]
-#[ORM\Entity(repositoryClass: ProjectRepository::class)]
-class Project
+class Experience
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["project.read", "skill.read", "experience.read"])]
+    #[Groups(["experience.read"])]
     private ?int $id = null;
 
-    #[Groups(["project.read", "project.write", "skill.read", "experience.read"])]
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(["experience.read", "experience.write"])]
     private ?string $name = null;
 
-    #[Groups(["project.read", "project.write", "skill.read", "experience.read"])]
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups(["experience.read", "experience.write"])]
     private ?string $description = null;
 
-    #[Groups(["project.read", "project.write", "skill.read", "experience.read"])]
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
-    private ?array $images = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(["experience.read", "experience.write"])]
+    private ?string $duration = null;
 
-    #[Groups(["project.read", "project.write", "skill.read", "experience.read"])]
-    #[ORM\Column(length: 999, nullable: true)]
-    private ?string $github = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(["experience.read", "experience.write"])]
+    private ?string $company = null;
 
     /**
      * @var Collection<int, Skill>
      */
-    #[Groups(["project.read", "project.write"])]
-    #[ORM\ManyToMany(targetEntity: Skill::class, inversedBy: 'projects', cascade: ["persist"])]
+    #[Groups(["experience.read", "experience.write"])]
+    #[ORM\ManyToMany(targetEntity: Skill::class, inversedBy: 'experiences')]
     private Collection $skills;
 
     /**
-     * @var Collection<int, Experience>
+     * @var Collection<int, Project>
      */
-    #[ORM\ManyToMany(targetEntity: Experience::class, mappedBy: 'projects')]
-    private Collection $experiences;
+    #[Groups(["experience.read", "experience.write"])]
+    #[ORM\ManyToMany(targetEntity: Project::class, inversedBy: 'experiences')]
+    private Collection $projects;
 
     public function __construct()
     {
         $this->skills = new ArrayCollection();
-        $this->experiences = new ArrayCollection();
+        $this->projects = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -88,26 +89,26 @@ class Project
         return $this;
     }
 
-    public function getImages(): ?array
+    public function getDuration(): ?string
     {
-        return $this->images;
+        return $this->duration;
     }
 
-    public function setImages(?array $images): static
+    public function setDuration(?string $duration): static
     {
-        $this->images = $images;
+        $this->duration = $duration;
 
         return $this;
     }
 
-    public function getGithub(): ?string
+    public function getCompany(): ?string
     {
-        return $this->github;
+        return $this->company;
     }
 
-    public function setGithub(?string $github): static
+    public function setCompany(?string $company): static
     {
-        $this->github = $github;
+        $this->company = $company;
 
         return $this;
     }
@@ -137,28 +138,25 @@ class Project
     }
 
     /**
-     * @return Collection<int, Experience>
+     * @return Collection<int, Project>
      */
-    public function getExperiences(): Collection
+    public function getProjects(): Collection
     {
-        return $this->experiences;
+        return $this->projects;
     }
 
-    public function addExperience(Experience $experience): static
+    public function addProject(Project $project): static
     {
-        if (!$this->experiences->contains($experience)) {
-            $this->experiences->add($experience);
-            $experience->addProject($this);
+        if (!$this->projects->contains($project)) {
+            $this->projects->add($project);
         }
 
         return $this;
     }
 
-    public function removeExperience(Experience $experience): static
+    public function removeProject(Project $project): static
     {
-        if ($this->experiences->removeElement($experience)) {
-            $experience->removeProject($this);
-        }
+        $this->projects->removeElement($project);
 
         return $this;
     }

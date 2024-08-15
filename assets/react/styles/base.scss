@@ -1,5 +1,28 @@
 @import "./fonts";
+@import "./color";
 
 * {
     font-family: "Urbanist";
+}
+
+.offcanvas-body {
+    background: $primary-color;
+    padding: 0px;
+}
+
+.offcanvas-header {
+    justify-content: space-between;
+    background: $primary-color;
+    color: white;;
+
+    button {
+        background: unset;
+        border: unset;
+
+        svg {
+            color: white;
+            width: 50px;
+            height: 30px;
+        }
+    }
 }
