@@ -10,41 +10,51 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;
 
+// Define the Skill entity and map it to the database using Doctrine ORM
 #[ApiResource(
+    // Only authenticated users can access this resource
     security: "is_granted('IS_AUTHENTICATED_FULLY')",
+    // Define the serialization groups for GET requests
     normalizationContext: ["groups" => ['skill.read']],
+    // Define the serialization groups for POST/PUT/PATCH requests
     denormalizationContext: ["groups" => ["skill.write"]]
 )]
 #[ORM\Entity(repositoryClass: SkillRepository::class)]
 class Skill
 {
+    // Define the ID field as primary key and auto-generated
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-
     #[Groups(["project.read", "skill.read", "experience.read"])]
     private ?int $id = null;
 
+    // Define the name field with a maximum length of 255 characters and nullable
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(["project.read", "skill.read", "skill.write", "experience.read"])]
     private ?string $name = null;
 
-    #[Groups(["project.read", "skill.read", "skill.write", "experience.read"])]
+    // Define the description field as TEXT type and nullable
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups(["project.read", "skill.read", "skill.write", "experience.read"])]
     private ?string $description = null;
 
+    // Define the points field as an integer and nullable
     #[ORM\Column(nullable: true)]
     #[Groups(["project.read", "skill.read", "skill.write", "experience.read"])]
     private ?int $points = null;
 
+    // Define the image field with a maximum length of 999 characters and nullable
     #[ORM\Column(length: 999, nullable: true)]
     #[Groups(["project.read", "skill.read", "skill.write", "experience.read"])]
     private ?string $image = null;
 
+    // Define the icon field with a maximum length of 999 characters and nullable
     #[ORM\Column(length: 999, nullable: true)]
     #[Groups(["project.read", "skill.read", "skill.write", "experience.read"])]
     private ?string $icon = null;
 
+    // Define a many-to-many relationship with Project entity
     /**
      * @var Collection<int, Project>
      */
@@ -52,12 +62,14 @@ class Skill
     #[Groups(["skill.read", "skill.write"])]
     private Collection $projects;
 
+    // Define a many-to-many relationship with Experience entity
     /**
      * @var Collection<int, Experience>
      */
     #[ORM\ManyToMany(targetEntity: Experience::class, mappedBy: 'skills')]
     private Collection $experiences;
 
+    // Constructor to initialize the projects and experiences collections
     public function __construct()
     {
         $this->projects = new ArrayCollection();
