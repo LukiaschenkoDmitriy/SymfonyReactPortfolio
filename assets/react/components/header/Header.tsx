@@ -11,18 +11,20 @@ import HeaderButtonMobile from "@components/header/header-button-mobile/HeaderBu
 import { RouterService } from "@services/RouterService";
 
 const Header: React.FC = () => {
-    const AppContent = useContext(AppContext)
-
+    // Use the AppContext to access and update appRouters state
+    const AppContent = useContext(AppContext);
     const { appRouters, setAppRouters } = AppContent;
 
+    // Function to switch the active router and update appRouters state
     function switchRouter(routerPath: string) {
         let actualRouters = RouterService.actualiseRoutersActive(appRouters, routerPath);
         setAppRouters([...actualRouters]);
     }
     
+    // Update the active router when appRouters state changes
     useEffect(() => {
 
-    }, appRouters)
+    }, [appRouters])
 
     return (
         <>

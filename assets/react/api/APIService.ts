@@ -1,11 +1,18 @@
+// This class provides methods for interacting with a RESTful API.
+// It uses axios for making HTTP requests and handles authentication using JWT tokens.
+
 import axios from 'axios';
 
 export default class APIService {
+    // API endpoint for authentication
     private static APIAUTHENDPOINT: string = 'auth';
+    // Base URL of the API
     private static HOSTNAME: string = "https://127.0.0.1:8000/api";
+    // User credentials for authentication
     private static USER_EMAIL: string = "admin@gmail.com";
     private static USER_PASSWORD: string = "123123";
 
+    // Method to obtain a JWT token by sending a POST request to the authentication endpoint
     public async getToken() { 
         return await axios.post(`${APIService.HOSTNAME}/${APIService.APIAUTHENDPOINT}`, {
             email: APIService.USER_EMAIL,
@@ -19,6 +26,8 @@ export default class APIService {
         });
     }
 
+    // Generic method to make GET requests to the API endpoints
+    // It includes the JWT token in the Authorization header
     public async getMethod(endpoint: string, headers: any) { 
         const token = await this.getToken();
 
@@ -33,6 +42,7 @@ export default class APIService {
         });
     }
 
+    // Methods to fetch specific resources from the API using the generic getMethod
     public async getSkills(id: string | null) {
         return await this.getMethod(`skills${id? `/${id}` : ''}`, {});
     }
