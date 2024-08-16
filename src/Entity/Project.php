@@ -2,9 +2,12 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\Post;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
+use App\ApiResource\TestProjectController;
+use App\Entity\Translatble\ProjectTranslatble;
 use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -15,9 +18,9 @@ use Symfony\Component\Serializer\Attribute\Groups;
     // Only authenticated users can access this resource
     security: "is_granted('IS_AUTHENTICATED_FULLY')",
     // Define the serialization groups for GET requests
-    normalizationContext: ["groups" => ['project.read', 'skill.read', 'experience.read']],
+    normalizationContext: ["groups" => ['project.read']],
     // Define the serialization groups for POST/PUT/PATCH requests
-    denormalizationContext: ["groups" => ["project.write", "skill.read", "experience.read"]]
+    denormalizationContext: ["groups" => ["project.write"]]
 )]
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
 class Project
@@ -64,11 +67,54 @@ class Project
     #[ORM\ManyToMany(targetEntity: Experience::class, mappedBy: 'projects')]
     private Collection $experiences;
 
+    #[ORM\OneToMany(targetEntity: ProjectTranslatble::class, mappedBy:"object", cascade:["remove", "persist", "refresh"])]
+    #[Groups(["project.read", "project.write", "skill.read", "experience.read"])]
+    private Collection $translations;
+
     // Constructor to initialize the skills and experiences collections
     public function __construct()
     {
         $this->skills = new ArrayCollection();
         $this->experiences = new ArrayCollection();
+        $this->translations = new ArrayCollection();
+    }
+
+    public function setTranslations(array $translations): static
+    {
+        $this->translations = new ArrayCollection();
+
+        foreach ($translations as $translation) {
+            $this->addTranslation($translation);
+        }
+
+        return $this;
+    }
+
+    public function getTranslations(): Collection
+    {
+        return $this->translations;
+    }
+
+    public function addTranslation(ProjectTranslatble $translate): static
+    {
+        if (!$this->translations->contains($translate)) {
+            $this->translations->add($translate);
+            $translate->setObject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTranslation(ProjectTranslatble $translation): self
+    {
+        if ($this->translations->removeElement($translation)) {
+            // set the owning side to null (unless already changed)
+            if ($translation->getObject() === $this) {
+                $translation->setObject(null);
+            }
+        }
+
+        return $this;
     }
 
     public function getId(): ?int

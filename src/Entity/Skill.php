@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use App\Entity\Translatble\SkillTranslatble;
 use App\Repository\SkillRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -69,11 +70,42 @@ class Skill
     #[ORM\ManyToMany(targetEntity: Experience::class, mappedBy: 'skills')]
     private Collection $experiences;
 
+    #[ORM\OneToMany(targetEntity: SkillTranslatble::class, mappedBy:"object", cascade:["remove", "persist"])]
+    #[Groups(["project.read", "skill.read", "skill.write", "experience.read"])]
+    private Collection $translations;
+
     // Constructor to initialize the projects and experiences collections
     public function __construct()
     {
         $this->projects = new ArrayCollection();
         $this->experiences = new ArrayCollection();
+        $this->translations = new ArrayCollection();
+    }
+
+    public function getTranslations(): Collection
+    {
+        return $this->translations;
+    }
+
+    public function setTranslations(array $translations): static
+    {
+        $this->translations = new ArrayCollection();
+
+        foreach ($translations as $translation) {
+            $this->addTranslation($translation);
+        }
+
+        return $this;
+    }
+
+    public function addTranslation(SkillTranslatble $translate): static
+    {
+        if (!$this->translations->contains($translate)) {
+            $this->translations->add($translate);
+            $translate->setObject($this);
+        }
+
+        return $this;
     }
 
     public function getId(): ?int
