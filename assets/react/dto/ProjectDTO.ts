@@ -1,8 +1,9 @@
-import SkillDTO from "./SkillDTO";
 import SkillEntity from "@data/SkillEntity";
 import ProjectEntity from "@data/ProjectEntity";
-import ObjectTranslatbleDTO from "./ObjectTranslatbleDTO";
 import ObjectTranslatbleEntity from "@data/ObjectTranslatbleEntity";
+
+import SkillDTO from "./SkillDTO";
+import ObjectTranslatbleDTO from "./ObjectTranslatbleDTO";
 
 export default class ProjectDTO implements ProjectEntity {
     id: number;

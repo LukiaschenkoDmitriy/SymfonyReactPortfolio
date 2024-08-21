@@ -42,17 +42,4 @@ export default class APIService {
             return response.data;
         });
     }
-
-    // Methods to fetch specific resources from the API using the generic getMethod
-    public async getSkills(id: string | null) {
-        return await this.getMethod(`skills${id? `/${id}` : ''}`, {});
-    }
-
-    public async getProjects(id: string | null) {
-        return await this.getMethod(`projects${id? `/${id}` : ''}`, {});
-    }
-
-    public async getExperiences(id: string | null) {
-        return await this.getMethod(`experiences${id? `/${id}` : ''}`, {});
-    }
 }

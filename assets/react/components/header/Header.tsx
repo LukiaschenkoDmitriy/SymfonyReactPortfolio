@@ -9,6 +9,7 @@ import HeaderButton from "@components/header/header-button/HeaderButton";
 import HeaderButtonMobile from "@components/header/header-button-mobile/HeaderButtonMobile";
 
 import { RouterService } from "@services/RouterService";
+import SwitchLanguage from "./SwitchLanguage/SwitchLanguage";
 
 const Header: React.FC = () => {
     // Use the AppContext to access and update appRouters state
@@ -28,7 +29,8 @@ const Header: React.FC = () => {
 
     return (
         <>
-            <div className="sr-header">
+            <div className="sr-header position-relative">
+                <SwitchLanguage/>
                 <div className="container">
                     <div className="sr-button-container d-none d-lg-flex">
                         {appRouters.map((router) => (

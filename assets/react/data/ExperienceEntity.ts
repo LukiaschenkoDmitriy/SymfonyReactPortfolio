@@ -1,7 +1,7 @@
+import SkillEntity from "./SkillEntity";
+import ProjectEntity from "./ProjectEntity";
 import EntityInterface from "./EntityInterface";
 import ObjectTranslatbleEntity from "./ObjectTranslatbleEntity";
-import ProjectEntity from "./ProjectEntity";
-import SkillEntity from "./SkillEntity";
 
 export default interface ExperienceEntity extends EntityInterface
 {

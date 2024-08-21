@@ -1,7 +1,14 @@
 import React from "react";
 
-import APIService from "@api/APIService";
 import LanguageEnum from "@enum/LanguageEnum";
+
+import ProjectRepository from "@repository/ProjectRepository";
+import ExperienceRepository from "@repository/ExperienceRepository";
+import SkillRepository from "@repository/SkillRepository";
+
+import SkillEntity from "@data/SkillEntity";
+import ProjectEntity from "@data/ProjectEntity";
+import ExperienceEntity from "@data/ExperienceEntity";
 
 export interface AppRouterInterface {
     name: string,
@@ -16,7 +23,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
     let routers: AppRouterInterface[] = [
         {
             name: "about_me",
-            path: "/about-me",
+            path: language+"/about-me",
             exact: false,
             active: false,
             component: () => <div>About me</div>,
@@ -32,9 +39,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
         }
     ];
 
-    const apiservice = new APIService();
-
-    await apiservice.getSkills(null).then((skills) => { 
+    await new SkillRepository().findAll(language).then((skills) => { 
         const skillsCategory: AppRouterInterface = {
             name: "skills",
             path: "/skills",
@@ -44,7 +49,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
             underCagetories: []
         }
         
-        skills.forEach((skill: any) => {
+        skills.forEach((skill: SkillEntity) => {
 
             skillsCategory.underCagetories.push({
                 name: skill.name,
@@ -59,7 +64,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
         routers.push(skillsCategory);
     })
 
-    await apiservice.getProjects(null).then((projects) => { 
+    await new ProjectRepository().findAll(language).then((projects) => { 
         const projectsCategory: AppRouterInterface = {
             name: "projects",
             path: "/projects",
@@ -69,7 +74,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
             underCagetories: []
         }
         
-        projects.forEach((project: any) => {
+        projects.forEach((project: ProjectEntity) => {
             projectsCategory.underCagetories.push({
                 name: project.name,
                 path: `/projects/${project.name}`,
@@ -83,7 +88,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
         routers.push(projectsCategory);
     })
     
-    await apiservice.getExperiences(null).then((experiences) => {
+    await new ExperienceRepository().findAll(language).then((experiences) => {
         const experiencesCategory: AppRouterInterface = {
             name: "experiences",
             path: "/experiences",
@@ -93,7 +98,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
             underCagetories: []
         }
         
-        experiences.forEach((experience: any) => {
+        experiences.forEach((experience: ExperienceEntity) => {
             experiencesCategory.underCagetories.push({
                 name: experience.name,
                 path: `/experiences/${experience.name}`,

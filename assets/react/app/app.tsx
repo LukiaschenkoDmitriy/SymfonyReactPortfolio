@@ -13,30 +13,33 @@ import { AppRouterInterface, getAppRouters } from "@app/routers";
 import Header from "@components/header/Header";
 
 import { RouterService } from "@services/RouterService";
+
 import LanguageEnum from "@enum/LanguageEnum";
 
 export interface AppContextInterface { 
     appRouters: AppRouterInterface[],
     setAppRouters: (routers: AppRouterInterface[]) => void,
     currentLanguage: LanguageEnum
+    setCurrentLanguage: (language: LanguageEnum) => void
 }
 
-export const AppContext = createContext<AppContextInterface>({appRouters: [], setAppRouters: () => { }, currentLanguage: LanguageEnum.ENGLISH});
+export const AppContext = createContext<AppContextInterface>({appRouters: [], setAppRouters: () => { }, currentLanguage: LanguageEnum.ENGLISH, setCurrentLanguage: () => {}});
 
 const App: React.FC = () => {
     const [appRouters, setAppRouters] = useState<AppRouterInterface[]>([]);
+    const [currentLanguage, setCurrentLanguage] = useState<LanguageEnum>(LanguageEnum.ENGLISH);
     const location = useLocation();
 
     useEffect(() => {
         const fetchData = async () => {
-            const routers = await getAppRouters();
+            const routers = await getAppRouters(currentLanguage);
             const actualActiveRouters = RouterService.actualiseRoutersActive(routers, location.pathname);
 
             setAppRouters(actualActiveRouters);
         };
 
         fetchData();
-    }, []);
+    }, [currentLanguage]);
 
     return (
         (appRouters.length === 0) ?
@@ -44,7 +47,7 @@ const App: React.FC = () => {
                 <ReactLoading type="bars" color="#122932" height={"100px"} width={"100px"}/>
             </div>    
         :
-        <AppContext.Provider value={{ appRouters: appRouters, setAppRouters: setAppRouters, currentLanguage: LanguageEnum.ENGLISH }}>
+        <AppContext.Provider value={{ appRouters: appRouters, setAppRouters: setAppRouters, currentLanguage: currentLanguage, setCurrentLanguage: setCurrentLanguage }}>
                 <div className="sr-app">
                     <Header />
                     <div className="sr-body">

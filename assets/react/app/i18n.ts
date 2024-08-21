@@ -9,7 +9,15 @@ i18next
         fallbackLng: "en",
         resources: {
             en: {
-               
+                translation: {
+                    "header": {
+                        "about_me": "About Me",
+                        "skills": "Skills",
+                        "experiences": "Experiences",
+                        "projects": "Projects",
+                        "contact": "Contact"
+                    }
+                }
             }
         }
     })

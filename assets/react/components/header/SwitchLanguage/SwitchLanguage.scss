@@ -1,0 +1,22 @@
+@import "../../../styles/_color.scss";
+
+.sr-swith-language {
+    right: 20px;
+    bottom: -200px;
+    background: $primary-color;
+    padding: 20px;
+    border-radius: 6px;
+
+    .language {
+        cursor: pointer;
+        color: white;
+        font-size: 17px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin: 10px 0px;
+    }
+
+    .language-active {
+        color: #6BD5FD !important;
+    }
+}
