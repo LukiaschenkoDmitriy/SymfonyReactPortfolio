@@ -78,7 +78,9 @@ Encore
         "@utils": path.resolve(__dirname, "assets/react/utils"),
         "@services": path.resolve(__dirname, "assets/react/services"),
         "@enum": path.resolve(__dirname, "assets/react/enum"),
-        '@styles': path.resolve(__dirname, 'assets/react/styles')
+        '@styles': path.resolve(__dirname, 'assets/react/styles'),
+        '@dto': path.resolve(__dirname, 'assets/react/dto'),
+        '@repository': path.resolve(__dirname, 'assets/react/repository')
     })
 ;
 

@@ -13,13 +13,15 @@ import { AppRouterInterface, getAppRouters } from "@app/routers";
 import Header from "@components/header/Header";
 
 import { RouterService } from "@services/RouterService";
+import LanguageEnum from "@enum/LanguageEnum";
 
 export interface AppContextInterface { 
     appRouters: AppRouterInterface[],
-    setAppRouters: (routers: AppRouterInterface[]) => void 
+    setAppRouters: (routers: AppRouterInterface[]) => void,
+    currentLanguage: LanguageEnum
 }
 
-export const AppContext = createContext<AppContextInterface>({appRouters: [], setAppRouters: () => { } });
+export const AppContext = createContext<AppContextInterface>({appRouters: [], setAppRouters: () => { }, currentLanguage: LanguageEnum.ENGLISH});
 
 const App: React.FC = () => {
     const [appRouters, setAppRouters] = useState<AppRouterInterface[]>([]);
@@ -42,7 +44,7 @@ const App: React.FC = () => {
                 <ReactLoading type="bars" color="#122932" height={"100px"} width={"100px"}/>
             </div>    
         :
-        <AppContext.Provider value={{ appRouters: appRouters, setAppRouters: setAppRouters }}>
+        <AppContext.Provider value={{ appRouters: appRouters, setAppRouters: setAppRouters, currentLanguage: LanguageEnum.ENGLISH }}>
                 <div className="sr-app">
                     <Header />
                     <div className="sr-body">

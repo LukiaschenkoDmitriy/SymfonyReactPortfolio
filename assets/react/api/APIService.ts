@@ -9,8 +9,9 @@ export default class APIService {
     // Base URL of the API
     private static HOSTNAME: string = "https://127.0.0.1:8000/api";
     // User credentials for authentication
-    private static USER_EMAIL: string = "admin@gmail.com";
-    private static USER_PASSWORD: string = "123123";
+    private static USER_EMAIL: string = "a";
+    private static USER_PASSWORD: string = "a";
+    private static TOKEN: string = "";
 
     // Method to obtain a JWT token by sending a POST request to the authentication endpoint
     public async getToken() { 
@@ -28,14 +29,14 @@ export default class APIService {
 
     // Generic method to make GET requests to the API endpoints
     // It includes the JWT token in the Authorization header
-    public async getMethod(endpoint: string, headers: any) { 
-        const token = await this.getToken();
+    public async getMethod(endpoint: string, headers: any) {
+        if (APIService.TOKEN == "") APIService.TOKEN = await this.getToken();
 
         return axios.get(`${APIService.HOSTNAME}/${endpoint}`, {
             headers: {
                 "Content-Type": "application/json",
                 ...headers,
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${APIService.TOKEN}`
             }
         }).then((response) => {
             return response.data;

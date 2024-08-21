@@ -23,7 +23,7 @@ const HeaderButton: React.FC<HeaderButtonProps> = ({ router, clickHandler }) => 
             to={router.path} // Navigate to the router's path when the button is clicked
             className={`sr-header-button ${router.active ? 'sr-header-button-active' : ''}`} // Apply the 'sr-header-button-active' class if the router is active
         >
-            {t("header."+router.name)} // Translate and display the router's name
+            {t("header."+router.name)}
         </Link>
     );
 }

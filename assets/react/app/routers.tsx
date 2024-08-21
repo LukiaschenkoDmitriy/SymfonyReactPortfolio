@@ -1,6 +1,7 @@
 import React from "react";
 
 import APIService from "@api/APIService";
+import LanguageEnum from "@enum/LanguageEnum";
 
 export interface AppRouterInterface {
     name: string,
@@ -11,8 +12,7 @@ export interface AppRouterInterface {
     underCagetories: AppRouterInterface[]
 }
 
-
-export async function getAppRouters(): Promise<AppRouterInterface[]> {
+export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLISH): Promise<AppRouterInterface[]> {
     let routers: AppRouterInterface[] = [
         {
             name: "about_me",
@@ -45,6 +45,7 @@ export async function getAppRouters(): Promise<AppRouterInterface[]> {
         }
         
         skills.forEach((skill: any) => {
+
             skillsCategory.underCagetories.push({
                 name: skill.name,
                 path: `/skills/${skill.name}`,
@@ -106,5 +107,5 @@ export async function getAppRouters(): Promise<AppRouterInterface[]> {
         routers.push(experiencesCategory);
     })
 
-    return await routers;
+    return routers;
 }

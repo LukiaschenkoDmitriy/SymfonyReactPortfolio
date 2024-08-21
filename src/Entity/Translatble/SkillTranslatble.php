@@ -2,6 +2,7 @@
 
 namespace App\Entity\Translatble;
 
+use ApiPlatform\Metadata\ApiResource;
 use App\Entity\Skill;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -9,6 +10,7 @@ use App\Repository\Translatble\SkillTranslatbleRepository;
 use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: SkillTranslatbleRepository::class)]
+#[ApiResource(security: "is_granted('IS_AUTHENTICATED_FULLY')")]
 class SkillTranslatble extends AbstractEntityTranslatble
 {
     #[ORM\Column(length: 255, nullable: false)]
