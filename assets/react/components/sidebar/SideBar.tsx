@@ -1,10 +1,14 @@
-import { Link, Route, useLocation } from "react-router-dom";
 import "./SideBar.scss";
 
 import React, { useContext, useState } from "react";
+import { Link, Route, useLocation } from "react-router-dom";
+
+import i18nplus from "@services/TranslateService";
 import { AppContext } from "@app/app";
 import { RouterType } from "@app/routers";
+
 import { RouterService } from "@services/RouterService";
+
 
 const SideBar: React.FC = () => {
     const appContext = useContext(AppContext);
@@ -15,7 +19,6 @@ const SideBar: React.FC = () => {
         appContext.setAppRouters([...actualRouters]);
     }
 
-    console.log(appContext.appRouters);
     const currentRouter = RouterService.getActualRouter(appContext.appRouters, location.pathname);
 
     return (
@@ -35,8 +38,8 @@ const SideBar: React.FC = () => {
                         currentRouter?.underCagetories[0].type == RouterType.ROUTER ? (
                             <div key={currentRouter.name}>
                                 {currentRouter.underCagetories.map((subRouter) => (
-                                    <Link className="d-block" key={subRouter.name} to={subRouter.path} onClick={() => handleSubRouterClick(subRouter.path)}>
-                                        {subRouter.name}
+                                    <Link className="d-block" key={subRouter.name+"sidebar"} to={subRouter.path} onClick={() => handleSubRouterClick(subRouter.path)}>
+                                        { i18nplus("header."+subRouter.name, subRouter.name) }
                                     </Link>
                                 ))}
                             </div>
@@ -44,14 +47,14 @@ const SideBar: React.FC = () => {
                             (
                                 <div key={currentRouter.name}>
                                     {currentRouter.underCagetories.map((subRouter) => (
-                                        <a className="d-block" href={`${subRouter.path}`} key={subRouter.name}>
-                                            {subRouter.name}
+                                        <a className="d-block" href={`${subRouter.path}`} key={subRouter.name+"sidebar"}>
+                                            { i18nplus("header."+subRouter.name, subRouter.name) }
                                         </a>
                                     ))}
                                 </div>
                             ):
                             (
-                                <div></div>
+                                <a className="d-block"> Routers or Achors Not Found </a>
                             )
                         
                     ): <a className="d-block"> Routers or Achors Not Found </a>}

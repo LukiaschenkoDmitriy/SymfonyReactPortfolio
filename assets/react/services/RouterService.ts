@@ -57,4 +57,22 @@ export class RouterService {
 
         return currentRouter;
     }
+
+    public static getBreadcrumbs(appRouters: AppRouterInterface[], routerPath: string): AppRouterInterface[] {
+        for (let index = 0; index < appRouters[0].underCagetories.length; index++) {
+            if (appRouters[0].underCagetories[index].path ==  routerPath) return [appRouters[0], appRouters[0].underCagetories[index]];
+
+            let subcategory =appRouters[0].underCagetories[index];
+            
+            for (let index2 = 0; index2 < subcategory.underCagetories.length; index2++) {
+                if (subcategory.underCagetories[index2].path ==  routerPath) return [
+                    appRouters[0], 
+                    subcategory,
+                    subcategory.underCagetories[index2]
+                ];
+            }
+        }
+
+        return [appRouters[0]];
+    }
 }

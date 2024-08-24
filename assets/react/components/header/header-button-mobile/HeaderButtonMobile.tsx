@@ -9,9 +9,10 @@ import { AppRouterInterface, RouterType } from "@app/routers";
 export interface HeaderButtonMobileProps {
     router: AppRouterInterface;
     clickHandler: (routerPath: string) => void;
+    key: string
 }
 
-const HeaderButtonMobile: React.FC<HeaderButtonMobileProps> = ({ router, clickHandler }) => {
+const HeaderButtonMobile: React.FC<HeaderButtonMobileProps> = ({ router, clickHandler, key}) => {
     const [innerButtonStyles, setInnerButonStyles] = useState<CSSProperties>({
         overflow: "hidden",
         height: "0px",
@@ -52,7 +53,7 @@ const HeaderButtonMobile: React.FC<HeaderButtonMobileProps> = ({ router, clickHa
             {(router.underCagetories.length === 0 || router.underCagetories[0].type == RouterType.ACHOR) ?
                 <div data-bs-dismiss="offcanvas">
                     <Link
-                        key={router.name + "mobile2"}
+                        key={router.name + "_header_mobile_2" + key}
                         onClick={() => { clickHandler(router.path) }}
                         to={router.path}
                         className={`sr-header-button-mobile ${router.active ? 'sr-header-button-mobile-active' : ''}`}
@@ -70,7 +71,7 @@ const HeaderButtonMobile: React.FC<HeaderButtonMobileProps> = ({ router, clickHa
                         {router.underCagetories.map((subcategory) => (
                             <div data-bs-dismiss="offcanvas">
                                 <Link
-                                    key={subcategory.name + "mobile3"}
+                                    key={subcategory.name + "_header_mobile_3" + key}
                                     onClick={() => { clickHandler(subcategory.path) }}
                                     to={subcategory.path}
                                     className={`sr-header-button-mobile ${subcategory.active ? 'sr-header-button-mobile-active' : ''}`}

@@ -11,6 +11,7 @@ i18next
             en: {
                 translation: {
                     "header": {
+                        "home": "Home",
                         "about_me": "About Me",
                         "skills": "Skills",
                         "experiences": "Experiences",

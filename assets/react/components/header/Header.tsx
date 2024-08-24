@@ -36,6 +36,9 @@ const Header: React.FC = () => {
                         {appRouters.map((router) => (
                             <HeaderButton key={router.name} clickHandler={switchRouter} router={router} />
                         ))}
+                        {appRouters[0].underCagetories.map((router) => (
+                            <HeaderButton key={router.name} clickHandler={switchRouter} router={router} />
+                        ))}
                     </div>
                     <div className="sr-button-mobile d-flex d-md-none">
                         <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
@@ -53,7 +56,10 @@ const Header: React.FC = () => {
                 </div>
                 <div className="offcanvas-body">
                     {appRouters.map((router) => (
-                        <HeaderButtonMobile key={router.name+"_mobile"} clickHandler={switchRouter} router={router} />
+                        <HeaderButtonMobile key={router.name+"_mobile22"} clickHandler={switchRouter} router={router} />
+                    ))}
+                    {appRouters[0].underCagetories.map((router) => (
+                        <HeaderButtonMobile key={router.name+"_mobile23"} clickHandler={switchRouter} router={router} />
                     ))}
                 </div>
             </div>

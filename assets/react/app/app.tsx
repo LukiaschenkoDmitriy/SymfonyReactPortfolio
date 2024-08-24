@@ -8,7 +8,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import React, { createContext, StrictMode, useEffect, useState } from "react";
 
-import { AppRouterInterface, getAppRouters } from "@app/routers";
+import { AppRouterInterface, getAppRouters, RouterType } from "@app/routers";
 
 import Header from "@components/header/Header";
 import SideBar from "@components/sidebar/SideBar";
@@ -16,6 +16,7 @@ import SideBar from "@components/sidebar/SideBar";
 import { RouterService } from "@services/RouterService";
 
 import LanguageEnum from "@enum/LanguageEnum";
+import Breadcrumb from "@components/breadcrumb/Breadcrumb";
 
 export interface AppContextInterface { 
     appRouters: AppRouterInterface[],
@@ -54,11 +55,18 @@ const App: React.FC = () => {
                         <SideBar />
                         <Routes>
                             {appRouters.map((router) => (
-                                <Route key={router.name} path={router.path} element={router.component("")} />
+                                <Route key={router.name} path={router.path} element={router.component(router)} />
                             ))}
                             {appRouters.map((router) => (
                                 router.underCagetories.map((subcategory) => (
-                                    <Route key={subcategory.name+"subcategory"} path={subcategory.path} element={subcategory.component("")} />
+                                    <Route key={subcategory.name+"subcategory"} path={subcategory.path} element={subcategory.component(subcategory)} />
+                                ))
+                            ))}
+                            {appRouters.map((router) => (
+                                router.underCagetories.map((subcategory) => (
+                                    subcategory.underCagetories.map((subcategory2) => (
+                                        (subcategory2.type != RouterType.ACHOR) ? <Route key={subcategory2.name+"subcategory2"} path={subcategory2.path} element={subcategory2.component(subcategory2)} />: null
+                                    ))
                                 ))
                             ))}
                         </Routes>
