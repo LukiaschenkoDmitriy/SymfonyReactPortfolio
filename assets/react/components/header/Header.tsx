@@ -9,7 +9,7 @@ import HeaderButton from "@components/header/header-button/HeaderButton";
 import HeaderButtonMobile from "@components/header/header-button-mobile/HeaderButtonMobile";
 
 import { RouterService } from "@services/RouterService";
-import SwitchLanguage from "./SwitchLanguage/SwitchLanguage";
+import SwitchLanguage from "./switch-language/SwitchLanguage";
 
 const Header: React.FC = () => {
     // Use the AppContext to access and update appRouters state

@@ -23,7 +23,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
     let routers: AppRouterInterface[] = [
         {
             name: "about_me",
-            path: language+"/about-me",
+            path: "/about-me",
             exact: false,
             active: false,
             component: () => <div>About me</div>,
