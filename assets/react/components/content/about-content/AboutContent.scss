@@ -1,0 +1,45 @@
+@import "../../../styles/color";
+
+.sr-content-inner-about {
+    background: url("../../../images/homebackground 1.png");
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .sr-about-row {
+        margin: 40px 0px;
+        color: white;
+
+        .description {
+            background: $primary-color;
+            padding: 150px 20px;
+        }
+
+        .image {
+            background: $hover-color;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                background: white;
+                width: 350px;
+                height: 350px;
+            }
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .sr-content-inner-about {
+        .sr-about-row {
+            .image {
+                img {
+                    width: 250px;
+                    height: 250px;
+                }
+            }
+        }
+    }
+    
+}

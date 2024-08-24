@@ -29,9 +29,9 @@ const Header: React.FC = () => {
 
     return (
         <>
-            <div className="sr-header position-relative">
+            <div className="sr-header position-fixed">
                 <SwitchLanguage/>
-                <div className="container">
+                <div className="sr-header-container">
                     <div className="sr-button-container d-none d-md-flex">
                         {appRouters.map((router) => (
                             <HeaderButton key={router.name} clickHandler={switchRouter} router={router} />
@@ -49,17 +49,17 @@ const Header: React.FC = () => {
             </div>
             <div className="offcanvas offcanvas-start" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
                 <div className="offcanvas-header">
-                    <h5 className="offcanvas-title" id="offcanvasExampleLabel">Dmytrii Lukiashchenko</h5>
+                    <h5 className="offcanvas-title" id="offcanvasExampleLabel"></h5>
                     <button type="button" data-bs-dismiss="offcanvas" aria-label="Close">
                         <IoMdClose></IoMdClose>
                     </button>
                 </div>
                 <div className="offcanvas-body">
                     {appRouters.map((router) => (
-                        <HeaderButtonMobile key={router.name+"_mobile22"} clickHandler={switchRouter} router={router} />
+                        <HeaderButtonMobile key={router.name+"_mobile22"+ Math.random()*100} clickHandler={switchRouter} router={router} />
                     ))}
                     {appRouters[0].underCagetories.map((router) => (
-                        <HeaderButtonMobile key={router.name+"_mobile23"} clickHandler={switchRouter} router={router} />
+                        <HeaderButtonMobile key={router.name+"_mobile23"+ Math.random()*100} clickHandler={switchRouter} router={router} />
                     ))}
                 </div>
             </div>

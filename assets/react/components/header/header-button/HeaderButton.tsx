@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import i18next from "@app/i18n";
 import { AppRouterInterface } from "@app/routers";
+import i18nplus from "@services/TranslateService";
 
 // Define the props interface for the HeaderButton component
 export interface HeaderButtonProps { 
@@ -23,7 +24,7 @@ const HeaderButton: React.FC<HeaderButtonProps> = ({ router, clickHandler }) => 
             to={router.path} // Navigate to the router's path when the button is clicked
             className={`sr-header-button ${router.active ? 'sr-header-button-active' : ''}`} // Apply the 'sr-header-button-active' class if the router is active
         >
-            {t("header."+router.name)}
+            {i18nplus("header."+router.name, router.name)}
         </Link>
     );
 }

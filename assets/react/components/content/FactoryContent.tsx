@@ -1,3 +1,5 @@
+import "./FactoryContent.scss";
+
 import React from "react";
 
 import { AppRouterInterface, PageType } from "@app/routers";
@@ -9,7 +11,7 @@ import ContactContent from "./contact-content/ContactContent";
 import ProjectContent from "./project-content/ProjectContent";
 import ExperienceContent from "./experience-content/ExperienceContent";
 import CollectionContent from "./collection-content/CollectionContent";
-import Breadcrumb from "@components/breadcrumb/Breadcrumb";
+
 
 export interface FactoryContentProps {
     router: AppRouterInterface,
@@ -44,8 +46,7 @@ const FactoryContent: React.FC<FactoryContentProps> = ({router, pageType}) => {
     }
 
     return (
-        <div>
-            <Breadcrumb router={router}/>
+        <div className="sr-container">
             {getContent()}
         </div>
     );

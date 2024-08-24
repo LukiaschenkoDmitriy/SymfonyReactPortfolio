@@ -38,6 +38,7 @@ body {
 .sr-app {
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 
     .sr-body {
         flex: 1;

@@ -1,0 +1,16 @@
+.sr-container {
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.sr-content-inner {
+    width: 100%;
+
+    .title {
+        color: white;
+        margin: 30px 0px;
+    }
+}

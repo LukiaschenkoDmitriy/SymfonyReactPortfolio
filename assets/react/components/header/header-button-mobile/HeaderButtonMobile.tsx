@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import React, { CSSProperties, useState } from "react";
 
 import { AppRouterInterface, RouterType } from "@app/routers";
+import i18nplus from "@services/TranslateService";
 
 export interface HeaderButtonMobileProps {
     router: AppRouterInterface;
     clickHandler: (routerPath: string) => void;
-    key: string
 }
 
-const HeaderButtonMobile: React.FC<HeaderButtonMobileProps> = ({ router, clickHandler, key}) => {
+const HeaderButtonMobile: React.FC<HeaderButtonMobileProps> = ({ router, clickHandler}) => {
     const [innerButtonStyles, setInnerButonStyles] = useState<CSSProperties>({
         overflow: "hidden",
         height: "0px",
@@ -50,33 +50,33 @@ const HeaderButtonMobile: React.FC<HeaderButtonMobileProps> = ({ router, clickHa
 
     return (
         <div className="sr-header-button-mobile-container">
-            {(router.underCagetories.length === 0 || router.underCagetories[0].type == RouterType.ACHOR) ?
+            {(router.underCagetories.length === 0 || router.underCagetories[0].type == RouterType.ACHOR || router.path == "/") ?
                 <div data-bs-dismiss="offcanvas">
                     <Link
-                        key={router.name + "_header_mobile_2" + key}
+                        key={router.name + "_header_mobile_2"+ Math.random()*100}
                         onClick={() => { clickHandler(router.path) }}
                         to={router.path}
                         className={`sr-header-button-mobile ${router.active ? 'sr-header-button-mobile-active' : ''}`}
                     >
-                        {router.name}
+                        {i18nplus("header."+router.name, router.name)}
                     </Link>
                 </div>
                 :
                 <>
                     <div className="title" onClick={handlerTitleClick}>
-                        <div>{router.name}</div>
+                        <div>{i18nplus("header."+router.name, router.name)}</div>
                         <IoIosArrowUp style={arrowButtonStyles}></IoIosArrowUp>
                     </div>
                     <div className="inner-button" style={innerButtonStyles}>
-                        {router.underCagetories.map((subcategory) => (
-                            <div data-bs-dismiss="offcanvas">
+                        {router.underCagetories.map((subcategory, index) => (
+                            <div data-bs-dismiss="offcanvas" key={subcategory.name + "_header_mobile_3"+index}>
                                 <Link
-                                    key={subcategory.name + "_header_mobile_3" + key}
+                                    key={subcategory.name + "_header_mobile_3"+ Math.random()*100}
                                     onClick={() => { clickHandler(subcategory.path) }}
                                     to={subcategory.path}
                                     className={`sr-header-button-mobile ${subcategory.active ? 'sr-header-button-mobile-active' : ''}`}
                                 >
-                                    {subcategory.name}
+                                    {i18nplus("header."+subcategory.name, subcategory.name)}
                                 </Link>
                             </div>
                         ))}

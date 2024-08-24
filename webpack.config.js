@@ -80,7 +80,8 @@ Encore
         "@enum": path.resolve(__dirname, "assets/react/enum"),
         '@styles': path.resolve(__dirname, 'assets/react/styles'),
         '@dto': path.resolve(__dirname, 'assets/react/dto'),
-        '@repository': path.resolve(__dirname, 'assets/react/repository')
+        '@repository': path.resolve(__dirname, 'assets/react/repository'),
+        '@images': path.resolve(__dirname, 'assets/react/images')
     })
 ;
 

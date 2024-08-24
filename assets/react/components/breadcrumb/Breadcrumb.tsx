@@ -1,5 +1,6 @@
+import "./Breadcrumb.scss";
+
 import { Link, useLocation } from "react-router-dom";
-import "./Breadcrumb";
 
 import React, { useContext } from "react";
 import { AppRouterInterface } from "@app/routers";
@@ -16,10 +17,17 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({router}) => {
 
     const location = useLocation();
 
+    const breadcrumbs = RouterService.getBreadcrumbs(appContent.appRouters, location.pathname);
+
     return (
-        <div>
-            {RouterService.getBreadcrumbs(appContent.appRouters, location.pathname).map((breadcrumb) => (
-                <Link key={breadcrumb.name+"_breadcrumb"} to={breadcrumb.path}>{i18nplus("header."+breadcrumb.name, breadcrumb.name)} /</Link>
+        <div className="sr-breacrumb">
+            {breadcrumbs.map((breadcrumb, index) => (
+                <React.Fragment key={breadcrumb.name + "_breadcrumb_" + index}>
+                    <Link key={breadcrumb.name+"_breadcrumb"} to={breadcrumb.path}>
+                        {i18nplus("header."+breadcrumb.name, breadcrumb.name)}
+                    </Link>
+                    {breadcrumbs.length > breadcrumbs.indexOf(breadcrumb) + 1 ? <span key={breadcrumb.name+"_breacrumb_span"}> / </span>: <span key={breadcrumb.name+"_breacrumb_span"}></span>}
+                </React.Fragment>
             ))}
         </div>
     );
