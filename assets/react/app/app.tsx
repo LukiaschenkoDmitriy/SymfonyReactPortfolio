@@ -11,6 +11,7 @@ import React, { createContext, StrictMode, useEffect, useState } from "react";
 import { AppRouterInterface, getAppRouters } from "@app/routers";
 
 import Header from "@components/header/Header";
+import SideBar from "@components/sidebar/SideBar";
 
 import { RouterService } from "@services/RouterService";
 
@@ -34,7 +35,6 @@ const App: React.FC = () => {
         const fetchData = async () => {
             const routers = await getAppRouters(currentLanguage);
             const actualActiveRouters = RouterService.actualiseRoutersActive(routers, location.pathname);
-
             setAppRouters(actualActiveRouters);
         };
 
@@ -51,6 +51,7 @@ const App: React.FC = () => {
                 <div className="sr-app">
                     <Header />
                     <div className="sr-body">
+                        <SideBar />
                         <Routes>
                             {appRouters.map((router) => (
                                 <Route key={router.name} path={router.path} element={router.component("")} />

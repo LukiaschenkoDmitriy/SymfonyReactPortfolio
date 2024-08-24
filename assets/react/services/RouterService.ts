@@ -34,4 +34,27 @@ export class RouterService {
         // Return the updated array of application routers
         return appRouters;
     }
+
+    public static getActualRouter(appRouters: AppRouterInterface[], routerPath: string): AppRouterInterface | undefined {
+        let currentRouter;
+
+        appRouters.forEach((router, index) => {
+            // If the router's path matches the given routerPath, set its 'active' property to true
+            if (router.path === routerPath) {
+                currentRouter = router;
+                return;
+            }
+
+            // Iterate through each subrouter in the router's underCagetories array
+            router.underCagetories.forEach((subrouter, index2) => {
+                // If the subrouter's path matches the given routerPath, set its 'active' property to true
+                if (subrouter.path === routerPath) {
+                    currentRouter = subrouter;
+                    return;
+                }
+            });
+        });
+
+        return currentRouter;
+    }
 }

@@ -5,6 +5,14 @@
     font-family: "Urbanist";
 }
 
+body {
+    height: 100vh;
+
+    #root, .sr-app {
+        height: 100%;
+    }
+}
+
 .offcanvas-body {
     background: $primary-color;
     padding: 0px;
@@ -24,5 +32,15 @@
             width: 50px;
             height: 30px;
         }
+    }
+}
+
+.sr-app {
+    display: flex;
+    flex-direction: column;
+
+    .sr-body {
+        flex: 1;
+        display: flex;
     }
 }

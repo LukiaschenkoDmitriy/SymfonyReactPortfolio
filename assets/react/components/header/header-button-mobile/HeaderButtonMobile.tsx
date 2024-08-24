@@ -4,7 +4,7 @@ import { IoIosArrowUp } from "react-icons/io";
 import { Link } from "react-router-dom";
 import React, { CSSProperties, useState } from "react";
 
-import { AppRouterInterface } from "@app/routers";
+import { AppRouterInterface, RouterType } from "@app/routers";
 
 export interface HeaderButtonMobileProps {
     router: AppRouterInterface;
@@ -49,7 +49,7 @@ const HeaderButtonMobile: React.FC<HeaderButtonMobileProps> = ({ router, clickHa
 
     return (
         <div className="sr-header-button-mobile-container">
-            {(router.underCagetories.length === 0) ?
+            {(router.underCagetories.length === 0 || router.underCagetories[0].type == RouterType.ACHOR) ?
                 <div data-bs-dismiss="offcanvas">
                     <Link
                         key={router.name + "mobile2"}

@@ -32,12 +32,12 @@ const Header: React.FC = () => {
             <div className="sr-header position-relative">
                 <SwitchLanguage/>
                 <div className="container">
-                    <div className="sr-button-container d-none d-lg-flex">
+                    <div className="sr-button-container d-none d-md-flex">
                         {appRouters.map((router) => (
                             <HeaderButton key={router.name} clickHandler={switchRouter} router={router} />
                         ))}
                     </div>
-                    <div className="sr-button-mobile d-flex d-lg-none">
+                    <div className="sr-button-mobile d-flex d-md-none">
                         <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                             <IoIosMenu></IoIosMenu>
                         </a>

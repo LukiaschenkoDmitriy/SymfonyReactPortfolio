@@ -10,7 +10,14 @@ import SkillEntity from "@data/SkillEntity";
 import ProjectEntity from "@data/ProjectEntity";
 import ExperienceEntity from "@data/ExperienceEntity";
 
+export enum RouterType {
+    ROUTER = "router",
+    ACHOR = "achor",
+
+}
+
 export interface AppRouterInterface {
+    type: RouterType,
     name: string,
     path: string,
     exact?: boolean,
@@ -22,25 +29,75 @@ export interface AppRouterInterface {
 export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLISH): Promise<AppRouterInterface[]> {
     let routers: AppRouterInterface[] = [
         {
+            type: RouterType.ROUTER,
             name: "about_me",
             path: "/about-me",
             exact: false,
             active: false,
             component: () => <div>About me</div>,
-            underCagetories: []
+            underCagetories: [
+                {
+                    type: RouterType.ACHOR,
+                    name: "about_me_info",
+                    path: "#about-me-info",
+                    exact: false,
+                    active: false,
+                    component: () => <div></div>,
+                    underCagetories: []
+                },
+                {
+                    type: RouterType.ACHOR,
+                    name: "education_info",
+                    path: "#education-info",
+                    exact: false,
+                    active: false,
+                    component: () => <div></div>,
+                    underCagetories: []
+                },
+                {
+                    type: RouterType.ACHOR,
+                    name: "languages_info",
+                    path: "#languages-info",
+                    exact: false,
+                    active: false,
+                    component: () => <div></div>,
+                    underCagetories: []
+                },
+                {
+                    type: RouterType.ACHOR,
+                    name: "personal_skills_info",
+                    path: "#personal-skills-info",
+                    exact: false,
+                    active: false,
+                    component: () => <div></div>,
+                    underCagetories: []
+                }
+            ]
         },
         {
+            type: RouterType.ROUTER,
             name: "contact",
             path: "/contact",
             exact: false,
             active: false,
-            component: () => <div>Contact</div>,
-            underCagetories: []
+            component: () => <div></div>,
+            underCagetories: [
+                {
+                    type: RouterType.ACHOR,
+                    name: "contact_info",
+                    path: "#contact_info",
+                    exact: false,
+                    active: false,
+                    component: () => <div></div>,
+                    underCagetories: []
+                }
+            ]
         }
     ];
 
     await new SkillRepository().findAll(language).then((skills) => { 
         const skillsCategory: AppRouterInterface = {
+            type: RouterType.ROUTER,
             name: "skills",
             path: "/skills",
             exact: false,
@@ -52,6 +109,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
         skills.forEach((skill: SkillEntity) => {
 
             skillsCategory.underCagetories.push({
+                type: RouterType.ROUTER,
                 name: skill.name,
                 path: `/skills/${skill.name}`,
                 exact: false,
@@ -66,6 +124,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
 
     await new ProjectRepository().findAll(language).then((projects) => { 
         const projectsCategory: AppRouterInterface = {
+            type: RouterType.ROUTER,
             name: "projects",
             path: "/projects",
             exact: false,
@@ -76,6 +135,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
         
         projects.forEach((project: ProjectEntity) => {
             projectsCategory.underCagetories.push({
+                type: RouterType.ROUTER,
                 name: project.name,
                 path: `/projects/${project.name}`,
                 exact: false,
@@ -90,6 +150,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
     
     await new ExperienceRepository().findAll(language).then((experiences) => {
         const experiencesCategory: AppRouterInterface = {
+            type: RouterType.ROUTER,
             name: "experiences",
             path: "/experiences",
             exact: false,
@@ -100,6 +161,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
         
         experiences.forEach((experience: ExperienceEntity) => {
             experiencesCategory.underCagetories.push({
+                type: RouterType.ROUTER,
                 name: experience.name,
                 path: `/experiences/${experience.name}`,
                 exact: false,
