@@ -1,7 +1,11 @@
 @import "../../styles/color";
 
 .sr-sidebar {
-    width: 20%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
     background: $primary-color;
     transition: all .5s ease;
 
@@ -56,7 +60,5 @@
 }
 
 @media (max-width: 992px) {
-    .sr-sidebar {
-        width: 30%;
-    }
+    
 }
