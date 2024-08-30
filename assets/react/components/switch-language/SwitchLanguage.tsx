@@ -2,6 +2,8 @@ import "./SwitchLanguage.scss";
 
 import React, { useContext } from "react"
 
+import i18next from "@app/i18n";
+
 import { AppContext } from "@app/app"
 import LanguageEnum from "@enum/LanguageEnum";
 
@@ -9,19 +11,29 @@ const SwitchLanguage: React.FC = () => {
     const appContext = useContext(AppContext);
     const { currentLanguage, setCurrentLanguage, setAppRouters } = appContext;
 
+    const handleLanguageClick = (language: LanguageEnum) => {
+        i18next.changeLanguage(language);
+
+        setCurrentLanguage(language);
+        setAppRouters([]);
+    };
+
     return (
         <div className="sr-swith-language">
-            <div className={currentLanguage == LanguageEnum.ENGLISH ? "language language-active" : "language"} onClick={() => { setCurrentLanguage(LanguageEnum.ENGLISH); setAppRouters([]) }}>
+            <div className={currentLanguage == LanguageEnum.ENGLISH ? "language language-active" : "language"} onClick={() => { handleLanguageClick(LanguageEnum.ENGLISH) }}>
                 {LanguageEnum.ENGLISH}
             </div>
-            <div className={currentLanguage == LanguageEnum.POLISH ? "language language-active" : "language"} onClick={() => { setCurrentLanguage(LanguageEnum.POLISH); setAppRouters([]) }}>
+            <div className={currentLanguage == LanguageEnum.POLISH ? "language language-active" : "language"} onClick={() => { handleLanguageClick(LanguageEnum.POLISH) }}>
                 {LanguageEnum.POLISH}
             </div>
-            <div className={currentLanguage == LanguageEnum.UKRAINE ? "language language-active" : "language"} onClick={() => { setCurrentLanguage(LanguageEnum.UKRAINE); setAppRouters([]) }}>
+            <div className={currentLanguage == LanguageEnum.UKRAINE ? "language language-active" : "language"} onClick={() => { handleLanguageClick(LanguageEnum.UKRAINE) }}>
                 {LanguageEnum.UKRAINE}
             </div>
-            <div className={currentLanguage == LanguageEnum.DEUTSCH ? "language language-active" : "language"} onClick={() => { setCurrentLanguage(LanguageEnum.DEUTSCH); setAppRouters([]) }}>
+            <div className={currentLanguage == LanguageEnum.DEUTSCH ? "language language-active" : "language"} onClick={() => { handleLanguageClick(LanguageEnum.DEUTSCH) }}>
                 {LanguageEnum.DEUTSCH}
+            </div>
+            <div className={currentLanguage == LanguageEnum.RUSSIAN ? "language language-active" : "language"} onClick={() => { handleLanguageClick(LanguageEnum.RUSSIAN) }}>
+                {LanguageEnum.RUSSIAN}
             </div>
         </div>
     );

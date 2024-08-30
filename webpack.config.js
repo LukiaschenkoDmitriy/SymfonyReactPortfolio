@@ -82,7 +82,8 @@ Encore
         '@styles': path.resolve(__dirname, 'assets/react/styles'),
         '@dto': path.resolve(__dirname, 'assets/react/dto'),
         '@repository': path.resolve(__dirname, 'assets/react/repository'),
-        '@images': path.resolve(__dirname, 'assets/react/images')
+        '@images': path.resolve(__dirname, 'assets/react/images'),
+        '@locales': path.resolve(__dirname, 'assets/react/locales')
     })
     .enablePostCssLoader((options) => {
         options.postcssOptions = {

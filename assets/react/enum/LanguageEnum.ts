@@ -2,7 +2,8 @@ enum LanguageEnum {
     ENGLISH = "en",
     POLISH = "pl",
     UKRAINE = "ua",
-    DEUTSCH = "de"
+    DEUTSCH = "de",
+    RUSSIAN = "ru"
 }
 
 export default LanguageEnum;
