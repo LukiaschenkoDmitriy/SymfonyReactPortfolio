@@ -6,7 +6,7 @@ import { ContentProps } from "../FactoryContent";
 
 const HomeContent: React.FC<ContentProps> = ({router}) => {
     return (
-        <div className="sr-about-content">
+        <div className="sr-home-content sr-content-inner">
             Home Page
         </div>
     );
