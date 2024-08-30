@@ -1,10 +1,10 @@
 @import "@styles/color";
 
 .sr-header-button-active {
-    color: #6BD5FD !important;
+    color: $button-active !important;
 
     &::before {
-        background: #6BD5FD !important;
+        background: $button-active !important;
         width: 100% !important;
     }
 }
@@ -40,11 +40,11 @@
     }
 
     &:hover {
-        color: #6BD5FD;
+        color: $button-active;
     }
 
     &:hover::before {
-        background: #6BD5FD;
+        background: $button-active;
         width: 100%;
         bottom: 0;
     }

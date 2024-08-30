@@ -1,10 +1,10 @@
-@import "../../../styles/color";
+@import "@styles/color";
 
 .sr-content-inner-about {
-    background: url("../../../images/homebackground 1.png");
-    height: 100%;
+    background: url("~@images/homebackground 1.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 
     .sr-about-row {
         margin: 40px 0px;
@@ -12,7 +12,11 @@
 
         .description {
             background: $primary-color;
-            padding: 150px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 25px 50px;
         }
 
         .image {
@@ -20,11 +24,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 25px 0px;
 
             img {
                 background: white;
-                width: 350px;
-                height: 350px;
+                width: 250px;
+                height: 250px;
             }
         }
     }
