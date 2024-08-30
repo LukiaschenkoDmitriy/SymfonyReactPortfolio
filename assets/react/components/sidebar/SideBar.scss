@@ -7,7 +7,8 @@
     width: 250px;
     height: 100vh;
     background: $primary-color;
-    transition: all .5s ease;
+    transition: color .5s ease;
+    transition: background .5s ease;
 
     .logo-container {
         width: 100%;

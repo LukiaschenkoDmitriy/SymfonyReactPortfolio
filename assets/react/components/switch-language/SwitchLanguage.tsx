@@ -10,7 +10,7 @@ const SwitchLanguage: React.FC = () => {
     const { currentLanguage, setCurrentLanguage, setAppRouters } = appContext;
 
     return (
-        <div className="sr-swith-language position-absolute">
+        <div className="sr-swith-language">
             <div className={currentLanguage == LanguageEnum.ENGLISH ? "language language-active" : "language"} onClick={() => { setCurrentLanguage(LanguageEnum.ENGLISH); setAppRouters([]) }}>
                 {LanguageEnum.ENGLISH}
             </div>

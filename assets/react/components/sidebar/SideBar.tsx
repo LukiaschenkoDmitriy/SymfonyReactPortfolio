@@ -8,6 +8,7 @@ import { AppContext } from "@app/app";
 import { RouterType } from "@app/routers";
 
 import { RouterService } from "@services/RouterService";
+import SwitchLanguage from "@components/switch-language/SwitchLanguage";
 
 
 const SideBar: React.FC = () => {
@@ -30,9 +31,11 @@ const SideBar: React.FC = () => {
                 <p className="username">Dmytrii Lukiashchenko</p>
             </div>
             <div className="navigation-container flex-grow-1">
+                <SwitchLanguage/>
                 <div className="navigation-title">
                     <strong>Page Navigation</strong>
                 </div>
+
                 <div className="navigation-inner text-center">
                     {(currentRouter?.underCagetories.length != 0) ? (
                         currentRouter?.underCagetories[0].type == RouterType.ROUTER ? (

@@ -1,11 +1,11 @@
 @import "@styles/color";
 
 .sr-swith-language {
-    right: 20px;
-    bottom: -200px;
     background: $primary-color;
-    padding: 20px;
+    padding: 10px;
     border-radius: 6px;
+    display: flex;
+    justify-content: center;
 
     .language {
         cursor: pointer;
@@ -13,10 +13,11 @@
         font-size: 17px;
         text-transform: uppercase;
         font-weight: bold;
-        margin: 10px 0px;
+        margin: 10px 10px;
+
     }
 
     .language-active {
-        color: #6BD5FD !important;
+        color: $button-active !important;
     }
 }

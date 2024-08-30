@@ -11,6 +11,7 @@
         color: white;
 
         .description {
+            border-radius: 10px 0px 0px 10px;
             background: $primary-color;
             display: flex;
             justify-content: center;
@@ -20,31 +21,21 @@
         }
 
         .image {
-            background: $hover-color;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0px 10px 10px 0px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 25px 0px;
 
             img {
-                background: white;
-                width: 250px;
-                height: 250px;
+                width: unset;
+                object-fit:scale-down;
+                height: 400px;
             }
         }
     }
-}
-
-@media (max-width: 992px) {
-    .sr-content-inner-about {
-        .sr-about-row {
-            .image {
-                img {
-                    width: 250px;
-                    height: 250px;
-                }
-            }
-        }
-    }
-    
 }

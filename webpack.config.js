@@ -1,4 +1,5 @@
 const Encore = require('@symfony/webpack-encore');
+const autoprefixer = require('autoprefixer');
 const path = require('path');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
@@ -82,6 +83,18 @@ Encore
         '@dto': path.resolve(__dirname, 'assets/react/dto'),
         '@repository': path.resolve(__dirname, 'assets/react/repository'),
         '@images': path.resolve(__dirname, 'assets/react/images')
+    })
+    .enablePostCssLoader((options) => {
+        options.postcssOptions = {
+            plugins: [
+                autoprefixer({
+                    // Configure Autoprefixer options here
+                    // For example, to support the last 2 versions of all browsers:
+                    grid: true, // Enable autoprefixing for CSS Grid
+                    overrideBrowserslist: ['last 2 versions'],
+                }),
+            ],
+        };
     })
 ;
 

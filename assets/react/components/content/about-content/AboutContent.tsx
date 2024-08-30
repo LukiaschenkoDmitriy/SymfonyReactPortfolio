@@ -1,9 +1,13 @@
 import "./AboutContent.scss";
 
+import imgPhoto from "@images/about-page/photo.jpg";
+
 import React from "react";
 
 import { ContentProps } from "../FactoryContent";
+
 import Breadcrumb from "@components/breadcrumb/Breadcrumb";
+
 import i18nplus from "@services/TranslateService";
 
 const AboutContent: React.FC<ContentProps> = ({router}) => {
@@ -19,7 +23,7 @@ const AboutContent: React.FC<ContentProps> = ({router}) => {
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                             </div>
                             <div className="image col-12 col-lg-6">
-                                <img src="" alt="" />
+                                <img src={imgPhoto} alt="Photo" />
                             </div>
                         </div>
                     </div>
