@@ -11,6 +11,7 @@ import ContactContent from "./contact-content/ContactContent";
 import ProjectContent from "./project-content/ProjectContent";
 import ExperienceContent from "./experience-content/ExperienceContent";
 import CollectionContent from "./collection-content/CollectionContent";
+import Footer from "@components/footer/Footer";
 
 
 export interface FactoryContentProps {
@@ -48,6 +49,7 @@ const FactoryContent: React.FC<FactoryContentProps> = ({router, pageType}) => {
     return (
         <div className="sr-container">
             {getContent()}
+            <Footer />
         </div>
     );
 }

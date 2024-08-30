@@ -5,20 +5,20 @@ import imgEducation from "@images/about-page/wspa.png";
 
 import React from "react";
 
+import Language from "./language/Language";
 import { ContentProps } from "../FactoryContent";
+import PersonalSkill from "./personal-skill/PersonalSkill";
 
 import Breadcrumb from "@components/breadcrumb/Breadcrumb";
 
 import i18nplus from "@services/TranslateService";
-import Language from "./language/Language";
-import PersonalSkill from "./personal-skill/PersonalSkill";
 
 const AboutContent: React.FC<ContentProps> = ({router}) => {
     return (
         <div className="sr-content-inner sr-content-inner-about">
             <div className="container my-5">
                 <Breadcrumb router={router}/>
-                <section className="sr-about-content sr-content-page vh-100" id="about-me-info">
+                <section className="sr-about-content sr-content-page" id="about-me-info">
                     <h1 className="title">{i18nplus("about_page.about_me", "about_page.about_me")}</h1>
                     <div className="sr-about-container">
                         <div className="sr-about-row row">
@@ -31,7 +31,7 @@ const AboutContent: React.FC<ContentProps> = ({router}) => {
                         </div>
                     </div>
                 </section>
-                <section className="sr-education-content sr-content-page vh-100" id="education-info">
+                <section className="sr-education-content sr-content-page" id="education-info">
                     <h1 className="title">{i18nplus("about_page.education", "about_page.education")}</h1>
                     <div className="sr-about-container">
                         <div className="sr-about-row row">
@@ -44,7 +44,7 @@ const AboutContent: React.FC<ContentProps> = ({router}) => {
                         </div>
                     </div>
                 </section>
-                <section className="sr-languages-content sr-content-page vh-100" id="languages-info">
+                <section className="sr-languages-content sr-content-page" id="languages-info">
                     <h1 className="title">{i18nplus("about_page.languages", "about_page.languages")}</h1>
                     <div className="sr-about-container">
                         <div className="sr-about-row">
@@ -58,7 +58,7 @@ const AboutContent: React.FC<ContentProps> = ({router}) => {
                         </div>
                     </div>
                 </section>
-                <section className="sr-personal-skills-content sr-content-page vh-100" id="personal-skills-info">
+                <section className="sr-personal-skills-content sr-content-page" id="personal-skills-info">
                     <h1 className="title">{i18nplus("about_page.personal_skills", "about_page.personal_skills")}</h1>
                     <div className="sr-about-container">
                         <div className="sr-about-row">

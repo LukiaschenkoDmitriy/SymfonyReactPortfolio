@@ -7,18 +7,10 @@
     background-attachment: fixed;
 
     .sr-content-page {
+        min-height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
-    }
-
-    .languages, .personal-skills {
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        padding: 25px 0px;
     }
     
     .sr-education-content {

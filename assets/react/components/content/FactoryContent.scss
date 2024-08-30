@@ -2,6 +2,7 @@
 
 .sr-container {
     display: flex;
+    flex-direction: column;
     margin-left: 250px;
     margin-top: 60px;
     overflow: auto;
@@ -23,7 +24,6 @@
         display: flex;
         margin-left: 0px;
         margin-top: 50px;
-        height: calc(100vh - 50px);
         overflow: auto;
         width: 100%;
     }    
