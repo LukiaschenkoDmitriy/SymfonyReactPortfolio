@@ -41,7 +41,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
     let routers: AppRouterInterface[] = [
         {
             type: RouterType.ROUTER,
-            name: "home",
+            name: "global.home",
             path: "/",
             exact: false,
             active: false,
@@ -49,7 +49,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
             underCagetories: [
                 {
                     type: RouterType.ROUTER,
-                    name: "about_me",
+                    name: "global.about_me",
                     path: "/about-me",
                     exact: false,
                     active: false,
@@ -57,7 +57,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
                     underCagetories: [
                         {
                             type: RouterType.ACHOR,
-                            name: "about_me_info",
+                            name: "sidebar.about_me_info",
                             path: "#about-me-info",
                             exact: false,
                             active: false,
@@ -66,7 +66,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
                         },
                         {
                             type: RouterType.ACHOR,
-                            name: "education_info",
+                            name: "sidebar.education_info",
                             path: "#education-info",
                             exact: false,
                             active: false,
@@ -75,7 +75,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
                         },
                         {
                             type: RouterType.ACHOR,
-                            name: "languages_info",
+                            name: "sidebar.languages_info",
                             path: "#languages-info",
                             exact: false,
                             active: false,
@@ -84,27 +84,8 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
                         },
                         {
                             type: RouterType.ACHOR,
-                            name: "personal_skills_info",
+                            name: "sidebar.personal_skills_info",
                             path: "#personal-skills-info",
-                            exact: false,
-                            active: false,
-                            component: () => <div></div>,
-                            underCagetories: []
-                        }
-                    ]
-                },
-                {
-                    type: RouterType.ROUTER,
-                    name: "contact",
-                    path: "/contact",
-                    exact: false,
-                    active: false,
-                    component: (router: AppRouterInterface) => <FactoryContent router={router} pageType={PageType.CONTACT}/>,
-                    underCagetories: [
-                        {
-                            type: RouterType.ACHOR,
-                            name: "contact_info",
-                            path: "#contact_info",
                             exact: false,
                             active: false,
                             component: () => <div></div>,
@@ -119,7 +100,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
     await new SkillRepository().findAll(language).then((skills) => { 
         const skillsCategory: AppRouterInterface = {
             type: RouterType.ROUTER,
-            name: "skills",
+            name: "global.skills",
             path: "/skills",
             exact: false,
             active: false,
@@ -146,7 +127,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
     await new ProjectRepository().findAll(language).then((projects) => { 
         const projectsCategory: AppRouterInterface = {
             type: RouterType.ROUTER,
-            name: "projects",
+            name: "global.projects",
             path: "/projects",
             exact: false,
             active: false,
@@ -172,7 +153,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
     await new ExperienceRepository().findAll(language).then((experiences) => {
         const experiencesCategory: AppRouterInterface = {
             type: RouterType.ROUTER,
-            name: "experiences",
+            name: "global.experiences",
             path: "/experiences",
             exact: false,
             active: false,
@@ -193,6 +174,26 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
         })
         
         routers[0].underCagetories.push(experiencesCategory);
+
+        routers[0].underCagetories.push({
+            type: RouterType.ROUTER,
+            name: "global.contact",
+            path: "/contact",
+            exact: false,
+            active: false,
+            component: (router: AppRouterInterface) => <FactoryContent router={router} pageType={PageType.CONTACT}/>,
+            underCagetories: [
+                {
+                    type: RouterType.ACHOR,
+                    name: "contact_info",
+                    path: "#contact_info",
+                    exact: false,
+                    active: false,
+                    component: () => <div></div>,
+                    underCagetories: []
+                }
+            ]
+        });
     })
 
     return routers;

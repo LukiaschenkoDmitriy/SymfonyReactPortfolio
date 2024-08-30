@@ -1,0 +1,33 @@
+@import "@styles/color";
+
+.sr-language {
+    display: flex;
+    padding: 5px 20px;
+    transition: background .5s ease;
+    font-size: 17px;
+
+    &:hover {
+        .name {
+            background: $second-color;
+        }
+        
+        .rate {
+            background: $hover-color;
+        }
+    }
+
+    .name {
+        padding: 20px 0px;
+        text-align: center;
+        background: $primary-color;
+    }
+
+    .rate {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0px;
+        text-align: center;
+        background: $second-color;
+    }
+}

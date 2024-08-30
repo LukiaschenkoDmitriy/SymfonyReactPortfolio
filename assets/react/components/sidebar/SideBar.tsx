@@ -42,7 +42,7 @@ const SideBar: React.FC = () => {
                             <div key={currentRouter.name}>
                                 {currentRouter.underCagetories.map((subRouter) => (
                                     <Link className="d-block" key={subRouter.name+"sidebar"} to={subRouter.path} onClick={() => handleSubRouterClick(subRouter.path)}>
-                                        { i18nplus("header."+subRouter.name, subRouter.name) }
+                                        { i18nplus(subRouter.name, subRouter.name) }
                                     </Link>
                                 ))}
                             </div>
@@ -51,7 +51,7 @@ const SideBar: React.FC = () => {
                                 <div key={currentRouter.name}>
                                     {currentRouter.underCagetories.map((subRouter) => (
                                         <a className="d-block" href={`${subRouter.path}`} key={subRouter.name+"sidebar"}>
-                                            { i18nplus("header."+subRouter.name, subRouter.name) }
+                                            { i18nplus(subRouter.name, subRouter.name) }
                                         </a>
                                     ))}
                                 </div>

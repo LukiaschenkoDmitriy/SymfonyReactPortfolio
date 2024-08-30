@@ -10,7 +10,32 @@ i18next
         resources: {
             en: {
                 translation: {
-                    "header": {
+                    "about_page": {
+                        "about_me": "About Me",
+                        "education": "Education",
+                        "languages": "Languages",
+                        "personal_skills": "Personal skills"
+                    },
+                    "languages": {
+                        "english": "English",
+                        "ukraine": "Ukraine",
+                        "polish": "Polish",
+                        "deutsch": "Deutsch",
+                        "russian": "Russian"
+                    },
+                    "personal_skill": {
+                        "responsibility": "Responsibility",
+                        "mindfulness": "Mindfulness",
+                        "communication": "Communication",
+                        "teamwork": "Teamwork"
+                    },
+                    "sidebar": {
+                        "about_me_info": "About me",
+                        "education_info": "Education",
+                        "languages_info": "Languages",
+                        "personal_skills_info": "Personal skills",
+                    },
+                    "global": {
                         "home": "Home",
                         "about_me": "About Me",
                         "skills": "Skills",

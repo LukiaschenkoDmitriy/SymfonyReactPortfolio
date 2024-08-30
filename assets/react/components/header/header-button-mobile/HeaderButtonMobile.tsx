@@ -58,13 +58,13 @@ const HeaderButtonMobile: React.FC<HeaderButtonMobileProps> = ({ router, clickHa
                         to={router.path}
                         className={`sr-header-button-mobile ${router.active ? 'sr-header-button-mobile-active' : ''}`}
                     >
-                        {i18nplus("header."+router.name, router.name)}
+                        {i18nplus(router.name, router.name)}
                     </Link>
                 </div>
                 :
                 <>
                     <div className="title" onClick={handlerTitleClick}>
-                        <div>{i18nplus("header."+router.name, router.name)}</div>
+                        <div>{i18nplus(router.name, router.name)}</div>
                         <IoIosArrowUp style={arrowButtonStyles}></IoIosArrowUp>
                     </div>
                     <div className="inner-button" style={innerButtonStyles}>
@@ -76,7 +76,7 @@ const HeaderButtonMobile: React.FC<HeaderButtonMobileProps> = ({ router, clickHa
                                     to={subcategory.path}
                                     className={`sr-header-button-mobile ${subcategory.active ? 'sr-header-button-mobile-active' : ''}`}
                                 >
-                                    {i18nplus("header."+subcategory.name, subcategory.name)}
+                                    {i18nplus(subcategory.name, subcategory.name)}
                                 </Link>
                             </div>
                         ))}
