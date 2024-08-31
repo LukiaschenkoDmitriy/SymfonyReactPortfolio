@@ -1,17 +1,9 @@
 @import "@styles/color";
 
 .sr-content-inner-about {
-    background: url("~@images/homebackground 1.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-
-    .sr-content-page {
-        min-height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
     
     .sr-education-content {
         .description {

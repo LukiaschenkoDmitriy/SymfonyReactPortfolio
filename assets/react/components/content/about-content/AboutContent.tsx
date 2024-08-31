@@ -3,7 +3,7 @@ import "./AboutContent.scss";
 import imgPhoto from "@images/about-page/photo.jpg";
 import imgEducation from "@images/about-page/wspa.png";
 
-import React from "react";
+import React, { CSSProperties } from "react";
 
 import Language from "./language/Language";
 import { ContentProps } from "../FactoryContent";
@@ -14,8 +14,16 @@ import Breadcrumb from "@components/breadcrumb/Breadcrumb";
 import i18nplus from "@services/TranslateService";
 
 const AboutContent: React.FC<ContentProps> = ({router}) => {
+
+    const pageStyles: CSSProperties = {
+        background: `url('${router.background}')`,
+        backgroundAttachment: "fixed",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover"
+    }
+
     return (
-        <div className="sr-content-inner sr-content-inner-about">
+        <div className="sr-content-inner sr-content-inner-about" style={pageStyles}>
             <div className="container my-5">
                 <Breadcrumb router={router}/>
                 <section className="sr-about-content sr-content-page" id="about-me-info">

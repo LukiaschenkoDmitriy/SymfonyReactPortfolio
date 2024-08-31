@@ -1,0 +1,52 @@
+@import "@styles/color";
+
+.sr-card {
+    padding: 10px;
+    position: relative;
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
+    .inner {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        text-decoration: none;
+
+        color: white;
+
+        height: 350px;
+
+        h2 {
+            z-index: 2;
+            transition: all .5s ease;
+        }
+
+        &:hover {
+            &::before {
+                background: rgba($color: #000000, $alpha: .8)
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top:0;
+            width: 100%;
+            height: 100%;
+            background: rgba($color: #000000, $alpha: .5);
+            z-index: 1;
+            transition: all .5s ease;
+        }
+    }
+}

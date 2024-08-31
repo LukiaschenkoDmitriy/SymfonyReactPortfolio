@@ -16,7 +16,6 @@ import SideBar from "@components/sidebar/SideBar";
 import { RouterService } from "@services/RouterService";
 
 import LanguageEnum from "@enum/LanguageEnum";
-import Breadcrumb from "@components/breadcrumb/Breadcrumb";
 
 export interface AppContextInterface { 
     appRouters: AppRouterInterface[],

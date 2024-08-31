@@ -1,13 +1,36 @@
 import "./HomeContent.scss";
 
-import React from "react";
+import React, { CSSProperties } from "react";
 
 import { ContentProps } from "../FactoryContent";
 
+import Breadcrumb from "@components/breadcrumb/Breadcrumb";
+
+import Card from "./card/Card";
+import i18nplus from "@services/TranslateService";
+
 const HomeContent: React.FC<ContentProps> = ({router}) => {
+
+    const pageStyles: CSSProperties = {
+        background: `url('${router.background}')`,
+        backgroundAttachment: "fixed",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover"
+    }
+
     return (
-        <div className="sr-home-content sr-content-inner">
-            Home Page
+        <div className="sr-home-content sr-content-inner" style={pageStyles}>
+            <div className="container my-5">
+                <Breadcrumb router={router}/>
+                <section className="sr-content-page sr-home-page">
+                    <h1 className="title">{i18nplus(router.name, router.name)}</h1>
+                    <div className="home-content row">
+                        {router.underCagetories.map((subrouter) => (
+                            <Card router={subrouter} background={subrouter.background}/>
+                        ))}
+                    </div>
+                </section>
+            </div>
         </div>
     );
 }

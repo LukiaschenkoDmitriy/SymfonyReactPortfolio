@@ -7,12 +7,36 @@
     margin-top: 60px;
     overflow: auto;
     width: 100%;
+
+    .sr-content-page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }
 
 .sr-content-inner {
     flex: 1;
     width: 100%;
     padding: 25px;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top:0;
+        width: 100%;
+        height: 100%;
+        background: rgba($color: #000000, $alpha: .7);
+        z-index: 1;
+    }
+
+    .container {
+        position: relative;
+        z-index: 2;
+    }
 
     .title {
         color: white;
