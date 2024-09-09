@@ -35,12 +35,12 @@ export enum PageType {
 }
 
 export interface AppRouterInterface {
+    id?: number
     type: RouterType,
     name: string,
     path: string,
-    background: string,
+    background?: string,
     icon?: string,
-    exact?: boolean,
     active: boolean,
     component: React.FC<any>,
     underCagetories: AppRouterInterface[]
@@ -53,7 +53,6 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
             name: "global.home",
             background: homeBackground,
             path: "/",
-            exact: false,
             active: false,
             component: (router: AppRouterInterface) => <FactoryContent router={router} pageType={PageType.HOME}/>,
             underCagetories: [
@@ -62,7 +61,6 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
                     name: "global.about_me",
                     path: "/about-me",
                     background: aboutMeBackground,
-                    exact: false,
                     active: false,
                     component: (router: AppRouterInterface) => <FactoryContent router={router} pageType={PageType.ABOUT_ME}/>,
                     underCagetories: [
@@ -70,8 +68,6 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
                             type: RouterType.ACHOR,
                             name: "sidebar.about_me_info",
                             path: "#about-me-info",
-                            background: "",
-                            exact: false,
                             active: false,
                             component: () => <div></div>,
                             underCagetories: []
@@ -80,8 +76,6 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
                             type: RouterType.ACHOR,
                             name: "sidebar.education_info",
                             path: "#education-info",
-                            background: "",
-                            exact: false,
                             active: false,
                             component: () => <div></div>,
                             underCagetories: []
@@ -90,8 +84,6 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
                             type: RouterType.ACHOR,
                             name: "sidebar.languages_info",
                             path: "#languages-info",
-                            background: "",
-                            exact: false,
                             active: false,
                             component: () => <div></div>,
                             underCagetories: []
@@ -100,8 +92,6 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
                             type: RouterType.ACHOR,
                             name: "sidebar.personal_skills_info",
                             path: "#personal-skills-info",
-                            background: "",
-                            exact: false,
                             active: false,
                             component: () => <div></div>,
                             underCagetories: []
@@ -118,7 +108,6 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
             name: "global.skills",
             path: "/skills",
             background: skillsBackground,
-            exact: false,
             active: false,
             component: (router: AppRouterInterface) => <FactoryContent router={router} pageType={PageType.COLLECTION}/>,
             underCagetories: []
@@ -127,12 +116,11 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
         skills.forEach((skill: SkillEntity) => {
 
             skillsCategory.underCagetories.push({
+                id: skill.id,
                 type: RouterType.ROUTER,
                 name: skill.name,
                 path: `/skills/${skill.name}`,
-                background: skillsBackground,
                 icon: skill.icon,
-                exact: false,
                 active: false,
                 component: (router: AppRouterInterface) => <FactoryContent router={router} pageType={PageType.SKILL}/>,
                 underCagetories: []
@@ -148,7 +136,6 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
             name: "global.projects",
             path: "/projects",
             background: projectsBackground,
-            exact: false,
             active: false,
             component: (router: AppRouterInterface) => <FactoryContent router={router} pageType={PageType.COLLECTION}/>,
             underCagetories: []
@@ -156,11 +143,10 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
         
         projects.forEach((project: ProjectEntity) => {
             projectsCategory.underCagetories.push({
+                id: project.id,
                 type: RouterType.ROUTER,
                 name: project.name,
                 path: `/projects/${project.name}`,
-                background: projectsBackground,
-                exact: false,
                 active: false,
                 component: (router: AppRouterInterface) => <FactoryContent router={router} pageType={PageType.PROJECT}/>,
                 underCagetories: []
@@ -176,7 +162,6 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
             name: "global.experiences",
             path: "/experiences",
             background: experiencesBackground,
-            exact: false,
             active: false,
             component: (router: AppRouterInterface) => <FactoryContent router={router} pageType={PageType.COLLECTION}/>,
             underCagetories: []
@@ -184,11 +169,10 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
         
         experiences.forEach((experience: ExperienceEntity) => {
             experiencesCategory.underCagetories.push({
+                id: experience.id,
                 type: RouterType.ROUTER,
                 name: experience.name,
                 path: `/experiences/${experience.name}`,
-                background: experiencesBackground,
-                exact: false,
                 active: false,
                 component: (router: AppRouterInterface) => <FactoryContent router={router} pageType={PageType.EXPERIENCE}/>,
                 underCagetories: []
@@ -202,7 +186,6 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
             name: "global.contact",
             path: "/contact",
             background: contactsBackground,
-            exact: false,
             active: false,
             component: (router: AppRouterInterface) => <FactoryContent router={router} pageType={PageType.CONTACT}/>,
             underCagetories: [
@@ -210,8 +193,6 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
                     type: RouterType.ACHOR,
                     name: "contact_info",
                     path: "#contact_info",
-                    background: "",
-                    exact: false,
                     active: false,
                     component: () => <div></div>,
                     underCagetories: []

@@ -10,7 +10,7 @@ import { RouterService } from "@services/RouterService";
 
 export interface CardProps {
     router: AppRouterInterface,
-    background: string
+    background?: string
 }
 
 const Card: React.FC<CardProps> = ({router, background}) => {
@@ -24,15 +24,21 @@ const Card: React.FC<CardProps> = ({router, background}) => {
     }
 
     const innerStyle: CSSProperties = {
-        background: `url('${background}')`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover"
     };
+
+    if (background != null) innerStyle.background = `url('${background}')`;
 
     return (
         <div className="sr-card col-12 col-md-6 col-lg-4">
             <Link to={router.path} onClick={() => {switchRouter(router.path)}}>
                 <div className="inner" style={innerStyle}>
+                    {(router.icon != undefined) ? (
+                        <img className="card-icon" src={router.icon} alt={router.name} />
+                    ) : (
+                        <></>
+                    )}
                     <h2>{i18nplus(router.name, router.name)}</h2>
                 </div>
             </Link>
