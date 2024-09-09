@@ -40,6 +40,9 @@ body {
     flex-direction: column;
     overflow-x: hidden;
 
+    scroll-behavior: smooth;
+    scroll-padding-top: 50px;
+
     .sr-body {
         flex: 1;
         display: flex;

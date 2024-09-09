@@ -1,0 +1,15 @@
+@import "@styles/color";
+
+.sr-scroll-top-button {
+    position: fixed;
+    display: none;
+    bottom: 25px;
+    right: 50px;
+    padding: 20px 20px;
+    background-color: $hover-color;
+    color: white;
+    border:  none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
+}

@@ -48,7 +48,7 @@ const App: React.FC = () => {
             </div>    
         :
         <AppContext.Provider value={{ appRouters: appRouters, setAppRouters: setAppRouters, currentLanguage: currentLanguage, setCurrentLanguage: setCurrentLanguage }}>
-                <div className="sr-app">
+                <div className="sr-app" id="sr-app-element">
                     <Header />
                     <div className="sr-body">
                         <SideBar />

@@ -6,7 +6,7 @@ import { ContentProps } from "../FactoryContent";
 
 import Breadcrumb from "@components/breadcrumb/Breadcrumb";
 
-import Card from "../card/Card";
+import Card from "../utils/card/Card";
 import i18nplus from "@services/TranslateService";
 
 const HomeContent: React.FC<ContentProps> = ({router}) => {
