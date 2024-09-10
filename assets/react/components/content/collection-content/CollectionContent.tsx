@@ -2,7 +2,7 @@ import "./CollectionContent.scss";
 
 import React, { CSSProperties } from "react";
 
-import Card from "../utils/card/Card";
+import Card from "./card/Card";
 import { ContentProps } from "../FactoryContent";
 
 import Breadcrumb from "@components/breadcrumb/Breadcrumb";

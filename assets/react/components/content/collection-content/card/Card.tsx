@@ -40,6 +40,11 @@ const Card: React.FC<CardProps> = ({router, background}) => {
                         <></>
                     )}
                     <h2>{i18nplus(router.name, router.name)}</h2>
+                    {(router.points != undefined) ? (
+                        <div className="points"><strong>{router.points}/10</strong></div>
+                    ) : (
+                        <></>
+                    )}
                 </div>
             </Link>
         </div>

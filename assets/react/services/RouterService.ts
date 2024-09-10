@@ -52,6 +52,14 @@ export class RouterService {
                     currentRouter = subrouter;
                     return;
                 }
+
+                subrouter.underCagetories.forEach((subrouter2, index3) => {
+                    // If the subrouter's path matches the given routerPath, set its 'active' property to true
+                    if (subrouter2.path === routerPath) {
+                        currentRouter = subrouter2;
+                        return;
+                    }
+                });
             });
         });
 

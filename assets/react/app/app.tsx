@@ -45,7 +45,7 @@ const App: React.FC = () => {
         (appRouters.length === 0) ?
             <div className="vw-100 vh-100 d-flex flex-wrap justify-content-center align-content-center">
                 <ReactLoading type="bars" color="#122932" height={"100px"} width={"100px"}/>
-            </div>    
+            </div>
         :
         <AppContext.Provider value={{ appRouters: appRouters, setAppRouters: setAppRouters, currentLanguage: currentLanguage, setCurrentLanguage: setCurrentLanguage }}>
                 <div className="sr-app" id="sr-app-element">

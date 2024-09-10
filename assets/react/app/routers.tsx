@@ -41,6 +41,7 @@ export interface AppRouterInterface {
     path: string,
     background?: string,
     icon?: string,
+    points?: number,
     active: boolean,
     component: React.FC<any>,
     underCagetories: AppRouterInterface[]
@@ -121,9 +122,19 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
                 name: skill.name,
                 path: `/skills/${skill.name}`,
                 icon: skill.icon,
+                points: skill.points,
                 active: false,
                 component: (router: AppRouterInterface) => <FactoryContent router={router} pageType={PageType.SKILL}/>,
-                underCagetories: []
+                underCagetories: [
+                    {
+                        type: RouterType.ACHOR,
+                        name: "sidebar.skill.information",
+                        path: "#skill-information",
+                        active: false,
+                        component: () => <div></div>,
+                        underCagetories: []
+                    }
+                ]
             })
         })
         
