@@ -74,12 +74,47 @@ class Skill
     #[Groups(["project.read", "skill.read", "skill.write", "experience.read"])]
     private Collection $translations;
 
+    #[ORM\Column(type: 'simple_array', nullable: true)]
+    #[Groups(["project.read", "skill.read", "skill.write", "experience.read"])]
+    private ?array $subSkillIds = [];
+
     // Constructor to initialize the projects and experiences collections
     public function __construct()
     {
         $this->projects = new ArrayCollection();
         $this->experiences = new ArrayCollection();
         $this->translations = new ArrayCollection();
+    }
+
+    public function getSubSkillIds(): ?array
+    {
+        return $this->subSkillIds;
+    }
+
+    public function setSubSkillIds(?array $subSkillIds): self
+    {
+        $this->subSkillIds = $subSkillIds;
+
+        return $this;
+    }
+
+    public function addSubSkillId(int $subSkillId): self
+    {
+        if (!in_array($subSkillId, $this->subSkillIds)) {
+            $this->subSkillIds[] = $subSkillId;
+        }
+
+        return $this;
+    }
+
+    public function removeSubSkillId(int $subSkillId): self
+    {
+        $this->subSkillIds = array_filter(
+            $this->subSkillIds,
+            fn($id) => $id !== $subSkillId
+        );
+
+        return $this;
     }
 
     public function getTranslations(): Collection
