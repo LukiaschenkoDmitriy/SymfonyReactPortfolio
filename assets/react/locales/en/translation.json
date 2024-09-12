@@ -22,7 +22,16 @@
         "about_me_info": "About me",
         "education_info": "Education",
         "languages_info": "Languages",
-        "personal_skills_info": "Personal skills"
+        "personal_skills_info": "Personal skills",
+        "skill": {
+            "information": "Information",
+            "packages": "Packages",
+            "projects": "Projects"
+        }
+    },
+    "skill": {
+        "packages": "Packages",
+        "projects": "Projects"
     },
     "global": {
         "home": "Home",
