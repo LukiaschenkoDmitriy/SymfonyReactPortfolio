@@ -11,7 +11,7 @@ import i18nplus from "@services/TranslateService";
 
 const CollectionContent: React.FC<ContentProps> = ({router}) => {
     const pageStyles: CSSProperties = {
-        background: `url('${router.background}')`,
+        backgroundImage: `url('${router.background}')`,
         backgroundAttachment: "fixed",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover"

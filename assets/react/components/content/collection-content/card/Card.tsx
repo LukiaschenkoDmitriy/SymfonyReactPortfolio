@@ -25,10 +25,9 @@ const Card: React.FC<CardProps> = ({router, background}) => {
 
     const innerStyle: CSSProperties = {
         backgroundRepeat: "no-repeat",
-        backgroundSize: "cover"
+        backgroundSize: "cover",
+        backgroundImage: background ? `url('${background}')` : undefined
     };
-
-    if (background != null) innerStyle.background = `url('${background}')`;
 
     return (
         <div className="sr-card col-12 col-lg-6 col-xl-4">

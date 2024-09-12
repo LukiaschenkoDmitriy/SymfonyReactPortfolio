@@ -13,6 +13,7 @@
         color: white;
         text-decoration: none;
     }
+
     .inner {
         text-align: center;
         position: relative;
@@ -20,10 +21,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-repeat: no-repeat;
-        background-size: cover;
 
-        background: $primary-color;
+        background-color: $primary-color;
+
+        border-radius: 10px;
 
         text-decoration: none;
 
