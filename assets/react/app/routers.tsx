@@ -133,6 +133,22 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
                         active: false,
                         component: () => <div></div>,
                         underCagetories: []
+                    },
+                    {
+                        type: RouterType.ACHOR,
+                        name: "sidebar.skill.packages",
+                        path: "#skill-packages",
+                        active: false,
+                        component: () => <div></div>,
+                        underCagetories: []
+                    },
+                    {
+                        type: RouterType.ACHOR,
+                        name: "sidebar.skill.projects",
+                        path: "#skill-projects",
+                        active: false,
+                        component: () => <div></div>,
+                        underCagetories: []
                     }
                 ]
             })

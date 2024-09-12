@@ -65,7 +65,7 @@ const SkillContent: React.FC<ContentProps> = ({router}) => {
                         </div>
                         <ProgressBar background="#fff" value={skillData.points} maxValue={10} textVisible={true} />
                     </section>
-                    <section className="sr-about-content sr-content-page">
+                    <section className="sr-about-content sr-content-page" id="skill-packages">
                         <h1 className="title">{i18nplus("skill.packages", "skill.packages")}</h1>
                         <div className="sr-about-container row">
                                 {(RouterService.getSkillRoutesByIds(appContext.appRouters, skillData.subSkillIds)).map((skillRoute: AppRouterInterface) => (
@@ -77,7 +77,7 @@ const SkillContent: React.FC<ContentProps> = ({router}) => {
                                 ) : null}
                         </div>
                     </section>
-                    <section className="sr-about-content sr-content-page">
+                    <section className="sr-about-content sr-content-page" id="skill-projects">
                         <h1 className="title">{i18nplus("skill.projects", "skill.projects")}</h1>
                         <div className="sr-about-container row">
                                 {(RouterService.getProjectRoutesByEntities(appContext.appRouters, skillData.projects)).map((projectRouter: AppRouterInterface) => (
