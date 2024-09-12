@@ -18,6 +18,7 @@ import { AppRouterInterface } from "@app/routers";
 import projectBackground from "@images/projects-page/projects-bg.png";
 import GithubButton from "@components/github-button/GithubButton";
 import EmptyContent from "@components/empty-content/EmptyContent";
+import Gallery from "@components/gallery/Gallery";
 
 const ProjectContent: React.FC<ContentProps> = ({router}) => {
 
@@ -74,14 +75,10 @@ const ProjectContent: React.FC<ContentProps> = ({router}) => {
                     <section className="sr-content-page-add" id="project-images">
                         <h1 className="title">{i18nplus("project.images", "project.images")}</h1>
                         <div className="sr-about-container row">
-                            {projectData.images.map((image: string) => (
-                                <img src={image} alt="Project Preview" className="col-12 col-lg-6 col-xl-4" />
-                            ))}
-
                             {projectData.images.length == 0 ? (
                                 <EmptyContent text={i18nplus("project.image_empty", "project.image_empty")} />
                             ): (
-                                <></>
+                                <Gallery images={projectData.images} />
                             )}
                         </div>
                     </section>
