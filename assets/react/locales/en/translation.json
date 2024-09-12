@@ -27,6 +27,11 @@
             "information": "Information",
             "packages": "Packages",
             "projects": "Projects"
+        },
+        "project": {
+            "information": "Information",
+            "images": "Preview",
+            "packages": "Skills Used"
         }
     },
     "skill": {
@@ -34,6 +39,12 @@
         "projects": "Projects",
         "packages_empty": "No packages were used",
         "projects_empty": "Not a single project has been completed yet."
+    },
+    "project": {
+        "images": "Preview",
+        "image_empty": "Preview prohibited by non-disclosure agreement (NDA)",
+        "skills": "Skills Used Were",
+        "nda": "Prohibited by the NDA"
     },
     "global": {
         "home": "Home",

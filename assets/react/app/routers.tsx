@@ -173,10 +173,36 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
                 id: project.id,
                 type: RouterType.ROUTER,
                 name: project.name,
-                path: `/projects/${project.name}`,
+                icon: project.icon,
+                path: `/projects/${project.name.toLocaleLowerCase()}`,
                 active: false,
                 component: (router: AppRouterInterface) => <FactoryContent router={router} pageType={PageType.PROJECT}/>,
-                underCagetories: []
+                underCagetories: [
+                    {
+                        type: RouterType.ACHOR,
+                        name: "sidebar.project.information",
+                        path: "#project-information",
+                        active: false,
+                        component: () => <div></div>,
+                        underCagetories: []
+                    },
+                    {
+                        type: RouterType.ACHOR,
+                        name: "sidebar.project.images",
+                        path: "#project-images",
+                        active: false,
+                        component: () => <div></div>,
+                        underCagetories: []
+                    },
+                    {
+                        type: RouterType.ACHOR,
+                        name: "sidebar.project.packages",
+                        path: "#project-packages",
+                        active: false,
+                        component: () => <div></div>,
+                        underCagetories: []
+                    }
+                ]
             })
         })
         

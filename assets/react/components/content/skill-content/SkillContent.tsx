@@ -11,8 +11,8 @@ import { ContentProps } from "../FactoryContent";
 
 import Card from "../collection-content/card/Card";
 import Breadcrumb from "@components/breadcrumb/Breadcrumb";
-import ProgressBar from "../utils/progress-bar/ProgressBar";
-import EmptyContent from "../utils/empty-content/EmptyContent";
+import ProgressBar from "../../progress-bar/ProgressBar";
+import EmptyContent from "../../empty-content/EmptyContent";
 
 import SkillEntity from "@data/SkillEntity";
 
@@ -25,6 +25,8 @@ import skilBackground from "@images/skills-page/skills-bg.png";
 
 
 const SkillContent: React.FC<ContentProps> = ({router}) => {
+
+    document.title = router.name
 
     const appContext = useContext(AppContext);
     const [skillData, setSkillData] = useState<SkillEntity>();

@@ -10,6 +10,9 @@ import Breadcrumb from "@components/breadcrumb/Breadcrumb";
 import i18nplus from "@services/TranslateService";
 
 const CollectionContent: React.FC<ContentProps> = ({router}) => {
+
+    document.title = i18nplus(router.name, router.name);
+
     const pageStyles: CSSProperties = {
         backgroundImage: `url('${router.background}')`,
         backgroundAttachment: "fixed",

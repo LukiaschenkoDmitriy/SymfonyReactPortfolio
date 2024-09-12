@@ -1,0 +1,60 @@
+@import "@styles/color";
+
+.sr-content-inner-project {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+    .sr-about-row {
+        margin: 40px 0px;
+        color: white;
+
+        .description {
+            border-radius: 10px 0px 0px 10px;
+            background: $primary-color;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 50px;
+            font-size: 17px;
+        }
+
+        .image {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0px 10px 10px 0px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px 0px;
+
+            img {
+                width: 100%;
+                padding: 0px 20px;
+                object-fit:scale-down;
+                height: auto;
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .sr-content-inner-skill {    
+        .sr-about-row {
+            .description {
+                padding: 25px 25px;
+            }
+    
+            .image {
+                padding: 25px 0px;
+    
+                img {
+                    padding: 0px 20px;
+                }
+            }
+        }
+    }
+}

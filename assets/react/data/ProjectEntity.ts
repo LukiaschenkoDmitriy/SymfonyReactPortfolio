@@ -8,6 +8,7 @@ export default interface ProjectEntity extends EntityInterface
     name: string,
     description: string,
     images: string[],
+    icon: string,
     github: string,
     skills: SkillEntity[],
     translations: ObjectTranslatbleEntity[]

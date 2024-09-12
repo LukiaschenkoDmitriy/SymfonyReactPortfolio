@@ -15,6 +15,8 @@ import i18nplus from "@services/TranslateService";
 
 const AboutContent: React.FC<ContentProps> = ({router}) => {
 
+    document.title = i18nplus(router.name, router.name);
+
     const pageStyles: CSSProperties = {
         background: `url('${router.background}')`,
         backgroundAttachment: "fixed",

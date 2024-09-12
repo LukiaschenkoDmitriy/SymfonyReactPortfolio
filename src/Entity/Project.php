@@ -71,6 +71,10 @@ class Project
     #[Groups(["project.read", "project.write", "skill.read", "experience.read"])]
     private Collection $translations;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(["project.read", "project.write", "skill.read", "experience.read"])]
+    private ?string $icon = null;
+
     // Constructor to initialize the skills and experiences collections
     public function __construct()
     {
@@ -217,6 +221,18 @@ class Project
         if ($this->experiences->removeElement($experience)) {
             $experience->removeProject($this);
         }
+
+        return $this;
+    }
+
+    public function getIcon(): ?string
+    {
+        return $this->icon;
+    }
+
+    public function setIcon(?string $icon): static
+    {
+        $this->icon = $icon;
 
         return $this;
     }

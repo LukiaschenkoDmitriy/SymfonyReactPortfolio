@@ -11,6 +11,7 @@ export default class ProjectDTO implements ProjectEntity {
     description: string;
     images: string[];
     github: string;
+    icon: string;
     skills: SkillEntity[];
     translations: ObjectTranslatbleEntity[];
 
@@ -21,6 +22,7 @@ export default class ProjectDTO implements ProjectEntity {
             this.description = ProjectEntity.description;
             this.images = ProjectEntity.images;
             this.github = ProjectEntity.github;
+            this.icon = ProjectEntity.icon;
 
             this.skills = [];
             this.translations = [];

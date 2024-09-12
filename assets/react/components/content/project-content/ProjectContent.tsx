@@ -1,13 +1,100 @@
 import "./ProjectContent.scss";
 
-import React from "react";
+import React, { CSSProperties, useContext, useEffect, useState } from "react";
 
 import { ContentProps } from "../FactoryContent";
 
+import ProjectEntity from "@data/ProjectEntity";
+
+import ProjectRepository from "@repository/ProjectRepository";
+import { AppContext } from "@app/app";
+import ReactLoading from "react-loading";
+import Breadcrumb from "@components/breadcrumb/Breadcrumb";
+import i18nplus from "@services/TranslateService";
+import { RouterService } from "@services/RouterService";
+import Card from "../collection-content/card/Card";
+import { AppRouterInterface } from "@app/routers";
+
+import projectBackground from "@images/projects-page/projects-bg.png";
+import GithubButton from "@components/github-button/GithubButton";
+import EmptyContent from "@components/empty-content/EmptyContent";
+
 const ProjectContent: React.FC<ContentProps> = ({router}) => {
+
+    document.title = i18nplus(router.name, router.name);
+
+    const appContext = useContext(AppContext);
+    const [projectData, setProjectData] = useState<ProjectEntity>();
+
+    const pageStyles: CSSProperties = {
+        background: `url('${projectBackground}')`,
+        backgroundAttachment: "fixed",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+    }
+
+    useEffect(() => {
+        (async() => {
+            (router.id) ? setProjectData(await new ProjectRepository().findById(router.id, appContext.currentLanguage)) : null;
+        })();
+    }, [appContext.appRouters]);
+
     return (
-        <div className="sr-about-content">
-            Project Page
+        <div className="sr-content-inner sr-content-inner-project" style={pageStyles}>
+            {(projectData == undefined) ? (
+                <div className="vw-100 vh-100 d-flex flex-wrap justify-content-center align-content-center">
+                    <ReactLoading type="bars" color="#122932" height={"100px"} width={"100px"}/>
+                </div>
+            ) : (
+                <div className="container my-5">
+                <Breadcrumb router={router}/>
+                    <section className="sr-content-page" id="project-information">
+                        <h1 className="title">{i18nplus(projectData.name, projectData.name)}</h1>
+                        <div className="sr-about-container">
+                            <div className="sr-about-row row">
+                                <div className="description col-12 col-lg-6">
+                                    <strong>{projectData.description}</strong>
+                                </div>
+                                <div className="image col-12 col-lg-6">
+                                    <img src={projectData.icon} alt="Icon" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <GithubButton>
+                            {projectData.github.length != 0 ? (
+                                <a href={projectData.github} className="project-content-github-link" target="_blank">
+                                    {projectData.name + " GitHub / GitLab"}
+                                </a>
+                            ): (
+                                <div className="project-content-github-nda">{i18nplus("project.nda", "project.nda")}</div>
+                            )}
+                        </GithubButton>
+                    </section>
+                    <section className="sr-content-page-add" id="project-images">
+                        <h1 className="title">{i18nplus("project.images", "project.images")}</h1>
+                        <div className="sr-about-container row">
+                            {projectData.images.map((image: string) => (
+                                <img src={image} alt="Project Preview" className="col-12 col-lg-6 col-xl-4" />
+                            ))}
+
+                            {projectData.images.length == 0 ? (
+                                <EmptyContent text={i18nplus("project.image_empty", "project.image_empty")} />
+                            ): (
+                                <></>
+                            )}
+                        </div>
+                    </section>
+                    <section className="sr-content-page-add" id="project-packages">
+                        <h1 className="title">{i18nplus("project.skills", "project.skills")}</h1>
+                        <div className="sr-about-container row">
+                            {(RouterService.getSkillsRoutesByEntities(appContext.appRouters, projectData.skills)).map((skillRouter: AppRouterInterface) => (
+                                <Card key={skillRouter.name+"_project_page"} router={skillRouter} background={skillRouter.background}/>
+                            ))}
+                        </div>
+                    </section>
+                </div>
+            )}
         </div>
     );
 }

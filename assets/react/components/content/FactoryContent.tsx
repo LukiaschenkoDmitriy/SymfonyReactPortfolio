@@ -12,7 +12,7 @@ import ProjectContent from "./project-content/ProjectContent";
 import ExperienceContent from "./experience-content/ExperienceContent";
 import CollectionContent from "./collection-content/CollectionContent";
 import Footer from "@components/footer/Footer";
-import ScrollToTopButton from "./utils/scroll-top-button/ScrollTopButton";
+import ScrollToTopButton from "../scroll-top-button/ScrollTopButton";
 
 
 export interface FactoryContentProps {

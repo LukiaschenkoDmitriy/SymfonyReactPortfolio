@@ -1,5 +1,6 @@
 import { AppRouterInterface } from "@app/routers";
 import ProjectEntity from "@data/ProjectEntity";
+import SkillEntity from "@data/SkillEntity";
 
 import $ from "jquery";
 
@@ -71,6 +72,23 @@ export class RouterService {
             if (router.id != undefined) {
                 projectEntities.forEach((projectEntity: ProjectEntity) => {
                     if (router.id == projectEntity.id) currentProjectRouter.push(router);
+                })
+            }
+        });
+
+        return currentProjectRouter;
+    }
+
+    public static getSkillsRoutesByEntities(appRouters: AppRouterInterface[], skillEntities: SkillEntity[]): AppRouterInterface[]
+    {
+        const currentProjectRouter:AppRouterInterface[] = [];
+
+        const projectsRouters = appRouters[0].underCagetories[1].underCagetories;
+
+        projectsRouters.forEach(router => {
+            if (router.id != undefined) {
+                skillEntities.forEach((skillEntity: SkillEntity) => {
+                    if (router.id == skillEntity.id) currentProjectRouter.push(router);
                 })
             }
         });
