@@ -14,6 +14,7 @@ export default class SkillDTO implements SkillEntity {
     icon: string;
     projects: ProjectEntity[];
     translations: ObjectTranslatbleEntity[];
+    subSkillIds: string[];
 
     constructor(SkillEntity: any) {
         try {
@@ -23,6 +24,8 @@ export default class SkillDTO implements SkillEntity {
             this.points = SkillEntity.points;
             this.image = SkillEntity.image;
             this.icon = SkillEntity.icon;
+
+            this.subSkillIds = SkillEntity.subSkillIds;
             
             this.projects = [];
             this.translations = [];

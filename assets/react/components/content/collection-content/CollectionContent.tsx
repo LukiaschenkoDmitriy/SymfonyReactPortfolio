@@ -25,7 +25,7 @@ const CollectionContent: React.FC<ContentProps> = ({router}) => {
                     <h1 className="title">{i18nplus(router.name, router.name)}</h1>
                     <div className="home-content row">
                         {router.underCagetories.map((subrouter) => (
-                            <Card router={subrouter} background={subrouter.background}/>
+                            <Card key={subrouter.name+"_collection_page"} router={subrouter} background={subrouter.background}/>
                         ))}
                     </div>
                 </section>

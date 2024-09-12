@@ -44,6 +44,8 @@
         }
 
         .navigation-inner {
+            max-height: 490px;
+            overflow: auto;
             a {
                 color: white;
                 text-decoration: none;

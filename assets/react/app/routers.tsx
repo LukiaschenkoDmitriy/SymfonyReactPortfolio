@@ -120,7 +120,7 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
                 id: skill.id,
                 type: RouterType.ROUTER,
                 name: skill.name,
-                path: `/skills/${skill.name}`,
+                path: `/skills/${skill.name}`.toLowerCase(),
                 icon: skill.icon,
                 points: skill.points,
                 active: false,

@@ -5,19 +5,24 @@ import React, { CSSProperties, useContext, useEffect, useState } from "react";
 import ReactLoading from 'react-loading';
 
 import { AppContext } from "@app/app";
+import { AppRouterInterface } from "@app/routers";
 
 import { ContentProps } from "../FactoryContent";
 
+import Card from "../collection-content/card/Card";
 import Breadcrumb from "@components/breadcrumb/Breadcrumb";
-
-import SkillRepository from "@repository/SkillRepository";
+import ProgressBar from "../utils/progress-bar/ProgressBar";
+import EmptyContent from "../utils/empty-content/EmptyContent";
 
 import SkillEntity from "@data/SkillEntity";
 
+import SkillRepository from "@repository/SkillRepository";
+
 import i18nplus from "@services/TranslateService";
+import { RouterService } from "@services/RouterService";
 
 import skilBackground from "@images/skills-page/skills-bg.png";
-import ProgressBar from "../utils/progress-bar/ProgressBar";
+
 
 const SkillContent: React.FC<ContentProps> = ({router}) => {
 
@@ -35,7 +40,7 @@ const SkillContent: React.FC<ContentProps> = ({router}) => {
         (async() => {
             (router.id) ? setSkillData(await new SkillRepository().findById(router.id, appContext.currentLanguage)) : null;
         })();
-    }, []);
+    }, [appContext.appRouters]);
 
     return (
         <div className="sr-content-inner sr-content-inner-skill" style={pageStyles}>
@@ -54,16 +59,34 @@ const SkillContent: React.FC<ContentProps> = ({router}) => {
                                     <strong>{skillData.description}</strong>
                                 </div>
                                 <div className="image col-12 col-lg-6">
-                                    <img src={"/"+skillData.icon} alt="Photo" />
+                                    <img src={skillData.icon} alt="Photo" />
                                 </div>
                             </div>
                         </div>
                         <ProgressBar background="#fff" value={skillData.points} maxValue={10} textVisible={true} />
                     </section>
-                    <section className="sr-about-content sr-content-page" id="skill-packages">
+                    <section className="sr-about-content sr-content-page">
                         <h1 className="title">{i18nplus("skill.packages", "skill.packages")}</h1>
-                        <div className="sr-about-container">
+                        <div className="sr-about-container row">
+                                {(RouterService.getSkillRoutesByIds(appContext.appRouters, skillData.subSkillIds)).map((skillRoute: AppRouterInterface) => (
+                                    <Card key={skillRoute.name+"_skill_page"} router={skillRoute} background={skillRoute.background}/>
+                                ))}
 
+                                {skillData.subSkillIds.length == 0 ? (
+                                    <EmptyContent text={i18nplus("skill.packages_empty", "skill.packages_empty")} />
+                                ) : null}
+                        </div>
+                    </section>
+                    <section className="sr-about-content sr-content-page">
+                        <h1 className="title">{i18nplus("skill.projects", "skill.projects")}</h1>
+                        <div className="sr-about-container row">
+                                {(RouterService.getProjectRoutesByEntities(appContext.appRouters, skillData.projects)).map((projectRouter: AppRouterInterface) => (
+                                    <Card key={projectRouter.name+"_skill_page"} router={projectRouter} background={projectRouter.background}/>
+                                ))}
+
+                                {skillData.projects.length == 0 ? (
+                                    <EmptyContent text={i18nplus("skill.projects_empty", "skill.projects_empty")} />
+                                ) : null}
                         </div>
                     </section>
                 </div>

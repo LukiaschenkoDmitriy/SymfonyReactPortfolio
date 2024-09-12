@@ -1,4 +1,7 @@
 import { AppRouterInterface } from "@app/routers";
+import ProjectEntity from "@data/ProjectEntity";
+
+import $ from "jquery";
 
 export class RouterService {
     /**
@@ -31,8 +34,48 @@ export class RouterService {
             });
         });
 
+        this.toTopScroll()
+
         // Return the updated array of application routers
         return appRouters;
+    }
+
+    public static toTopScroll() {
+        $(".sr-scroll-top-button").trigger("click");
+    }
+
+    public static getSkillRoutesByIds(appRouters: AppRouterInterface[], ids: string[]): AppRouterInterface[]
+    {
+        const currentSkillRouter:AppRouterInterface[] = [];
+
+        const skillsRouters = appRouters[0].underCagetories[1].underCagetories;
+
+        skillsRouters.forEach(router => {
+            if (router.id != undefined) {
+                if (ids.includes(router.id.toString())) {
+                    currentSkillRouter.push(router);
+                }
+            }
+        });
+
+        return currentSkillRouter;
+    }
+
+    public static getProjectRoutesByEntities(appRouters: AppRouterInterface[], projectEntities: ProjectEntity[]): AppRouterInterface[]
+    {
+        const currentProjectRouter:AppRouterInterface[] = [];
+
+        const projectsRouters = appRouters[0].underCagetories[2].underCagetories;
+
+        projectsRouters.forEach(router => {
+            if (router.id != undefined) {
+                projectEntities.forEach((projectEntity: ProjectEntity) => {
+                    if (router.id == projectEntity.id) currentProjectRouter.push(router);
+                })
+            }
+        });
+
+        return currentProjectRouter;
     }
 
     public static getActualRouter(appRouters: AppRouterInterface[], routerPath: string): AppRouterInterface | undefined {

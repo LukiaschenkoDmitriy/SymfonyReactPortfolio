@@ -11,5 +11,6 @@ export default interface SkillEntity extends EntityInterface
     image: string,
     icon: string,
     projects: ProjectEntity[],
-    translations: ObjectTranslatbleEntity[]
+    translations: ObjectTranslatbleEntity[],
+    subSkillIds: string[]
 }
