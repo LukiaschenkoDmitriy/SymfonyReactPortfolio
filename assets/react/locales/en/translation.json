@@ -31,7 +31,9 @@
     },
     "skill": {
         "packages": "Packages",
-        "projects": "Projects"
+        "projects": "Projects",
+        "packages_empty": "No packages were used",
+        "projects_empty": "Not a single project has been completed yet."
     },
     "global": {
         "home": "Home",

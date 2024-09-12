@@ -31,7 +31,7 @@ const Card: React.FC<CardProps> = ({router, background}) => {
     if (background != null) innerStyle.background = `url('${background}')`;
 
     return (
-        <div className="sr-card col-12 col-md-6 col-lg-4">
+        <div className="sr-card col-12 col-lg-6 col-xl-4">
             <Link to={router.path} onClick={() => {switchRouter(router.path)}}>
                 <div className="inner" style={innerStyle}>
                     {(router.icon != undefined) ? (
