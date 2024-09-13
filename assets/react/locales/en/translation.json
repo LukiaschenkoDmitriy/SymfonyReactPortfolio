@@ -41,6 +41,9 @@
             "information": "Information",
             "skills": "Skills Used",
             "projects": "Projects"
+        },
+        "contact": {
+            "info": "Send Message"
         }
     },
     "skill": {
@@ -58,6 +61,27 @@
     "experience": {
         "skills": "Skills Used",
         "projects": "Projects"
+    },
+    "contact": {
+        "title": "Contact",
+        "name": "Name:",
+        "email": "Email:",
+        "theme": "Theme:",
+        "message": "Message:",
+        "submit": "Send Message",
+        "placeholder": {
+            "name": "Your Name",
+            "email": "Your Email",
+            "theme": "Your Theme",
+            "message": "Your Message"
+        },
+        "errors": {
+            "name": "Name is required",
+            "email": "Email hasn't right format",
+            "theme": "Theme is required",
+            "message": "Message is required"
+        },
+        "success": "Your message has been sent successfully!"
     },
     "global": {
         "home": "Home",

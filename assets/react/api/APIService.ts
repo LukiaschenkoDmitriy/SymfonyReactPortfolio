@@ -1,6 +1,7 @@
 // This class provides methods for interacting with a RESTful API.
 // It uses axios for making HTTP requests and handles authentication using JWT tokens.
 
+import ContactEntity from '@data/ContactEntity';
 import axios from 'axios';
 
 export default class APIService {
@@ -40,6 +41,17 @@ export default class APIService {
             }
         }).then((response) => {
             return response.data;
+        });
+    }
+
+    public async sendContact(contact: ContactEntity) {
+        return await axios.post(`${APIService.HOSTNAME}/contact`, contact, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        }).then((response) => {
+            return response;
         });
     }
 }

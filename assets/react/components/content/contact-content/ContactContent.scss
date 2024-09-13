@@ -1,0 +1,31 @@
+@import "@styles/color";
+
+.sr-content-page {
+    .sr-contact-form {
+        .sr-label {
+            font-size: 20px;
+            margin: 20px 0px;
+            color: white;
+        }
+
+        .sr-input {
+            height: 50px;
+        }
+
+        .sr-contact-submit {
+            margin: 25px 0px;
+            height: 75px;
+            width: 100%;
+            color: white;
+            background: $primary-color;
+
+            transition: .5s all ease;
+
+            border: 0;
+
+            &:hover {
+                background: $hover-color;
+            }
+        }
+    }
+}

@@ -271,8 +271,8 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
             underCagetories: [
                 {
                     type: RouterType.ACHOR,
-                    name: "contact_info",
-                    path: "#contact_info",
+                    name: "sidebar.contact.info",
+                    path: "#contact-information",
                     active: false,
                     component: () => <div></div>,
                     underCagetories: []
