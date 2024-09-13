@@ -16,6 +16,7 @@ import SideBar from "@components/sidebar/SideBar";
 import { RouterService } from "@services/RouterService";
 
 import LanguageEnum from "@enum/LanguageEnum";
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
 export interface AppContextInterface { 
     appRouters: AppRouterInterface[],
@@ -78,7 +79,9 @@ const App: React.FC = () => {
 const AppRouters: React.FC = () => {
     return (
         <BrowserRouter>
-            <App></App>
+            <GoogleReCaptchaProvider reCaptchaKey="6LfDY0IqAAAAAK3iVlmhuOqPcSgQWIs2UO7vSDGr">
+                <App></App>
+            </GoogleReCaptchaProvider>
         </BrowserRouter>
     );
 }

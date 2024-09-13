@@ -7,6 +7,7 @@ namespace App\Controller;
 
 use App\Data\ContactData;
 use App\Exception\DataWrongException;
+use App\Service\GoogleRecaptchaService;
 use App\Service\MailService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,15 +26,22 @@ class ApiController extends AbstractController {
     }
 
     #[Route(path:"/api/contact", name:"api_contact", methods:["POST"])]
-    public function apiContact(Request $request, MailService $mailService):Response {
+    public function apiContact(Request $request, MailService $mailService, GoogleRecaptchaService $googleRecaptchaService):Response {
         
         $data = $request->getContent();
         $content = json_decode($data, true);
 
+        $contactJson = $content["contact"];
+        $recaptchatoken = $content["recaptcha_token"];
+
+        if (!$googleRecaptchaService->verifyCaptcha($recaptchatoken)) {
+            return new JsonResponse("You have been identified as a bot and your message will not be delivered.", Response::HTTP_BAD_REQUEST);
+        }
+
         if ($content == null) return new JsonResponse("No data was transferred, or you used the wrong data transfer method.", Response::HTTP_BAD_REQUEST);
 
         try {
-            $contactData = new ContactData($content);
+            $contactData = new ContactData($contactJson);
         } catch (DataWrongException $e) {
             return new JsonResponse(["message" => $e->getMessage()], Response::HTTP_BAD_REQUEST);
         }

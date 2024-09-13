@@ -14,7 +14,6 @@ import CollectionContent from "./collection-content/CollectionContent";
 import Footer from "@components/footer/Footer";
 import ScrollToTopButton from "../scroll-top-button/ScrollTopButton";
 
-
 export interface FactoryContentProps {
     router: AppRouterInterface,
     pageType: PageType

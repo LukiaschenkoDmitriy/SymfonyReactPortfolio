@@ -18,6 +18,8 @@ import contactBackground from "@images/contacts-page/send-message-bg.png";
 
 import { HttpStatusCode } from "axios";
 
+import {useGoogleReCaptcha } from "react-google-recaptcha-v3";
+
 const ContactContent: React.FC<ContentProps> = ({router}) => {
     document.title = i18nplus(router.name, router.name);
 
@@ -30,8 +32,12 @@ const ContactContent: React.FC<ContentProps> = ({router}) => {
 
     const [contactDTOErrors, setContactDTOErrors] = useState<ContactDTOErrors>({});
     const [contactHaveErrors, setContactHaveErrors] = useState<boolean>(false);
+
     const [successedSend, setSuccessedSend] = useState<boolean>(false);
     const [failedSend, setFailedSend] = useState<boolean>(false);
+
+    const [captchaToken, setCaptchaToken] = useState<string>("");
+    const { executeRecaptcha } = useGoogleReCaptcha();
 
     const pageStyles: CSSProperties = {
         background: `url('${contactBackground}')`,
@@ -40,12 +46,15 @@ const ContactContent: React.FC<ContentProps> = ({router}) => {
         backgroundSize: "cover",
     }
 
-    const sendContact = (e: React.FormEvent) => {
+    const sendContact = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (contactHaveErrors) return;
+        if (contactHaveErrors || !executeRecaptcha) return;
 
-        (new APIService().sendContact(contactEntity)).then((response) => {
+        const recaptchaToken = await executeRecaptcha("submit");
+        setCaptchaToken(recaptchaToken);
+
+        (new APIService().sendContact(contactEntity, recaptchaToken)).then((response) => {
             if (response.status == HttpStatusCode.Ok) {
                 setSuccessedSend(true);
             } else {

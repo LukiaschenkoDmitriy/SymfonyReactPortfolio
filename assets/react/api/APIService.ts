@@ -44,8 +44,11 @@ export default class APIService {
         });
     }
 
-    public async sendContact(contact: ContactEntity) {
-        return await axios.post(`${APIService.HOSTNAME}/contact`, contact, {
+    public async sendContact(contact: ContactEntity, recaptcha_token: string) {
+        return await axios.post(`${APIService.HOSTNAME}/contact`, {
+            contact: contact,
+            recaptcha_token: recaptcha_token
+        }, {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
