@@ -10,6 +10,7 @@ export default interface ExperienceEntity extends EntityInterface
     description: string,
     duration: string,
     company: string,
+    role: string,
     skills: SkillEntity[],
     projects: ProjectEntity[],
     translations: ObjectTranslatbleEntity[]

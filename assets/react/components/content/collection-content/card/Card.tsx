@@ -44,6 +44,11 @@ const Card: React.FC<CardProps> = ({router, background}) => {
                     ) : (
                         <></>
                     )}
+                    {router.role != undefined ? (
+                        <div className="role my-4"><strong>{i18nplus(router.role, router.role)}</strong></div>
+                    ): (
+                        <></>
+                    )}
                 </div>
             </Link>
         </div>

@@ -12,6 +12,7 @@ export default class ExperienceDTO implements ExperienceEntity {
     name: string;
     description: string;
     duration: string;
+    role: string;
     company: string;
     skills: SkillEntity[];
     projects: ProjectEntity[];
@@ -24,6 +25,7 @@ export default class ExperienceDTO implements ExperienceEntity {
             this.description = ExperienceEntity.description;
             this.duration = ExperienceEntity.duration;
             this.company = ExperienceEntity.company;
+            this.role = ExperienceEntity.role;
 
             this.skills = [];
             this.projects = [];

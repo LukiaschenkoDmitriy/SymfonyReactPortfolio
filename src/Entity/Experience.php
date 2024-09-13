@@ -71,6 +71,10 @@ class Experience
     #[Groups(["experience.read", "experience.write"])]
     private Collection $translations;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(["experience.read", "experience.write"])]
+    private ?string $role = null;
+
     // Constructor to initialize the skills and projects collections
     public function __construct()
     {
@@ -202,6 +206,18 @@ class Experience
     public function removeProject(Project $project): static
     {
         $this->projects->removeElement($project);
+
+        return $this;
+    }
+
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(?string $role): static
+    {
+        $this->role = $role;
 
         return $this;
     }

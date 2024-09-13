@@ -40,6 +40,7 @@ export interface AppRouterInterface {
     name: string,
     path: string,
     background?: string,
+    role?: string,
     icon?: string,
     points?: number,
     active: boolean,
@@ -225,10 +226,36 @@ export async function getAppRouters(language: LanguageEnum = LanguageEnum.ENGLIS
                 id: experience.id,
                 type: RouterType.ROUTER,
                 name: experience.name,
+                role: experience.role,
                 path: `/experiences/${experience.name}`,
                 active: false,
                 component: (router: AppRouterInterface) => <FactoryContent router={router} pageType={PageType.EXPERIENCE}/>,
-                underCagetories: []
+                underCagetories: [
+                    {
+                        type: RouterType.ACHOR,
+                        name: "sidebar.experience.information",
+                        path: "#experience-information",
+                        active: false,
+                        component: () => <div></div>,
+                        underCagetories: []
+                    },
+                    {
+                        type: RouterType.ACHOR,
+                        name: "sidebar.experience.skills",
+                        path: "#experience-skills",
+                        active: false,
+                        component: () => <div></div>,
+                        underCagetories: []
+                    },
+                    {
+                        type: RouterType.ACHOR,
+                        name: "sidebar.experience.projects",
+                        path: "#experience-projects",
+                        active: false,
+                        component: () => <div></div>,
+                        underCagetories: []
+                    }
+                ]
             })
         })
         

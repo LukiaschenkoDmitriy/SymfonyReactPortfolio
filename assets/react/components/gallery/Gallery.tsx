@@ -1,9 +1,7 @@
 import "./Gallery.scss";
 
-import { Button, Modal } from "react-bootstrap";
-
 import React, { useState } from "react";
-import { bool } from "prop-types";
+
 import GalleryModal from "./gallery-modal/GalleryModal";
 
 export interface GalleryProps {

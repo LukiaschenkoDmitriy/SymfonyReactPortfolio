@@ -32,6 +32,11 @@
             "information": "Information",
             "images": "Preview",
             "packages": "Skills Used"
+        },
+        "experience": {
+            "information": "Information",
+            "skills": "Skills Used",
+            "projects": "Projects"
         }
     },
     "skill": {
@@ -45,6 +50,10 @@
         "image_empty": "Preview prohibited by non-disclosure agreement (NDA)",
         "skills": "Skills Used Were",
         "nda": "Prohibited by the NDA"
+    },
+    "experience": {
+        "skills": "Skills Used",
+        "projects": "Projects"
     },
     "global": {
         "home": "Home",
