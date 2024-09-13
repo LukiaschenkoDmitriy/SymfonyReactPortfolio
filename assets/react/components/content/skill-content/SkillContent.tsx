@@ -47,7 +47,7 @@ const SkillContent: React.FC<ContentProps> = ({router}) => {
     return (
         <div className="sr-content-inner sr-content-inner-skill" style={pageStyles}>
             {(skillData == undefined) ? (
-                <div className="vw-100 vh-100 d-flex flex-wrap justify-content-center align-content-center">
+                <div className="vw-100 vh-100 d-flex flex-wrap justify-content-center align-content-center content-loader">
                     <ReactLoading type="bars" color="#122932" height={"100px"} width={"100px"}/>
                 </div>
             ) : (

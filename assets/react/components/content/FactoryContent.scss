@@ -1,5 +1,17 @@
 @import "@styles/color";
 
+.content-loader {
+    max-width: 100%;
+    max-height: 90%;
+
+    div {
+        fill: white !important;
+        height: 100px;
+        width: 100px;
+        z-index: 10 !important;
+    }
+}
+
 .sr-container {
     display: flex;
     flex-direction: column;
