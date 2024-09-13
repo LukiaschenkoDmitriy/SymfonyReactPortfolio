@@ -33,7 +33,7 @@ const AboutContent: React.FC<ContentProps> = ({router}) => {
                     <div className="sr-about-container">
                         <div className="sr-about-row row">
                             <div className="description col-12 col-lg-6">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <strong>{i18nplus("about_page.description", "about_page.description")}</strong>
                             </div>
                             <div className="image col-12 col-lg-6">
                                 <img src={imgPhoto} alt="Photo" />
@@ -49,7 +49,7 @@ const AboutContent: React.FC<ContentProps> = ({router}) => {
                                 <img src={imgEducation} alt="Photo" />
                             </div>
                             <div className="description col-12 col-lg-6">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <strong>{i18nplus("about_page.education_description", "about_page.education_description")}</strong>
                             </div>
                         </div>
                     </div>

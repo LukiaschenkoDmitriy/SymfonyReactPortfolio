@@ -3,7 +3,9 @@
         "about_me": "About Me",
         "education": "Education",
         "languages": "Languages",
-        "personal_skills": "Personal skills"
+        "personal_skills": "Personal skills",
+        "description": "Hello, my name is Dmytrii, and I am 19 years old. I am a Full-Stack Developer with 2 years of commercial experience. I specialize in building complex websites with React and Symfony integration, as well as online stores using the Shopware 6 framework. My journey in programming began at the age of 14, where I explored various languages such as Python, C#, and Java before ultimately choosing PHP as my primary focus for web development. This diverse background has equipped me with a strong foundation and the skills needed to excel in creating robust and efficient web solutions.",
+        "education_description": "Since 2022, I have been studying Web Development at the University of Economics and Innovation in Lublin, Poland. Given my more-than-basic knowledge of web development, I find the coursework relatively easy. This allows me to focus on deepening my understanding of advanced concepts and exploring new technologies outside of the classroom. I am confident that my academic background, combined with my practical experience, will not impede my potential growth in commercial projects but rather enhance my ability to deliver innovative and high-quality solutions."
     },
     "languages": {
         "english": "English",
