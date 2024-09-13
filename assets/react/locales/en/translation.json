@@ -21,6 +21,8 @@
         "teamwork": "Teamwork"
     },
     "sidebar": {
+        "role": "Full Stack Developer",
+        "page_nav": "Page Navigation",
         "about_me_info": "About me",
         "education_info": "Education",
         "languages_info": "Languages",

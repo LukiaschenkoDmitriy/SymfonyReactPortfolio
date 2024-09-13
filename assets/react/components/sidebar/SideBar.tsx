@@ -1,14 +1,18 @@
 import "./SideBar.scss";
 
-import React, { useContext, useState } from "react";
-import { Link, Route, useLocation } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
 
-import i18nplus from "@services/TranslateService";
+
 import { AppContext } from "@app/app";
 import { RouterType } from "@app/routers";
 
-import { RouterService } from "@services/RouterService";
 import SwitchLanguage from "@components/switch-language/SwitchLanguage";
+
+import i18nplus from "@services/TranslateService";
+import { RouterService } from "@services/RouterService";
+
+import avatarPhoto from "@images/about-page/avatar.png";
 
 
 const SideBar: React.FC = () => {
@@ -26,14 +30,15 @@ const SideBar: React.FC = () => {
         <div className="sr-sidebar d-none d-md-flex flex-column">
             <div className="logo-container">
                 <div className="logo">
-                    <img src="" alt="" />
+                    <img src={avatarPhoto} alt="" />
                 </div>
                 <p className="username">Dmytrii Lukiashchenko</p>
+                <p className="role">{i18nplus("sidebar.role", "sidebar.role")}</p>
             </div>
             <div className="navigation-container flex-grow-1">
                 <SwitchLanguage/>
                 <div className="navigation-title">
-                    <strong>Page Navigation</strong>
+                    <strong>{i18nplus("sidebar.page_nav", "sidebar.page_nav")}</strong>
                 </div>
 
                 <div className="navigation-inner text-center">
