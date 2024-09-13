@@ -1,35 +1,95 @@
 {
     "about_page": {
-        "about_me": "About Me",
-        "education": "Education",
-        "languages": "Languages",
-        "personal_skills": "Personal skills"
+        "about_me": "Über mich",
+        "education": "Bildung",
+        "languages": "Sprachen",
+        "personal_skills": "Persönliche Fähigkeiten",
+        "description": "Hallo, mein Name ist Dmytrii, ich bin 19 Jahre alt. Ich bin Full-Stack-Entwickler mit 2 Jahren kommerzieller Erfahrung. Ich spezialisiere mich auf den Bau komplexer Websites mit React- und Symfony-Integration sowie Online-Shops mit dem Shopware 6-Framework. Meine Programmierreise begann im Alter von 14 Jahren, als ich verschiedene Sprachen wie Python, C# und Java erkundet habe, bevor ich PHP als meinen Schwerpunkt für die Webentwicklung gewählt habe. Dieser vielfältige Hintergrund hat mir eine solide Grundlage und die Fähigkeiten vermittelt, um robuste und effiziente Weblösungen zu erstellen.",
+        "education_description": "Seit 2022 studiere ich Webentwicklung an der Universität für Wirtschaft und Innovation in Lublin, Polen. Aufgrund meines überdurchschnittlichen Wissens in der Webentwicklung finde ich die Studieninhalte relativ einfach. Dies ermöglicht es mir, mich auf das Vertiefen meines Verständnisses von fortgeschrittenen Konzepten und das Erforschen neuer Technologien außerhalb des Klassenzimmers zu konzentrieren. Ich bin zuversichtlich, dass mein akademischer Hintergrund in Kombination mit meiner praktischen Erfahrung mein Wachstum in kommerziellen Projekten nicht beeinträchtigen, sondern vielmehr meine Fähigkeit verbessern wird, innovative und qualitativ hochwertige Lösungen zu liefern."
     },
     "languages": {
-        "english": "English",
-        "ukraine": "Ukraine",
-        "polish": "Polish",
+        "english": "Englisch",
+        "ukraine": "Ukrainisch",
+        "polish": "Polnisch",
         "deutsch": "Deutsch",
-        "russian": "Russian"
+        "russian": "Russisch"
     },
     "personal_skill": {
-        "responsibility": "Responsibility",
-        "mindfulness": "Mindfulness",
-        "communication": "Communication",
-        "teamwork": "Teamwork"
+        "responsibility": "Verantwortung",
+        "mindfulness": "Achtsamkeit",
+        "communication": "Kommunikation",
+        "teamwork": "Teamarbeit"
     },
     "sidebar": {
-        "about_me_info": "About me",
-        "education_info": "Education",
-        "languages_info": "Languages",
-        "personal_skills_info": "Personal skills"
+        "role": "Full Stack Entwickler",
+        "page_nav": "Seiten Navigation",
+        "about_me_info": "Über mich",
+        "education_info": "Bildung",
+        "languages_info": "Sprachen",
+        "personal_skills_info": "Persönliche Fähigkeiten",
+        "skill": {
+            "information": "Informationen",
+            "packages": "Pakete",
+            "projects": "Projekte"
+        },
+        "project": {
+            "information": "Informationen",
+            "images": "Vorschau",
+            "packages": "Verwendete Fähigkeiten"
+        },
+        "experience": {
+            "information": "Informationen",
+            "skills": "Verwendete Fähigkeiten",
+            "projects": "Projekte"
+        },
+        "contact": {
+            "info": "Nachricht senden"
+        }
+    },
+    "skill": {
+        "packages": "Pakete",
+        "projects": "Projekte",
+        "packages_empty": "Es wurden keine Pakete verwendet",
+        "projects_empty": "Es wurden noch keine Projekte abgeschlossen."
+    },
+    "project": {
+        "images": "Vorschau",
+        "image_empty": "Vorschau durch Geheimhaltungsvereinbarung (NDA) verboten",
+        "skills": "Verwendete Fähigkeiten",
+        "nda": "Durch die NDA verboten"
+    },
+    "experience": {
+        "skills": "Verwendete Fähigkeiten",
+        "projects": "Projekte"
+    },
+    "contact": {
+        "title": "Kontakt",
+        "name": "Name:",
+        "email": "E-Mail:",
+        "theme": "Thema:",
+        "message": "Nachricht:",
+        "submit": "Nachricht senden",
+        "placeholder": {
+            "name": "Ihr Name",
+            "email": "Ihre E-Mail",
+            "theme": "Ihr Thema",
+            "message": "Ihre Nachricht"
+        },
+        "errors": {
+            "name": "Name ist erforderlich",
+            "email": "E-Mail hat das falsche Format",
+            "theme": "Thema ist erforderlich",
+            "message": "Nachricht ist erforderlich"
+        },
+        "success": "Ihre Nachricht wurde erfolgreich gesendet!",
+        "failed": "Beim Senden der Daten ist ein Fehler aufgetreten. Bitte überprüfen Sie die Konsole auf Details."
     },
     "global": {
-        "home": "Home",
-        "about_me": "About Me",
-        "skills": "Skills",
-        "experiences": "Experiences",
-        "projects": "Projects",
-        "contact": "Contact"
+        "home": "Startseite",
+        "about_me": "Über mich",
+        "skills": "Fähigkeiten",
+        "experiences": "Erfahrungen",
+        "projects": "Projekte",
+        "contact": "Kontakt"
     }
 }

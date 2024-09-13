@@ -1,35 +1,95 @@
 {
     "about_page": {
-        "about_me": "About Me",
-        "education": "Education",
-        "languages": "Languages",
-        "personal_skills": "Personal skills"
+        "about_me": "O mnie",
+        "education": "Edukacja",
+        "languages": "Języki",
+        "personal_skills": "Umiejętności osobiste",
+        "description": "Cześć, nazywam się Dmytrii i mam 19 lat. Jestem Full-Stack Developerem z 2-letnim doświadczeniem komercyjnym. Specjalizuję się w budowaniu skomplikowanych stron internetowych z integracją React i Symfony, a także w tworzeniu sklepów internetowych przy użyciu frameworka Shopware 6. Moja przygoda z programowaniem zaczęła się w wieku 14 lat, kiedy to badałem różne języki, takie jak Python, C# i Java, zanim ostatecznie wybrałem PHP jako główny język do rozwoju webowego. Ten różnorodny background zapewnił mi solidne podstawy i umiejętności potrzebne do tworzenia solidnych i efektywnych rozwiązań webowych.",
+        "education_description": "Od 2022 roku studiuję rozwój webowy na Uniwersytecie Ekonomii i Innowacji w Lublinie, Polska. Dzięki mojej ponad podstawowej wiedzy z zakresu rozwoju webowego, uważam, że kursy są stosunkowo łatwe. Pozwala mi to skupić się na pogłębianiu mojej wiedzy na temat zaawansowanych koncepcji i odkrywaniu nowych technologii poza zajęciami. Jestem pewien, że moje wykształcenie akademickie w połączeniu z moim praktycznym doświadczeniem nie będzie przeszkadzać w moim rozwoju w projektach komercyjnych, lecz raczej wzbogaci moją zdolność do dostarczania innowacyjnych i wysokiej jakości rozwiązań."
     },
     "languages": {
-        "english": "English",
-        "ukraine": "Ukraine",
-        "polish": "Polish",
-        "deutsch": "Deutsch",
-        "russian": "Russian"
+        "english": "Angielski",
+        "ukraine": "Ukraiński",
+        "polish": "Polski",
+        "deutsch": "Niemiecki",
+        "russian": "Rosyjski"
     },
     "personal_skill": {
-        "responsibility": "Responsibility",
-        "mindfulness": "Mindfulness",
-        "communication": "Communication",
-        "teamwork": "Teamwork"
+        "responsibility": "Odpowiedzialność",
+        "mindfulness": "Uważność",
+        "communication": "Komunikacja",
+        "teamwork": "Praca zespołowa"
     },
     "sidebar": {
-        "about_me_info": "About me",
-        "education_info": "Education",
-        "languages_info": "Languages",
-        "personal_skills_info": "Personal skills"
+        "role": "Full Stack Developer",
+        "page_nav": "Nawigacja po stronie",
+        "about_me_info": "O mnie",
+        "education_info": "Edukacja",
+        "languages_info": "Języki",
+        "personal_skills_info": "Umiejętności osobiste",
+        "skill": {
+            "information": "Informacje",
+            "packages": "Pakiety",
+            "projects": "Projekty"
+        },
+        "project": {
+            "information": "Informacje",
+            "images": "Podgląd",
+            "packages": "Wykorzystane umiejętności"
+        },
+        "experience": {
+            "information": "Informacje",
+            "skills": "Wykorzystane umiejętności",
+            "projects": "Projekty"
+        },
+        "contact": {
+            "info": "Wyślij wiadomość"
+        }
+    },
+    "skill": {
+        "packages": "Pakiety",
+        "projects": "Projekty",
+        "packages_empty": "Nie użyto żadnych pakietów",
+        "projects_empty": "Nie zrealizowano jeszcze żadnego projektu."
+    },
+    "project": {
+        "images": "Podgląd",
+        "image_empty": "Podgląd zabroniony przez umowę o poufności (NDA)",
+        "skills": "Wykorzystane umiejętności",
+        "nda": "Zabronione przez NDA"
+    },
+    "experience": {
+        "skills": "Wykorzystane umiejętności",
+        "projects": "Projekty"
+    },
+    "contact": {
+        "title": "Kontakt",
+        "name": "Imię:",
+        "email": "E-mail:",
+        "theme": "Temat:",
+        "message": "Wiadomość:",
+        "submit": "Wyślij wiadomość",
+        "placeholder": {
+            "name": "Twoje imię",
+            "email": "Twój e-mail",
+            "theme": "Twój temat",
+            "message": "Twoja wiadomość"
+        },
+        "errors": {
+            "name": "Imię jest wymagane",
+            "email": "E-mail ma niewłaściwy format",
+            "theme": "Temat jest wymagany",
+            "message": "Wiadomość jest wymagana"
+        },
+        "success": "Twoja wiadomość została pomyślnie wysłana!",
+        "failed": "Wystąpił błąd podczas wysyłania danych, sprawdź konsolę, aby uzyskać szczegóły."
     },
     "global": {
-        "home": "Home",
-        "about_me": "About Me",
-        "skills": "Skills",
-        "experiences": "Experiences",
-        "projects": "Projects",
-        "contact": "Contact"
+        "home": "Strona główna",
+        "about_me": "O mnie",
+        "skills": "Umiejętności",
+        "experiences": "Doświadczenia",
+        "projects": "Projekty",
+        "contact": "Kontakt"
     }
 }

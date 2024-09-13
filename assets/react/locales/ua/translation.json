@@ -1,35 +1,95 @@
 {
     "about_page": {
-        "about_me": "About Me",
-        "education": "Education",
-        "languages": "Languages",
-        "personal_skills": "Personal skills"
+        "about_me": "Про мене",
+        "education": "Освіта",
+        "languages": "Мови",
+        "personal_skills": "Особисті навички",
+        "description": "Привіт, мене звати Дмитро, мені 19 років. Я Full-Stack розробник з 2-річним комерційним досвідом. Я спеціалізуюся на створенні складних веб-сайтів з інтеграцією React та Symfony, а також на розробці інтернет-магазинів за допомогою фреймворку Shopware 6. Мій шлях у програмуванні почався в 14 років, коли я вивчав різні мови, такі як Python, C# та Java, перш ніж вибрати PHP як основний фокус для веб-розробки. Цей різноманітний досвід надав мені міцну основу і навички, необхідні для створення надійних та ефективних веб-рішень.",
+        "education_description": "З 2022 року я навчаюся веб-розробці в Університеті економіки та інновацій у Любліні, Польща. Зважаючи на мої знання веб-розробки, які перевищують базові, я вважаю курс досить легким. Це дозволяє мені зосередитися на поглибленні розуміння складних концепцій і вивченні нових технологій поза межами аудиторії. Я впевнений, що моя академічна підготовка разом з практичним досвідом не завадять моєму розвитку в комерційних проектах, а навпаки, покращать мою здатність надавати інноваційні та якісні рішення."
     },
     "languages": {
-        "english": "English",
-        "ukraine": "Ukraine",
-        "polish": "Polish",
-        "deutsch": "Deutsch",
-        "russian": "Russian"
+        "english": "Англійська",
+        "ukraine": "Українська",
+        "polish": "Польська",
+        "deutsch": "Німецька",
+        "russian": "Російська"
     },
     "personal_skill": {
-        "responsibility": "Responsibility",
-        "mindfulness": "Mindfulness",
-        "communication": "Communication",
-        "teamwork": "Teamwork"
+        "responsibility": "Відповідальність",
+        "mindfulness": "Увага",
+        "communication": "Комунікація",
+        "teamwork": "Командна робота"
     },
     "sidebar": {
-        "about_me_info": "About me",
-        "education_info": "Education",
-        "languages_info": "Languages",
-        "personal_skills_info": "Personal skills"
+        "role": "Full Stack розробник",
+        "page_nav": "Навігація по сторінці",
+        "about_me_info": "Про мене",
+        "education_info": "Освіта",
+        "languages_info": "Мови",
+        "personal_skills_info": "Особисті навички",
+        "skill": {
+            "information": "Інформація",
+            "packages": "Пакети",
+            "projects": "Проекти"
+        },
+        "project": {
+            "information": "Інформація",
+            "images": "Попередній перегляд",
+            "packages": "Використані навички"
+        },
+        "experience": {
+            "information": "Інформація",
+            "skills": "Використані навички",
+            "projects": "Проекти"
+        },
+        "contact": {
+            "info": "Відправити повідомлення"
+        }
+    },
+    "skill": {
+        "packages": "Пакети",
+        "projects": "Проекти",
+        "packages_empty": "Пакети не використовувалися",
+        "projects_empty": "Ще не завершено жодного проекту."
+    },
+    "project": {
+        "images": "Попередній перегляд",
+        "image_empty": "Попередній перегляд заборонено угодою про конфіденційність (NDA)",
+        "skills": "Використані навички",
+        "nda": "Заборонено угодою NDA"
+    },
+    "experience": {
+        "skills": "Використані навички",
+        "projects": "Проекти"
+    },
+    "contact": {
+        "title": "Контакт",
+        "name": "Ім'я:",
+        "email": "Електронна пошта:",
+        "theme": "Тема:",
+        "message": "Повідомлення:",
+        "submit": "Відправити повідомлення",
+        "placeholder": {
+            "name": "Ваше ім'я",
+            "email": "Ваша електронна пошта",
+            "theme": "Ваша тема",
+            "message": "Ваше повідомлення"
+        },
+        "errors": {
+            "name": "Ім'я обов'язкове",
+            "email": "Електронна пошта має неправильний формат",
+            "theme": "Тема обов'язкова",
+            "message": "Повідомлення обов'язкове"
+        },
+        "success": "Ваше повідомлення було успішно відправлено!",
+        "failed": "Сталася помилка при відправленні даних, будь ласка, перевірте консоль для отримання деталей."
     },
     "global": {
-        "home": "Home",
-        "about_me": "About Me",
-        "skills": "Skills",
-        "experiences": "Experiences",
-        "projects": "Projects",
-        "contact": "Contact"
+        "home": "Головна",
+        "about_me": "Про мене",
+        "skills": "Навички",
+        "experiences": "Досвід",
+        "projects": "Проекти",
+        "contact": "Контакт"
     }
 }

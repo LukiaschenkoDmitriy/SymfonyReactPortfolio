@@ -1,35 +1,95 @@
 {
     "about_page": {
-        "about_me": "About Me",
-        "education": "Education",
-        "languages": "Languages",
-        "personal_skills": "Personal skills"
+        "about_me": "О себе",
+        "education": "Образование",
+        "languages": "Языки",
+        "personal_skills": "Личные навыки",
+        "description": "Здравствуйте, меня зовут Дмитрий, мне 19 лет. Я Full-Stack разработчик с 2-летним коммерческим опытом. Я специализируюсь на создании сложных веб-сайтов с интеграцией React и Symfony, а также на разработке интернет-магазинов с использованием фреймворка Shopware 6. Мой путь в программировании начался в 14 лет, когда я изучал различные языки, такие как Python, C# и Java, прежде чем выбрать PHP в качестве основного языка для веб-разработки. Этот разнообразный опыт дал мне прочную основу и навыки, необходимые для создания надежных и эффективных веб-решений.",
+        "education_description": "С 2022 года я изучаю веб-разработку в Университете Экономики и Инноваций в Люблине, Польша. Учитывая мое более чем базовое знание веб-разработки, я нахожу учебный курс относительно легким. Это позволяет мне сосредоточиться на углублении понимания сложных концепций и изучении новых технологий вне стен учебного заведения. Я уверен, что мое академическое образование в сочетании с практическим опытом не помешает моему развитию в коммерческих проектах, а наоборот, повысит мою способность предоставлять инновационные и качественные решения."
     },
     "languages": {
-        "english": "English",
-        "ukraine": "Ukraine",
-        "polish": "Polish",
-        "deutsch": "Deutsch",
-        "russian": "Russian"
+        "english": "Английский",
+        "ukraine": "Украинский",
+        "polish": "Польский",
+        "deutsch": "Немецкий",
+        "russian": "Русский"
     },
     "personal_skill": {
-        "responsibility": "Responsibility",
-        "mindfulness": "Mindfulness",
-        "communication": "Communication",
-        "teamwork": "Teamwork"
+        "responsibility": "Ответственность",
+        "mindfulness": "Внимательность",
+        "communication": "Коммуникация",
+        "teamwork": "Работа в команде"
     },
     "sidebar": {
-        "about_me_info": "About me",
-        "education_info": "Education",
-        "languages_info": "Languages",
-        "personal_skills_info": "Personal skills"
+        "role": "Full Stack разработчик",
+        "page_nav": "Навигация по странице",
+        "about_me_info": "О себе",
+        "education_info": "Образование",
+        "languages_info": "Языки",
+        "personal_skills_info": "Личные навыки",
+        "skill": {
+            "information": "Информация",
+            "packages": "Пакеты",
+            "projects": "Проекты"
+        },
+        "project": {
+            "information": "Информация",
+            "images": "Предпросмотр",
+            "packages": "Использованные навыки"
+        },
+        "experience": {
+            "information": "Информация",
+            "skills": "Использованные навыки",
+            "projects": "Проекты"
+        },
+        "contact": {
+            "info": "Отправить сообщение"
+        }
+    },
+    "skill": {
+        "packages": "Пакеты",
+        "projects": "Проекты",
+        "packages_empty": "Пакеты не использовались",
+        "projects_empty": "Пока не завершено ни одного проекта."
+    },
+    "project": {
+        "images": "Предпросмотр",
+        "image_empty": "Предпросмотр запрещен соглашением о конфиденциальности (NDA)",
+        "skills": "Использованные навыки",
+        "nda": "Запрещено NDA"
+    },
+    "experience": {
+        "skills": "Использованные навыки",
+        "projects": "Проекты"
+    },
+    "contact": {
+        "title": "Контакт",
+        "name": "Имя:",
+        "email": "Электронная почта:",
+        "theme": "Тема:",
+        "message": "Сообщение:",
+        "submit": "Отправить сообщение",
+        "placeholder": {
+            "name": "Ваше имя",
+            "email": "Ваша электронная почта",
+            "theme": "Ваша тема",
+            "message": "Ваше сообщение"
+        },
+        "errors": {
+            "name": "Имя обязательно",
+            "email": "Неверный формат электронной почты",
+            "theme": "Тема обязательна",
+            "message": "Сообщение обязательно"
+        },
+        "success": "Ваше сообщение было успешно отправлено!",
+        "failed": "Произошла ошибка при отправке данных, пожалуйста, проверьте консоль для получения подробностей."
     },
     "global": {
-        "home": "Home",
-        "about_me": "About Me",
-        "skills": "Skills",
-        "experiences": "Experiences",
-        "projects": "Projects",
-        "contact": "Contact"
+        "home": "Главная",
+        "about_me": "О себе",
+        "skills": "Навыки",
+        "experiences": "Опыт",
+        "projects": "Проекты",
+        "contact": "Контакт"
     }
 }
