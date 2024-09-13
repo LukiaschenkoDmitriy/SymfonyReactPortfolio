@@ -1,0 +1,14 @@
+@import "@styles/color";
+
+.sr-contacts {
+    display: flex;
+    justify-content: center;
+    background: $hover-color;
+    padding: 10px 0px;
+    .sr-contact {
+        margin: 0px 10px;
+        svg {
+            color: white;
+        }
+    }
+}

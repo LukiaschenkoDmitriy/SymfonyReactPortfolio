@@ -10,6 +10,7 @@ import HeaderButtonMobile from "@components/header/header-button-mobile/HeaderBu
 
 import { RouterService } from "@services/RouterService";
 import SwitchLanguage from "@components/switch-language/SwitchLanguage";
+import Contacts from "@components/contacts/Contacts";
 
 const Header: React.FC = () => {
     // Use the AppContext to access and update appRouters state
@@ -61,6 +62,7 @@ const Header: React.FC = () => {
                         <HeaderButtonMobile key={router.name+"_mobile23"+ Math.random()*100} clickHandler={switchRouter} router={router} />
                     ))}
                     <SwitchLanguage/>
+                    <Contacts />
                 </div>
             </div>
         </>

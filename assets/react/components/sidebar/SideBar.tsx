@@ -13,6 +13,7 @@ import i18nplus from "@services/TranslateService";
 import { RouterService } from "@services/RouterService";
 
 import avatarPhoto from "@images/about-page/avatar.png";
+import Contacts from "@components/contacts/Contacts";
 
 
 const SideBar: React.FC = () => {
@@ -36,6 +37,7 @@ const SideBar: React.FC = () => {
                 <p className="role">{i18nplus("sidebar.role", "sidebar.role")}</p>
             </div>
             <div className="navigation-container flex-grow-1">
+                <Contacts />    
                 <SwitchLanguage/>
                 <div className="navigation-title">
                     <strong>{i18nplus("sidebar.page_nav", "sidebar.page_nav")}</strong>
