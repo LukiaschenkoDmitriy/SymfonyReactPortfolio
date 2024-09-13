@@ -6,11 +6,16 @@ import { ContentProps } from "../FactoryContent";
 
 import i18nplus from "@services/TranslateService";
 
-import contactBackground from "@images/contacts-page/send-message-bg.png";
+
 import Breadcrumb from "@components/breadcrumb/Breadcrumb";
+
 import ContactEntity from "@data/ContactEntity";
+
 import ContactDTO, { ContactDTOErrors } from "@dto/ContactDTO";
 import APIService from "@api/APIService";
+
+import contactBackground from "@images/contacts-page/send-message-bg.png";
+
 import { HttpStatusCode } from "axios";
 
 const ContactContent: React.FC<ContentProps> = ({router}) => {
@@ -26,6 +31,7 @@ const ContactContent: React.FC<ContentProps> = ({router}) => {
     const [contactDTOErrors, setContactDTOErrors] = useState<ContactDTOErrors>({});
     const [contactHaveErrors, setContactHaveErrors] = useState<boolean>(false);
     const [successedSend, setSuccessedSend] = useState<boolean>(false);
+    const [failedSend, setFailedSend] = useState<boolean>(false);
 
     const pageStyles: CSSProperties = {
         background: `url('${contactBackground}')`,
@@ -39,11 +45,15 @@ const ContactContent: React.FC<ContentProps> = ({router}) => {
 
         if (contactHaveErrors) return;
 
-
         (new APIService().sendContact(contactEntity)).then((response) => {
             if (response.status == HttpStatusCode.Ok) {
                 setSuccessedSend(true);
+            } else {
+                setFailedSend(true);
             }
+        }).catch((error) => {
+            console.error(error);
+            setFailedSend(true);
         });
     }
 
@@ -100,8 +110,13 @@ const ContactContent: React.FC<ContentProps> = ({router}) => {
                         </div>
 
                         {successedSend ? (
-                            <div className="alert alert-success col-12 my-5 px-5">
+                            <div className="alert alert-success col-12 my-5 px-5" role="alert">
                                 {i18nplus("contact.success", "contact.success")}
+                            </div>
+                        ): null}
+                        {failedSend ? (
+                            <div className="alert alert-danger col-12 my-5 px-5" role="alert">
+                                {i18nplus("contact.failed", "contact.failed")}
                             </div>
                         ): null}
                         <button type="submit" disabled={contactHaveErrors} className="sr-contact-submit col-12">{i18nplus("contact.submit", "contact.submit")}</button>

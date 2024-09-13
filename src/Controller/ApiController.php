@@ -5,6 +5,8 @@
 
 namespace App\Controller;
 
+use App\Data\ContactData;
+use App\Exception\DataWrongException;
 use App\Service\MailService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,29 +30,19 @@ class ApiController extends AbstractController {
         $data = $request->getContent();
         $content = json_decode($data, true);
 
-        $requiredFields = [
-            'name' => 'Name is required',
-            'email' => 'Email is required',
-            'theme' => 'Theme is required',
-            'message' => 'Message is required',
-        ];
-        
-        foreach ($requiredFields as $field => $errorMessage) {
-            if (!array_key_exists($field, $content)) {
-                return new JsonResponse([$field => "required"], Response::HTTP_BAD_REQUEST);
-            }
+        if ($content == null) return new JsonResponse("No data was transferred, or you used the wrong data transfer method.", Response::HTTP_BAD_REQUEST);
+
+        try {
+            $contactData = new ContactData($content);
+        } catch (DataWrongException $e) {
+            return new JsonResponse(["message" => $e->getMessage()], Response::HTTP_BAD_REQUEST);
         }
 
-        $errors = [];
-
-        if (strlen($content["name"]) == 0) $errors["name"] = "wrong";
-        if (!filter_var($content["email"], FILTER_VALIDATE_EMAIL)) $errors["email"] = "wrong";
-        if (strlen($content["theme"]) == 0) $errors["theme"] = "wrong";
-        if (strlen($content["message"]) == 0) $errors["message"] = "wrong";
+        $errors = $contactData->getErrors();
 
         if (count($errors) != 0) return new JsonResponse($errors, Response::HTTP_BAD_REQUEST);
 
-        $mailService->sendMail($content["name"], $content["email"], $content["theme"], $content["message"]);
+        $mailService->sendMail($contactData);
 
         return new JsonResponse("ok", Response::HTTP_OK);
     }

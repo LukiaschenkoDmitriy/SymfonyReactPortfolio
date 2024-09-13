@@ -81,7 +81,8 @@
             "theme": "Theme is required",
             "message": "Message is required"
         },
-        "success": "Your message has been sent successfully!"
+        "success": "Your message has been sent successfully!",
+        "failed": "An error occurred while sending the data, please check the console for details."
     },
     "global": {
         "home": "Home",
