@@ -2,7 +2,7 @@
 // It uses axios for making HTTP requests and handles authentication using JWT tokens.
 
 import ContactEntity from '@data/ContactEntity';
-import axios from 'axios';
+import axios, { HttpStatusCode } from 'axios';
 
 export default class APIService {
     // API endpoint for authentication
@@ -30,16 +30,22 @@ export default class APIService {
 
     // Generic method to make GET requests to the API endpoints
     // It includes the JWT token in the Authorization header
-    public async getMethod(endpoint: string, headers: any) {
+    public async getMethod(endpoint: string, headers: any): Promise<any> {
         if (APIService.TOKEN == "") APIService.TOKEN = await this.getToken();
 
-        return axios.get(`${APIService.HOSTNAME}/${endpoint}`, {
+        return await axios.get(`${APIService.HOSTNAME}/${endpoint}`, {
             headers: {
                 "Content-Type": "application/json",
                 ...headers,
                 "Authorization": `Bearer ${APIService.TOKEN}`
             }
-        }).then((response) => {
+        }).then(async(response): Promise<any> => {
+            
+            if (response.status == HttpStatusCode.Unauthorized) {
+                APIService.TOKEN = await this.getToken();
+                return this.getMethod(endpoint, headers);
+            }
+
             return response.data;
         });
     }

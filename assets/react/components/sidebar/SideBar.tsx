@@ -15,6 +15,9 @@ import { RouterService } from "@services/RouterService";
 import avatarPhoto from "@images/about-page/avatar.png";
 import Contacts from "@components/contacts/Contacts";
 
+import { AnimatePresence, motion } from "framer-motion";
+import { SideBarItemAnimation } from "@app/animations";
+
 
 const SideBar: React.FC = () => {
     const appContext = useContext(AppContext);
@@ -44,30 +47,48 @@ const SideBar: React.FC = () => {
                 </div>
 
                 <div className="navigation-inner text-center">
-                    {(currentRouter?.underCagetories.length != 0) ? (
-                        currentRouter?.underCagetories[0].type == RouterType.ROUTER ? (
-                            <div key={currentRouter.name}>
-                                {currentRouter.underCagetories.map((subRouter) => (
-                                    <Link className="d-block" key={subRouter.name+"sidebar"} to={subRouter.path} onClick={() => handleSubRouterClick(subRouter.path)}>
-                                        { i18nplus(subRouter.name, subRouter.name) }
-                                    </Link>
-                                ))}
-                            </div>
-                        ): currentRouter?.underCagetories[0].type == RouterType.ACHOR ? 
-                            (
+                    <AnimatePresence mode="wait">
+                        {(currentRouter?.underCagetories.length != 0) ? (
+                            currentRouter?.underCagetories[0].type == RouterType.ROUTER ? (
                                 <div key={currentRouter.name}>
-                                    {currentRouter.underCagetories.map((subRouter) => (
-                                        <a className="d-block" href={`${subRouter.path}`} key={subRouter.name+"sidebar"}>
-                                            { i18nplus(subRouter.name, subRouter.name) }
-                                        </a>
+                                    {currentRouter.underCagetories.map((subRouter, index) => (
+                                        <motion.div 
+                                            custom={index}
+                                            initial="out"
+                                            animate="in"
+                                            exit="out"
+                                            variants={SideBarItemAnimation}
+                                        >
+                                            <Link className="d-block" key={subRouter.name+"sidebar"} to={subRouter.path} onClick={() => handleSubRouterClick(subRouter.path)}>
+                                                { i18nplus(subRouter.name, subRouter.name) }
+                                            </Link>
+                                        </motion.div>
                                     ))}
                                 </div>
-                            ):
-                            (
-                                <a className="d-block"> Routers or Achors Not Found </a>
-                            )
-                        
-                    ): <a className="d-block"> Routers or Achors Not Found </a>}
+                            ): currentRouter?.underCagetories[0].type == RouterType.ACHOR ? 
+                                (
+                                    <div key={currentRouter.name}>
+                                        {currentRouter.underCagetories.map((subRouter, index) => (
+                                            <motion.div 
+                                                custom={index}
+                                                initial="out"
+                                                animate="in"
+                                                exit="out"
+                                                variants={SideBarItemAnimation}
+                                            >
+                                                <a className="d-block" href={`${subRouter.path}`} key={subRouter.name+"sidebar"}>
+                                                    { i18nplus(subRouter.name, subRouter.name) }
+                                                </a>
+                                            </motion.div>
+                                        ))}
+                                    </div>
+                                ):
+                                (
+                                    <a className="d-block"> Routers or Achors Not Found </a>
+                                )
+                            
+                        ): <a className="d-block"> Routers or Achors Not Found </a>}
+                    </AnimatePresence>
                 </div>
             </div>
         </div>

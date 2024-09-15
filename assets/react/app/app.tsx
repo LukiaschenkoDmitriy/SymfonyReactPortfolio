@@ -8,7 +8,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import React, { createContext, StrictMode, useEffect, useState } from "react";
 
-import { AppRouterInterface, getAppRouters, RouterType } from "@app/routers";
+import { AppRouterInterface, getAppRouters } from "@app/routers";
 
 import Header from "@components/header/Header";
 import SideBar from "@components/sidebar/SideBar";

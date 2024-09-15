@@ -1,12 +1,30 @@
 import { Variants } from "framer-motion";
 
+export const SideBarItemAnimation: Variants = {
+    in: (i) => ({
+        opacity: 1,
+        x: 0,
+        transition: {
+            duration: 0.5,
+            delay: i * 0.05 ,
+        }
+    }),
+    out: (i) => ({
+        opacity: 0,
+        x: -500,
+        transition: {
+            duration: 0.5,
+            delay: i * 0.05,
+        }
+    })
+}
+
 export const ContentAnimation: Variants = {
     in: {
         opacity: 1,
         y: 0,
         transition: {
             duration: 0.5,
-            delay:1
         }
     },
     out: {
