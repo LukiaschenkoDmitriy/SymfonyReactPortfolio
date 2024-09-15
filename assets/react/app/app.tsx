@@ -81,26 +81,10 @@ const App: React.FC = () => {
                             </motion.div>
                             <AnimatePresence mode="wait">
                                 <Routes location={location} key={location.pathname}>
-                                    {appRouters.map((router) => (
+                                    {RouterService.getAllRouters(appRouters).map((router) => (
                                         <Route key={router.name} path={router.path} element={
                                             router.component(router)
                                         } />
-                                    ))}
-                                    {appRouters.map((router) => (
-                                        router.underCagetories.map((subcategory) => (
-                                            <Route key={subcategory.name + "subcategory"} path={subcategory.path} element={
-                                                    subcategory.component(subcategory)
-                                            } />
-                                        ))
-                                    ))}
-                                    {appRouters.map((router) => (
-                                        router.underCagetories.map((subcategory) => (
-                                            subcategory.underCagetories.map((subcategory2) => (
-                                                (subcategory2.type !== RouterType.ACHOR) ? <Route key={subcategory2.name + "subcategory2"} path={subcategory2.path} element={
-                                                        subcategory2.component(subcategory2)
-                                                } /> : null
-                                            ))
-                                        ))
                                     ))}
                                 </Routes>
                             </AnimatePresence>

@@ -1,4 +1,4 @@
-import { AppRouterInterface } from "@app/routers";
+import { AppRouterInterface, RouterType } from "@app/routers";
 import ProjectEntity from "@data/ProjectEntity";
 import SkillEntity from "@data/SkillEntity";
 
@@ -46,6 +46,27 @@ export class RouterService {
         srApp.scrollTop(0);
         srApp.css('scroll-behavior', 'smooth');
     }
+
+    public static getAllRouters(defaultRouters: AppRouterInterface[]): AppRouterInterface[] {
+        const allRouters: AppRouterInterface[] = [];
+    
+        const flattenRouters = (routers: AppRouterInterface[]) => {
+            routers.forEach(router => {
+                if (router.type === RouterType.ROUTER) {
+                    allRouters.push(router);
+                }
+    
+                if (router.underCagetories && router.underCagetories.length > 0) {
+                    flattenRouters(router.underCagetories);
+                }
+            });
+        };
+    
+        flattenRouters(defaultRouters);
+    
+        return allRouters;
+    }
+    
 
     public static getSkillRoutesByIds(appRouters: AppRouterInterface[], ids: string[]): AppRouterInterface[]
     {
