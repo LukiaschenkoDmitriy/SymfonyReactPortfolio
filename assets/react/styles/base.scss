@@ -17,6 +17,10 @@ body {
     }
 }
 
+html {
+    overflow: hidden;
+}
+
 .offcanvas-body {
     background: $primary-color;
     padding: 0px;

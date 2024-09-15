@@ -17,6 +17,9 @@ import { RouterService } from "@services/RouterService";
 
 import LanguageEnum from "@enum/LanguageEnum";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
+import { AnimatePresence, motion } from "framer-motion";
+import { HeaderAnimation, LoadingAnimation, SideBarAnimation } from "./animations";
+
 
 export interface AppContextInterface { 
     appRouters: AppRouterInterface[],
@@ -43,36 +46,69 @@ const App: React.FC = () => {
     }, [currentLanguage]);
 
     return (
-        (appRouters.length === 0) ?
-            <div className="vw-100 vh-100 d-flex flex-wrap justify-content-center align-content-center">
-                <ReactLoading type="bars" color="#122932" height={"100px"} width={"100px"}/>
-            </div>
-        :
-        <AppContext.Provider value={{ appRouters: appRouters, setAppRouters: setAppRouters, currentLanguage: currentLanguage, setCurrentLanguage: setCurrentLanguage }}>
-                <div className="sr-app" id="sr-app-element">
-                    <Header />
-                    <div className="sr-body">
-                        <SideBar />
-                        <Routes>
-                            {appRouters.map((router) => (
-                                <Route key={router.name} path={router.path} element={router.component(router)} />
-                            ))}
-                            {appRouters.map((router) => (
-                                router.underCagetories.map((subcategory) => (
-                                    <Route key={subcategory.name+"subcategory"} path={subcategory.path} element={subcategory.component(subcategory)} />
-                                ))
-                            ))}
-                            {appRouters.map((router) => (
-                                router.underCagetories.map((subcategory) => (
-                                    subcategory.underCagetories.map((subcategory2) => (
-                                        (subcategory2.type != RouterType.ACHOR) ? <Route key={subcategory2.name+"subcategory2"} path={subcategory2.path} element={subcategory2.component(subcategory2)} />: null
-                                    ))
-                                ))
-                            ))}
-                        </Routes>
+        <AnimatePresence mode="wait">
+            {(appRouters.length === 0) ? (
+                <motion.div
+                    key={"loading_animation"}
+                    initial="out"
+                    animate="in"
+                    exit="out"
+                    variants={LoadingAnimation}
+                >
+                    <div className="vw-100 vh-100 d-flex flex-wrap justify-content-center align-content-center">
+                        <ReactLoading type="bars" color="#122932" height={"100px"} width={"100px"}/>
                     </div>
-                </div>
-        </AppContext.Provider>
+                </motion.div>
+            ) : (
+                <AppContext.Provider value={{ appRouters: appRouters, setAppRouters: setAppRouters, currentLanguage: currentLanguage, setCurrentLanguage: setCurrentLanguage }}>
+                    <div className="sr-app" id="sr-app-element">
+                        <motion.div
+                            initial="out"
+                            animate="in"
+                            exit="out"
+                            variants={HeaderAnimation}
+                        >
+                            <Header />
+                        </motion.div>
+                        <div className="sr-body">
+                            <motion.div
+                                initial="out"
+                                animate="in"
+                                exit="out"
+                                variants={SideBarAnimation}
+                            >
+                                <SideBar />
+                            </motion.div>
+                            <AnimatePresence mode="wait">
+                                <Routes location={location} key={location.pathname}>
+                                    {appRouters.map((router) => (
+                                        <Route key={router.name} path={router.path} element={
+                                            router.component(router)
+                                        } />
+                                    ))}
+                                    {appRouters.map((router) => (
+                                        router.underCagetories.map((subcategory) => (
+                                            <Route key={subcategory.name + "subcategory"} path={subcategory.path} element={
+                                                    subcategory.component(subcategory)
+                                            } />
+                                        ))
+                                    ))}
+                                    {appRouters.map((router) => (
+                                        router.underCagetories.map((subcategory) => (
+                                            subcategory.underCagetories.map((subcategory2) => (
+                                                (subcategory2.type !== RouterType.ACHOR) ? <Route key={subcategory2.name + "subcategory2"} path={subcategory2.path} element={
+                                                        subcategory2.component(subcategory2)
+                                                } /> : null
+                                            ))
+                                        ))
+                                    ))}
+                                </Routes>
+                            </AnimatePresence>
+                        </div>
+                    </div>
+                </AppContext.Provider>
+            )}
+        </AnimatePresence>
     );
 }
 

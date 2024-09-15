@@ -35,14 +35,16 @@ export class RouterService {
             });
         });
 
-        this.toTopScroll()
-
         // Return the updated array of application routers
         return appRouters;
     }
 
     public static toTopScroll() {
-        $(".sr-scroll-top-button").trigger("click");
+        const srApp = $("#sr-app-element")
+
+        srApp.css('scroll-behavior', 'auto');
+        srApp.scrollTop(0);
+        srApp.css('scroll-behavior', 'smooth');
     }
 
     public static getSkillRoutesByIds(appRouters: AppRouterInterface[], ids: string[]): AppRouterInterface[]

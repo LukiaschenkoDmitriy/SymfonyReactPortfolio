@@ -1,6 +1,6 @@
 import "./FactoryContent.scss";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import { AppRouterInterface, PageType } from "@app/routers";
 
@@ -14,6 +14,12 @@ import CollectionContent from "./collection-content/CollectionContent";
 import Footer from "@components/footer/Footer";
 import ScrollToTopButton from "../scroll-top-button/ScrollTopButton";
 
+import { useLocation } from "react-router-dom";
+
+import { motion } from "framer-motion";
+import { ContentAnimation } from "@app/animations";
+import { RouterService } from "@services/RouterService";
+
 export interface FactoryContentProps {
     router: AppRouterInterface,
     pageType: PageType
@@ -25,22 +31,43 @@ export interface ContentProps {
 
 const FactoryContent: React.FC<FactoryContentProps> = ({router, pageType}) => {
 
+    const location = useLocation();
+
+    useEffect(() => {
+        RouterService.toTopScroll();
+    }, [])
+
     const getContent = () => {
         switch (pageType) {
             case PageType.PROJECT:
-                return <ProjectContent router={router}/>;
+                return (
+                    <ProjectContent router={router}/>
+                );
             case PageType.EXPERIENCE:
-                return <ExperienceContent router={router}/>;
+                return (
+                    <ExperienceContent router={router}/>
+                );
+                
             case PageType.SKILL:
-                return <SkillContent router={router}/>;
+                return (
+                    <SkillContent router={router}/>
+                );
             case PageType.HOME:
-                return <HomeContent router={router}/>;
+                return (
+                    <HomeContent router={router}/>
+                );
             case PageType.ABOUT_ME:
-                return <AboutContent router={router}/>;
+                return (
+                    <AboutContent router={router}/>
+                );
             case PageType.CONTACT:
-                return <ContactContent router={router}/>;
+                return (
+                    <ContactContent router={router}/>
+                );
             case PageType.COLLECTION:
-                return <CollectionContent router={router}/>;
+                return (
+                    <CollectionContent router={router}/>
+                );
             default:
                 return <div>404 Not Found</div>;
         }
@@ -49,7 +76,14 @@ const FactoryContent: React.FC<FactoryContentProps> = ({router, pageType}) => {
     return (
         <div className="sr-container">
             <ScrollToTopButton/>
-            {getContent()}
+                <motion.div
+                    initial="out"
+                    animate="in"
+                    exit="exit"
+                    variants={ContentAnimation}
+                >
+                    {getContent()}
+                </motion.div>
             <Footer />
         </div>
     );
