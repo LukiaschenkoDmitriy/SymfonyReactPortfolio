@@ -30,7 +30,7 @@ export default class APIService {
 
     // Generic method to make GET requests to the API endpoints
     // It includes the JWT token in the Authorization header
-    public async getMethod(endpoint: string, headers: any): Promise<any> {
+    public async getMethod(endpoint: string, headers: any) {
         if (APIService.TOKEN == "") APIService.TOKEN = await this.getToken();
 
         return await axios.get(`${APIService.HOSTNAME}/${endpoint}`, {
@@ -39,8 +39,8 @@ export default class APIService {
                 ...headers,
                 "Authorization": `Bearer ${APIService.TOKEN}`
             }
-        }).then(async(response): Promise<any> => {
-            
+        }).then(async (response): Promise<any> => {
+
             if (response.status == HttpStatusCode.Unauthorized) {
                 APIService.TOKEN = await this.getToken();
                 return this.getMethod(endpoint, headers);

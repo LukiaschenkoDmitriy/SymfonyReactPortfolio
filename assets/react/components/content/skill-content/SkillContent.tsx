@@ -42,7 +42,7 @@ const SkillContent: React.FC<ContentProps> = ({router}) => {
         (async() => {
             (router.id) ? setSkillData(await new SkillRepository().findById(router.id, appContext.currentLanguage)) : null;
         })();
-    }, [appContext.appRouters]);
+    }, [appContext.appRouters, appContext.currentLanguage]);
 
     return (
         <div className="sr-content-inner sr-content-inner-skill" style={pageStyles}>

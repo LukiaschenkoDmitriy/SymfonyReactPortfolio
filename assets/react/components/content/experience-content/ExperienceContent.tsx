@@ -33,7 +33,7 @@ const ExperienceContent: React.FC<ContentProps> = ({router}) => {
         (async() => {
             (router.id) ? setExperienceData(await new ExperienceRepository().findById(router.id, appContext.currentLanguage)) : null;
         })();
-    }, [appContext.appRouters]);
+    }, [appContext.appRouters, appContext.currentLanguage]);
 
     return (
         <div className="sr-content-inner sr-content-inner-experience" style={pageStyles}>

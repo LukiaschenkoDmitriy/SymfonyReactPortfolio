@@ -67,16 +67,21 @@ export const HeaderAnimation: Variants = {
         opacity: 1,
         y: 0,
         transition: {
-            delay: 0.5,
-            duration: 0.5,
+            duration: 1,
         }
     },
     out: {
         opacity: 0,
         y: -200,
         transition: {
-            delay: 0.5,
-            duration: 0.5,
+            duration: 1,
+        }
+    },
+    exit: {
+        opacity: 0,
+        y: -200,
+        transition: {
+            duration: 1,
         }
     }
 }
@@ -86,7 +91,6 @@ export const SideBarAnimation: Variants = {
         opacity: 1,
         y: 0,
         transition: {
-            delay: 0.5,
             duration: 0.5,
         }
     },
@@ -94,7 +98,13 @@ export const SideBarAnimation: Variants = {
         opacity: 0,
         y: 500,
         transition: {
-            delay: 0.5,
+            duration: 0.5,
+        }
+    },
+    exit: {
+        opacity: 0,
+        x: -500,
+        transition: {
             duration: 0.5,
         }
     }

@@ -62,25 +62,29 @@ const App: React.FC = () => {
             ) : (
                 <AppContext.Provider value={{ appRouters: appRouters, setAppRouters: setAppRouters, currentLanguage: currentLanguage, setCurrentLanguage: setCurrentLanguage }}>
                     <div className="sr-app" id="sr-app-element">
-                        <motion.div
-                            initial="out"
-                            animate="in"
-                            exit="out"
-                            variants={HeaderAnimation}
-                        >
-                            <Header />
-                        </motion.div>
-                        <div className="sr-body">
+                        <AnimatePresence>
                             <motion.div
+                                key={"header_animation_"+currentLanguage}
                                 initial="out"
                                 animate="in"
-                                exit="out"
+                                exit="exit"
+                                variants={HeaderAnimation}
+                            >
+                                <Header />
+                            </motion.div>
+                        </AnimatePresence>
+                        <div className="sr-body">
+                            <motion.div
+                                key={"sidebar_animation_"+currentLanguage}
+                                initial="out"
+                                animate="in"
+                                exit="exit"
                                 variants={SideBarAnimation}
                             >
                                 <SideBar />
                             </motion.div>
                             <AnimatePresence mode="wait">
-                                <Routes location={location} key={location.pathname}>
+                                <Routes location={location} key={location.pathname+"_"+currentLanguage}>
                                     {RouterService.getAllRouters(appRouters).map((router) => (
                                         <Route key={router.name} path={router.path} element={
                                             router.component(router)

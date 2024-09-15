@@ -38,7 +38,7 @@ const ProjectContent: React.FC<ContentProps> = ({router}) => {
         (async() => {
             (router.id) ? setProjectData(await new ProjectRepository().findById(router.id, appContext.currentLanguage)) : null;
         })();
-    }, [appContext.appRouters]);
+    }, [appContext.appRouters, appContext.currentLanguage]);
 
     return (
         <div className="sr-content-inner sr-content-inner-project" style={pageStyles}>

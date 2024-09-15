@@ -3,7 +3,6 @@ import "./SideBar.scss";
 import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-
 import { AppContext } from "@app/app";
 import { RouterType } from "@app/routers";
 
