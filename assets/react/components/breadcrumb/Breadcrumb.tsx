@@ -17,15 +17,22 @@ export interface BreadcrumbProps {
 const Breadcrumb: React.FC<BreadcrumbProps> = ({router}) => {
     const appContent = useContext(AppContext);
 
+    const { appRouters, setAppRouters } = appContent;
+
     const location = useLocation();
 
     const breadcrumbs = RouterService.getBreadcrumbs(appContent.appRouters, location.pathname);
+
+    function switchRouter(routerPath: string) {
+        let actualRouters = RouterService.actualiseRoutersActive(appRouters, routerPath);
+        setAppRouters([...actualRouters]);
+    }
 
     return (
         <div className="sr-breacrumb">
             {breadcrumbs.map((breadcrumb, index) => (
                 <React.Fragment key={breadcrumb.name + "_breadcrumb_" + index}>
-                    <Link key={breadcrumb.name+"_breadcrumb"} to={breadcrumb.path}>
+                    <Link key={breadcrumb.name+"_breadcrumb"} to={breadcrumb.path} onClick={() => { switchRouter(breadcrumb.path) }}>
                         {i18nplus(breadcrumb.name, breadcrumb.name)}
                     </Link>
                     {breadcrumbs.length > breadcrumbs.indexOf(breadcrumb) + 1 ? <span key={breadcrumb.name+"_breacrumb_span"}> / </span>: <span key={breadcrumb.name+"_breacrumb_span"}></span>}
