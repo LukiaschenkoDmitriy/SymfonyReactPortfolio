@@ -109,7 +109,7 @@ export const HeaderAnimation: Variants = {
         opacity: 0,
         y: -200,
         transition: {
-            duration: 1,
+            duration: 0.5,
         }
     }
 }

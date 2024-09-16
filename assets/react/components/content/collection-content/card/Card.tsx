@@ -33,6 +33,15 @@ const Card: React.FC<CardProps> = ({router, background, index}) => {
         backgroundImage: background ? `url('${background}')` : undefined
     };
 
+    const backgroundFilterStyle: CSSProperties = {
+        width: "100%",
+        position: "absolute",
+        height: "100%",
+        background: "rgba(0, 0, 0, 0.3)",
+        top: 0,
+        left: 0,
+    }
+
     return (
         <motion.div
             className="sr-card col-12 col-lg-6 col-xl-4"
@@ -46,6 +55,7 @@ const Card: React.FC<CardProps> = ({router, background, index}) => {
         >
             <Link to={router.path} onClick={() => {switchRouter(router.path)}}>
                 <div className="inner" style={innerStyle}>
+                    <div className="backgroundFilter" style={background ? backgroundFilterStyle : {}}></div>
                     {(router.icon != undefined) ? (
                         <img className="card-icon" src={router.icon} alt={router.name} />
                     ) : (

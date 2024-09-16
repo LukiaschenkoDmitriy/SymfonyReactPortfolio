@@ -62,7 +62,7 @@ const App: React.FC = () => {
             ) : (
                 <AppContext.Provider value={{ appRouters: appRouters, setAppRouters: setAppRouters, currentLanguage: currentLanguage, setCurrentLanguage: setCurrentLanguage }}>
                     <div className="sr-app" id="sr-app-element">
-                        <AnimatePresence>
+                        <AnimatePresence mode="wait">
                             <motion.div
                                 key={"header_animation_"+currentLanguage}
                                 initial="out"
