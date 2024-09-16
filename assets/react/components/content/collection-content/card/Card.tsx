@@ -8,12 +8,16 @@ import { Link } from "react-router-dom";
 import { AppContext } from "@app/app";
 import { RouterService } from "@services/RouterService";
 
+import { motion } from "framer-motion";
+import { CardItemAnimation } from "@app/animations";
+
 export interface CardProps {
     router: AppRouterInterface,
     background?: string
+    index?: number
 }
 
-const Card: React.FC<CardProps> = ({router, background}) => {
+const Card: React.FC<CardProps> = ({router, background, index}) => {
 
     const AppContent = useContext(AppContext);
     const { appRouters, setAppRouters } = AppContent;
@@ -30,7 +34,16 @@ const Card: React.FC<CardProps> = ({router, background}) => {
     };
 
     return (
-        <div className="sr-card col-12 col-lg-6 col-xl-4">
+        <motion.div
+            className="sr-card col-12 col-lg-6 col-xl-4"
+            key={"card_animation_"+router.name}
+            whileHover={"hover"}
+            custom={index}
+            initial="out"
+            animate="in"
+            exit="out"
+            variants={CardItemAnimation}
+        >
             <Link to={router.path} onClick={() => {switchRouter(router.path)}}>
                 <div className="inner" style={innerStyle}>
                     {(router.icon != undefined) ? (
@@ -51,7 +64,7 @@ const Card: React.FC<CardProps> = ({router, background}) => {
                     )}
                 </div>
             </Link>
-        </div>
+        </motion.div>
     )
 }
 

@@ -1,5 +1,33 @@
 import { Variants } from "framer-motion";
 
+export const CardItemAnimation: Variants = {
+    in: (i) => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+            mass: 1,
+            delay: i * 0.05
+        }
+    }),
+    out: (i) => ({
+        opacity: 0,
+        y: -500,
+        transition: {
+            duration: 0.5,
+            delay: i * 0.05,
+        }
+    }),
+    hover: {
+        scale: 0.9,
+        transition: {
+            duration: 0.25,
+        }
+    }
+}
+
 export const SideBarItemAnimation: Variants = {
     in: (i) => ({
         opacity: 1,

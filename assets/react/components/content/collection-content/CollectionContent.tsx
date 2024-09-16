@@ -9,6 +9,8 @@ import Breadcrumb from "@components/breadcrumb/Breadcrumb";
 
 import i18nplus from "@services/TranslateService";
 
+import { AnimatePresence } from "framer-motion";
+
 const CollectionContent: React.FC<ContentProps> = ({router}) => {
 
     document.title = i18nplus(router.name, router.name);
@@ -27,9 +29,11 @@ const CollectionContent: React.FC<ContentProps> = ({router}) => {
                 <section className="sr-content-page sr-home-page">
                     <h1 className="title">{i18nplus(router.name, router.name)}</h1>
                     <div className="home-content row">
-                        {router.underCagetories.map((subrouter) => (
-                            <Card key={subrouter.name+"_collection_page"} router={subrouter} background={subrouter.background}/>
-                        ))}
+                        <AnimatePresence mode="wait">
+                            {router.underCagetories.map((subrouter, index) => (
+                                <Card key={subrouter.name+"_collection_page"} index={index} router={subrouter} background={subrouter.background}/>
+                            ))}
+                        </AnimatePresence>
                     </div>
                 </section>
             </div>
