@@ -18,10 +18,14 @@ import projectsBackground from "@images/projects-page/projects-bg.png";
 import experiencesBackground from "@images/experiences-page/experience-bg.png"
 import contactsBackground from "@images/contacts-page/send-message-bg.png";
 
+// This file defines the application routing configuration for different pages and categories.
+// It sets up main routes, including home, about me, and contact pages.
+// It dynamically fetches and adds routes for skills, projects, and experiences from repositories based on the selected language.
+// The final route configuration is returned as an array of `AppRouterInterface` objects.
+
 export enum RouterType {
     ROUTER = "router",
     ACHOR = "achor",
-
 }
 
 export enum PageType {

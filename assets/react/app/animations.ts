@@ -1,5 +1,21 @@
 import { Variants } from "framer-motion";
 
+// This file defines various animation configurations for use with framer-motion.
+// It exports different animation variants for components such as:
+// - About items
+// - Contact group errors
+// - Contact group animations
+// - Card items
+// - Sidebar items
+// - Content
+// - Loading
+// - Header
+// - Sidebar
+//
+// Each variant specifies animations for different states, including 'in', 'out', and 'hover',
+// and provides options for customizing transitions based on the component's props.
+
+
 export interface ContactGroupAnimationCustom {
     index: number,
     xOffset: number,
