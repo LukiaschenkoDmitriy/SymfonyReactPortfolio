@@ -20,7 +20,10 @@ class ApiController extends AbstractController {
     // Endpoint for authentication
     #[Route(path:"/api/auth", name:"api_auth", methods:["POST"])]
     public function apiAuth(Request $request): Response {
-        // Placeholder for authentication logic
+        $userAgent = $request->headers->get('User-Agent');
+        if (stripos($userAgent, 'Postman') !== false) {
+            return new JsonResponse('Access from Postman is not allowed', Response::HTTP_FORBIDDEN);
+        }
         return new JsonResponse();
     }
 
