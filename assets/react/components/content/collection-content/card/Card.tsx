@@ -11,6 +11,10 @@ import { RouterService } from "@services/RouterService";
 import { motion } from "framer-motion";
 import { CardItemAnimation } from "@app/animations";
 
+// This file defines the Card component, which represents a card item with a background image and optional content (e.g., icon, points, role).
+// The component uses framer-motion for animations and applies styles dynamically based on props.
+// It includes a function to update the application's router context and renders a link to navigate to the card's path.
+
 export interface CardProps {
     router: AppRouterInterface,
     background?: string

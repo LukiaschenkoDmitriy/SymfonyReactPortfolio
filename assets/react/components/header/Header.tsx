@@ -12,6 +12,10 @@ import { RouterService } from "@services/RouterService";
 import SwitchLanguage from "@components/switch-language/SwitchLanguage";
 import Contacts from "@components/contacts/Contacts";
 
+// This file defines the Header component, which displays the navigation and control elements for the application.
+// It uses AppContext to manage the appRouters state and includes different layouts for desktop and mobile views.
+// Desktop view features header buttons for navigation, while mobile view uses an offcanvas menu with additional components.
+
 const Header: React.FC = () => {
     // Use the AppContext to access and update appRouters state
     const AppContent = useContext(AppContext);

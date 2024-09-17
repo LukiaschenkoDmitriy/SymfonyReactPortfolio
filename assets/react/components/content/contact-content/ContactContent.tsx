@@ -19,8 +19,14 @@ import contactBackground from "@images/contacts-page/send-message-bg.png";
 import { HttpStatusCode } from "axios";
 
 import {useGoogleReCaptcha } from "react-google-recaptcha-v3";
+
 import { AnimatePresence, motion } from "framer-motion";
+
 import { ContactGroupAnimation, ContactGroupErrorAnumation } from "@app/animations";
+
+// This file defines the ContactContent component, which includes a contact form with fields for name, email, theme, and message.
+// It uses React hooks for managing state and handles form submission with reCAPTCHA verification.
+// The component also utilizes framer-motion for animations and dynamically applies styles based on props and state.
 
 const ContactContent: React.FC<ContentProps> = ({router}) => {
     document.title = i18nplus(router.name, router.name);

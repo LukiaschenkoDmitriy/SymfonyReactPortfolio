@@ -1,6 +1,5 @@
 import "./Breadcrumb.scss";
 
-
 import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -9,6 +8,11 @@ import { AppRouterInterface } from "@app/routers";
 
 import i18nplus from "@services/TranslateService";
 import { RouterService } from "@services/RouterService";
+
+// This file defines a Breadcrumb component for displaying navigation breadcrumbs.
+// It utilizes the `AppContext` to access current app routes and updates the active routes based on user interaction.
+// It uses `RouterService` to generate breadcrumb links from the current URL path and `TranslateService` for translations.
+// The breadcrumbs are rendered as clickable links that update the route context when clicked.
 
 export interface BreadcrumbProps {
     router: AppRouterInterface

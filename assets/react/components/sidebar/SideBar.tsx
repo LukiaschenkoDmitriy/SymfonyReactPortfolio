@@ -17,6 +17,9 @@ import Contacts from "@components/contacts/Contacts";
 import { AnimatePresence, motion } from "framer-motion";
 import { SideBarItemAnimation } from "@app/animations";
 
+// This file defines the SideBar component, which renders a sidebar navigation menu for desktop view.
+// It displays the user's avatar, name, and role, along with navigation links for routers and anchors.
+// The sidebar uses Framer Motion for animations and updates the active router context on link clicks.
 
 const SideBar: React.FC = () => {
     const appContext = useContext(AppContext);

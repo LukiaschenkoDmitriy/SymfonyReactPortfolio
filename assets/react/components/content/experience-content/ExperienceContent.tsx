@@ -16,6 +16,10 @@ import Card from "../collection-content/card/Card";
 import { AppRouterInterface } from "@app/routers";
 import EmptyContent from "@components/empty-content/EmptyContent";
 
+// This file defines the ExperienceContent component, which displays detailed information about an experience, including its description, role, skills, and projects.
+// It uses React hooks to manage state, handle data fetching, and display content conditionally based on the presence of experience data.
+// The component also uses framer-motion for animations and dynamically applies styles based on props and state.
+
 const ExperienceContent: React.FC<ContentProps> = ({router}) => {
     document.title = i18nplus(router.name, router.name);
 

@@ -9,6 +9,10 @@ import { FaTelegram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { BsFillTelephoneFill } from "react-icons/bs";
 
+// This file defines a Contacts component for displaying various contact links.
+// It renders a list of social media and contact icons as clickable links, opening in a new tab.
+// The component includes links to GitHub, GitLab, LinkedIn, Telegram, Facebook, and a telephone link.
+
 const Contacts: React.FC = () => {
     return (
         <div className="sr-contacts">

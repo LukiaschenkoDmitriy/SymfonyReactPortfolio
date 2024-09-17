@@ -11,6 +11,10 @@ import i18nplus from "@services/TranslateService";
 
 import { AnimatePresence } from "framer-motion";
 
+// This file defines the CollectionContent component, which displays a collection of items (e.g., skills, projects) as cards on a page.
+// The component sets the background style based on the router's background image and updates the document title using i18nplus for localization.
+// It uses the Breadcrumb component for navigation and AnimatePresence from framer-motion to handle animations for the collection items.
+
 const CollectionContent: React.FC<ContentProps> = ({router}) => {
 
     document.title = i18nplus(router.name, router.name);

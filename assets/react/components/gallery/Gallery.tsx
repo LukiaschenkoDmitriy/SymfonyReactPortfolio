@@ -4,6 +4,11 @@ import React, { useState } from "react";
 
 import GalleryModal from "./gallery-modal/GalleryModal";
 
+// This file defines the Gallery component, which displays a grid of images.
+// Clicking on an image opens a modal with the clicked image, allowing for a larger view.
+// The component maintains state for the visibility of the modal and the current image position.
+// The `GalleryModal` component is used to show the image in a modal view.
+
 export interface GalleryProps {
     images: string[]
 }

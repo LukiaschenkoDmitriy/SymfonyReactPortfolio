@@ -20,6 +20,13 @@ import GithubButton from "@components/github-button/GithubButton";
 import EmptyContent from "@components/empty-content/EmptyContent";
 import Gallery from "@components/gallery/Gallery";
 
+// This file defines the ProjectContent component, which displays detailed information about a specific project.
+// It sets the document title based on the router's name and applies a background image to the page.
+// The component fetches project data using the ProjectRepository and displays a loading spinner while the data is being fetched.
+// Once the data is available, it renders project details, including a GitHub link (if available), images, and related skills using cards.
+// A gallery component is used to display project images, and empty content is shown if no images are available.
+// The Breadcrumb component is used for navigation, and the content is styled with specific CSS for the project page.
+
 const ProjectContent: React.FC<ContentProps> = ({router}) => {
 
     document.title = i18nplus(router.name, router.name);

@@ -7,6 +7,10 @@ import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 
 import { Modal } from "react-bootstrap";
 
+// This file defines the GalleryModal component, which displays a full-screen modal for viewing images.
+// It allows users to navigate between images using arrow buttons and also select images from a thumbnail preview.
+// The component maintains the current image state and updates it based on user interactions or prop changes.
+
 export interface GalleryModalProps {
     images: string[],
     show: boolean,

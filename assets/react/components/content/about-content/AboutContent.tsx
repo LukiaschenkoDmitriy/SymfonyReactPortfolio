@@ -16,6 +16,10 @@ import i18nplus from "@services/TranslateService";
 import { AnimatePresence, motion } from "framer-motion";
 import { AboutItemAnimation } from "@app/animations";
 
+// This file defines the AboutContent component, which displays various sections of an "About Me" page.
+// It includes sections for personal information, education, languages, and personal skills, with content animated using framer-motion.
+// The component styles the page background based on the router's background image and updates the document title using i18nplus for localization.
+
 const AboutContent: React.FC<ContentProps> = ({router}) => {
 
     document.title = i18nplus(router.name, router.name);

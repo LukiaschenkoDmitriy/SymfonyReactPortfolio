@@ -20,6 +20,13 @@ import { motion } from "framer-motion";
 import { ContentAnimation } from "@app/animations";
 import { RouterService } from "@services/RouterService";
 
+// This file defines the FactoryContent component, which is responsible for rendering different types of page content based on the `pageType` prop.
+// It uses the `useLocation` hook to detect route changes and invokes `RouterService.toTopScroll()` to scroll to the top of the page on route changes.
+// The `getContent` function determines which content component to render based on the `pageType` (e.g., ProjectContent, ExperienceContent, etc.).
+// The component uses `motion.div` from `framer-motion` to apply animations during transitions between different content sections.
+// Additionally, it includes a ScrollToTopButton and a Footer component for improved user experience and navigation.
+// If no matching `pageType` is found, a 404 error message is displayed.
+
 export interface FactoryContentProps {
     router: AppRouterInterface,
     pageType: PageType

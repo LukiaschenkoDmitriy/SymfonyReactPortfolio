@@ -11,6 +11,11 @@ import i18nplus from "@services/TranslateService";
 
 import { AnimatePresence } from "framer-motion";
 
+// This file defines the HomeContent component, which serves as the main page for the home section of the site.
+// It sets the document title to "Dmytrii Lukiashchenko" and applies a background image to the page based on the router's background property.
+// The component uses framer-motion's AnimatePresence to handle animations for the display of cards representing categories or items.
+// Breadcrumb navigation is included at the top, and the content is displayed in a grid layout with cards for each subrouter.
+
 const HomeContent: React.FC<ContentProps> = ({router}) => {
 
     document.title = "Dmytrii Lukiashchenko";
