@@ -52,13 +52,14 @@ const SideBar: React.FC = () => {
                                 <div key={currentRouter.name}>
                                     {currentRouter.underCagetories.map((subRouter, index) => (
                                         <motion.div 
+                                            key={subRouter.name+"sidebar"}
                                             custom={index}
                                             initial="out"
                                             animate="in"
                                             exit="out"
                                             variants={SideBarItemAnimation}
                                         >
-                                            <Link className="d-block" key={subRouter.name+"sidebar"} to={subRouter.path} onClick={() => handleSubRouterClick(subRouter.path)}>
+                                            <Link className="d-block" to={subRouter.path} onClick={() => handleSubRouterClick(subRouter.path)}>
                                                 { i18nplus(subRouter.name, subRouter.name) }
                                             </Link>
                                         </motion.div>
@@ -69,13 +70,14 @@ const SideBar: React.FC = () => {
                                     <div key={currentRouter.name}>
                                         {currentRouter.underCagetories.map((subRouter, index) => (
                                             <motion.div 
+                                                key={subRouter.name+"sidebar"}
                                                 custom={index}
                                                 initial="out"
                                                 animate="in"
                                                 exit="out"
                                                 variants={SideBarItemAnimation}
                                             >
-                                                <a className="d-block" href={`${subRouter.path}`} key={subRouter.name+"sidebar"}>
+                                                <a className="d-block" href={`${subRouter.path}`}>
                                                     { i18nplus(subRouter.name, subRouter.name) }
                                                 </a>
                                             </motion.div>

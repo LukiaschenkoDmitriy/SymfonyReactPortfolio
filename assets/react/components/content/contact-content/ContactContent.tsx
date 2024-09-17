@@ -99,7 +99,7 @@ const ContactContent: React.FC<ContentProps> = ({router}) => {
                                     xOffset: 0,
                                     yOffset: -500
                                 }}
-                                key={"name_animation"}
+                                key="name_animation"
                                 initial="out"
                                 animate="in"
                                 variants={ContactGroupAnimation}
@@ -113,6 +113,7 @@ const ContactContent: React.FC<ContentProps> = ({router}) => {
                                             role="alert"
                                             custom={4}
                                             whileHover="hover"
+                                            key={"name_error_animation"}
                                             initial="out"
                                             animate="in"
                                             exit="out"
@@ -130,7 +131,7 @@ const ContactContent: React.FC<ContentProps> = ({router}) => {
                                     xOffset: 0,
                                     yOffset: -500
                                 }}
-                                key={"email_animation"}
+                                key="email_animation"
                                 initial="out"
                                 animate="in"
                                 variants={ContactGroupAnimation}
@@ -143,7 +144,7 @@ const ContactContent: React.FC<ContentProps> = ({router}) => {
                                             className="alert alert-danger"
                                             role="alert"
                                             custom={5}
-                                            key={"email_error_animation"}
+                                            key="email_error_animation"
                                             whileHover="hover"
                                             initial="out"
                                             animate="in"
@@ -162,7 +163,7 @@ const ContactContent: React.FC<ContentProps> = ({router}) => {
                                     xOffset: -500,
                                     yOffset: 0
                                 }}
-                                key={"theme_animation"}
+                                key="theme_animation"
                                 initial="out"
                                 animate="in"
                                 variants={ContactGroupAnimation}
@@ -175,7 +176,7 @@ const ContactContent: React.FC<ContentProps> = ({router}) => {
                                             className="alert alert-danger"
                                             role="alert"
                                             custom={6}
-                                            key={"theme_error_animation"}
+                                            key="theme_error_animation"
                                             whileHover="hover"
                                             initial="out"
                                             animate="in"
@@ -194,7 +195,7 @@ const ContactContent: React.FC<ContentProps> = ({router}) => {
                                     xOffset: 500,
                                     yOffset: 0
                                 }}
-                                key={"message_animation"}
+                                key="message_animation"
                                 initial="out"
                                 animate="in"
                                 variants={ContactGroupAnimation}
@@ -207,7 +208,7 @@ const ContactContent: React.FC<ContentProps> = ({router}) => {
                                             className="alert alert-danger"
                                             role="alert"
                                             custom={6}
-                                            key={"message_error_animation"}
+                                            key="message_error_animation"
                                             whileHover="hover"
                                             initial="out"
                                             animate="in"
@@ -225,7 +226,7 @@ const ContactContent: React.FC<ContentProps> = ({router}) => {
                                     <motion.div
                                         className="col-12"
                                         custom={1}
-                                        key={"contact_success_animation"}
+                                        key="contact_success_animation"
                                         initial="out"
                                         animate="in"
                                         exit="out"
@@ -240,7 +241,7 @@ const ContactContent: React.FC<ContentProps> = ({router}) => {
                                     <motion.div
                                         className="col-12 mt-3"
                                         custom={1}
-                                        key={"contact_failed_animation"}
+                                        key="contact_failed_animation"
                                         initial="out"
                                         animate="in"
                                         exit="out"
@@ -253,7 +254,7 @@ const ContactContent: React.FC<ContentProps> = ({router}) => {
                                 ): null}
                             </AnimatePresence>
 
-                            <div className="col-12">
+                            <div className="col-12" key={"submit_animation"}>
                                 <motion.button
                                     className="sr-contact-submit"
                                     custom={{
@@ -261,7 +262,6 @@ const ContactContent: React.FC<ContentProps> = ({router}) => {
                                         xOffset: 0,
                                         yOffset: 500
                                     }}
-                                    key={"submit_animation"}
                                     initial="out"
                                     animate="in"
                                     variants={ContactGroupAnimation}
