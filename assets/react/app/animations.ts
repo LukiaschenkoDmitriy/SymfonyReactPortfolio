@@ -6,6 +6,39 @@ export interface ContactGroupAnimationCustom {
     yOffset: number,
 }
 
+export const AboutItemAnimation: Variants = {
+    inView: {
+        opacity: 1,
+        scale: 1,
+        transition: {
+            type: "spring",
+            stiffness: 100,
+            damping: 11.5,
+            mass: 1,
+        }
+    },
+    out: {
+        opacity: 0,
+        scale: 0.9,
+        transition: {
+            type: "spring",
+            stiffness: 100,
+            damping: 11.5,
+            mass: 1,
+        }
+    },
+    hover: {
+        opacity: 1,
+        scale: 1.05,
+        transition: {
+            type: "spring",
+            stiffness: 100,
+            damping: 11.5,
+            mass: 1,
+        }
+    }
+}
+
 export const ContactGroupErrorAnumation: Variants = {
     in: (i) => ({
         opacity: 1,
