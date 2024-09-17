@@ -6,6 +6,11 @@ import EntityInterface from "@data/EntityInterface";
 
 import RepositoryInterface from "./RepositoryInterface";
 
+// This file defines the AbstractRepository class, an abstract base class for repository implementations.
+// It provides a constructor for initializing the API endpoint and a shared API service instance.
+// The class includes abstract methods for finding all entities, finding an entity by ID, and translating entities.
+// It also provides a method to generate the parsed API endpoint based on an optional entity ID.
+
 export default abstract class AbstractRepository implements RepositoryInterface {
     protected server: APIService;
     apiEndPoint: string;

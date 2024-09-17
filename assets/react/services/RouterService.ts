@@ -4,6 +4,15 @@ import SkillEntity from "@data/SkillEntity";
 
 import $ from "jquery";
 
+// This file defines the RouterService class, which provides various utilities for managing application routers.
+// It includes methods for:
+// - Updating router states to mark active routers
+// - Scrolling to the top of the page
+// - Flattening and retrieving router structures based on IDs and entities
+// - Finding the current router and breadcrumbs based on router paths
+//
+// The class uses jQuery for DOM manipulations related to scrolling.
+
 export class RouterService {
     /**
      * Updates the 'active' property of the provided appRouters based on the given routerPath.
