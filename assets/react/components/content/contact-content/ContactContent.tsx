@@ -19,6 +19,8 @@ import contactBackground from "@images/contacts-page/send-message-bg.png";
 import { HttpStatusCode } from "axios";
 
 import {useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { AnimatePresence, motion } from "framer-motion";
+import { ContactGroupAnimation, ContactGroupErrorAnumation } from "@app/animations";
 
 const ContactContent: React.FC<ContentProps> = ({router}) => {
     document.title = i18nplus(router.name, router.name);
@@ -89,46 +91,187 @@ const ContactContent: React.FC<ContentProps> = ({router}) => {
                 <section className="sr-content-page" id="contact-information">
                     <h1 className="title">{i18nplus("contact.title", "contact.title")}</h1>
                     <form className="sr-contact-form row" onSubmit={sendContact}>
-                        <div className="form-group col-12 col-md-6">
-                            <label htmlFor="name" className="sr-label">{i18nplus("contact.name", "contact.name")}</label>
-                            <input onChange={handleChange} value={contactEntity.name} type="text" id="name" name="name" className="sr-input form-control" placeholder={i18nplus("contact.placeholder.name", "contact.placeholder.name")}/>
-                            {contactDTOErrors.name != undefined ? (
-                                <div className="alert alert-danger" role="alert">{contactDTOErrors.name}</div>
-                            ): null}
-                        </div>
-                        <div className="form-group col-12 col-md-6">
-                            <label htmlFor="email" className="sr-label">{i18nplus("contact.email", "contact.email")}</label>
-                            <input onChange={handleChange} value={contactEntity.email} type="text" id="email" name="email" className="sr-input form-control" placeholder={i18nplus("contact.placeholder.email", "contact.placeholder.email")}/>
-                            {contactDTOErrors.email != undefined ? (
-                                <div className="alert alert-danger" role="alert">{contactDTOErrors.email}</div>
-                            ): null}
-                        </div>
-                        <div className="form-group col-12">
-                            <label htmlFor="theme" className="sr-label">{i18nplus("contact.theme", "contact.theme")}</label>
-                            <input onChange={handleChange} value={contactEntity.theme} type="text" id="theme" name="theme" className="sr-input form-control" placeholder={i18nplus("contact.placeholder.theme", "contact.placeholder.theme")}/>
-                            {contactDTOErrors.theme != undefined ? (
-                                <div className="alert alert-danger" role="alert">{contactDTOErrors.theme}</div>
-                            ): null}
-                        </div>
-                        <div className="form-group col-12">
-                            <label htmlFor="message" className="sr-label">{i18nplus("contact.message", "contact.message")}</label>
-                            <textarea onChange={handleChange} value={contactEntity.message} id="message" name="message" className="sr-input form-control" placeholder={i18nplus("contact.placeholder.message", "contact.placeholder.message")}/>
-                            {contactDTOErrors.message != undefined ? (
-                                <div className="alert alert-danger" role="alert">{contactDTOErrors.message}</div>
-                            ): null}
-                        </div>
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                className="form-group col-12 col-md-6"
+                                custom={{
+                                    index: 1,
+                                    xOffset: 0,
+                                    yOffset: -500
+                                }}
+                                key={"name_animation"}
+                                initial="out"
+                                animate="in"
+                                variants={ContactGroupAnimation}
+                            >
+                                <label htmlFor="name" className="sr-label">{i18nplus("contact.name", "contact.name")}</label>
+                                <input onChange={handleChange} value={contactEntity.name} type="text" id="name" name="name" className="sr-input form-control" placeholder={i18nplus("contact.placeholder.name", "contact.placeholder.name")}/>
+                                <AnimatePresence mode="wait">
+                                    {contactDTOErrors.name != undefined ? (
+                                        <motion.div
+                                            className="alert alert-danger"
+                                            role="alert"
+                                            custom={4}
+                                            whileHover="hover"
+                                            initial="out"
+                                            animate="in"
+                                            exit="out"
+                                            variants={ContactGroupErrorAnumation}
+                                        >
+                                            {contactDTOErrors.name}
+                                        </motion.div>
+                                    ): null}
+                                </AnimatePresence>
+                            </motion.div>
+                            <motion.div
+                                className="form-group col-12 col-md-6"
+                                custom={{
+                                    index: 1,
+                                    xOffset: 0,
+                                    yOffset: -500
+                                }}
+                                key={"email_animation"}
+                                initial="out"
+                                animate="in"
+                                variants={ContactGroupAnimation}
+                            >
+                                <label htmlFor="email" className="sr-label">{i18nplus("contact.email", "contact.email")}</label>
+                                <input onChange={handleChange} value={contactEntity.email} type="text" id="email" name="email" className="sr-input form-control" placeholder={i18nplus("contact.placeholder.email", "contact.placeholder.email")}/>
+                                <AnimatePresence mode="wait">
+                                    {contactDTOErrors.email != undefined ? (
+                                        <motion.div
+                                            className="alert alert-danger"
+                                            role="alert"
+                                            custom={5}
+                                            key={"email_error_animation"}
+                                            whileHover="hover"
+                                            initial="out"
+                                            animate="in"
+                                            exit="out"
+                                            variants={ContactGroupErrorAnumation}
+                                        >
+                                            {contactDTOErrors.email}
+                                        </motion.div>
+                                    ): null}
+                                </AnimatePresence>
+                            </motion.div>
+                            <motion.div
+                                className="form-group col-12"
+                                custom={{
+                                    index: 2,
+                                    xOffset: -500,
+                                    yOffset: 0
+                                }}
+                                key={"theme_animation"}
+                                initial="out"
+                                animate="in"
+                                variants={ContactGroupAnimation}
+                            >
+                                <label htmlFor="theme" className="sr-label">{i18nplus("contact.theme", "contact.theme")}</label>
+                                <input onChange={handleChange} value={contactEntity.theme} type="text" id="theme" name="theme" className="sr-input form-control" placeholder={i18nplus("contact.placeholder.theme", "contact.placeholder.theme")}/>
+                                <AnimatePresence mode="wait">
+                                    {contactDTOErrors.theme != undefined ? (
+                                        <motion.div
+                                            className="alert alert-danger"
+                                            role="alert"
+                                            custom={6}
+                                            key={"theme_error_animation"}
+                                            whileHover="hover"
+                                            initial="out"
+                                            animate="in"
+                                            exit="out"
+                                            variants={ContactGroupErrorAnumation}
+                                        >
+                                            {contactDTOErrors.theme}
+                                        </motion.div>
+                                    ): null}
+                                </AnimatePresence>
+                            </motion.div>
+                            <motion.div
+                                className="form-group col-12"
+                                custom={{
+                                    index: 2,
+                                    xOffset: 500,
+                                    yOffset: 0
+                                }}
+                                key={"message_animation"}
+                                initial="out"
+                                animate="in"
+                                variants={ContactGroupAnimation}
+                            >
+                                <label htmlFor="message" className="sr-label">{i18nplus("contact.message", "contact.message")}</label>
+                                <textarea onChange={handleChange} value={contactEntity.message} id="message" name="message" className="sr-input form-control" placeholder={i18nplus("contact.placeholder.message", "contact.placeholder.message")}/>
+                                <AnimatePresence mode="wait">
+                                    {contactDTOErrors.message != undefined ? (
+                                        <motion.div
+                                            className="alert alert-danger"
+                                            role="alert"
+                                            custom={6}
+                                            key={"message_error_animation"}
+                                            whileHover="hover"
+                                            initial="out"
+                                            animate="in"
+                                            exit="out"
+                                            variants={ContactGroupErrorAnumation}
+                                        >
+                                            {contactDTOErrors.message}
+                                        </motion.div>
+                                    ): null}
+                                </AnimatePresence>
+                            </motion.div>
+                            
+                            <AnimatePresence mode="wait">
+                                {successedSend ? (
+                                    <motion.div
+                                        className="col-12"
+                                        custom={1}
+                                        key={"contact_success_animation"}
+                                        initial="out"
+                                        animate="in"
+                                        exit="out"
+                                        variants={ContactGroupErrorAnumation}
+                                    >
+                                        <div className="alert alert-success" role="alert">
+                                            {i18nplus("contact.success", "contact.success")}
+                                        </div>
+                                    </motion.div>
+                                ): null}
+                                {failedSend ? (
+                                    <motion.div
+                                        className="col-12 mt-3"
+                                        custom={1}
+                                        key={"contact_failed_animation"}
+                                        initial="out"
+                                        animate="in"
+                                        exit="out"
+                                        variants={ContactGroupErrorAnumation}
+                                    >
+                                        <div className="alert alert-danger" role="alert">
+                                            {i18nplus("contact.failed", "contact.failed")}
+                                        </div>
+                                    </motion.div>
+                                ): null}
+                            </AnimatePresence>
 
-                        {successedSend ? (
-                            <div className="alert alert-success col-12 my-5 px-5" role="alert">
-                                {i18nplus("contact.success", "contact.success")}
+                            <div className="col-12">
+                                <motion.button
+                                    className="sr-contact-submit"
+                                    custom={{
+                                        index: 2,
+                                        xOffset: 0,
+                                        yOffset: 500
+                                    }}
+                                    key={"submit_animation"}
+                                    initial="out"
+                                    animate="in"
+                                    variants={ContactGroupAnimation}
+                                    type="submit"
+                                    disabled={contactHaveErrors}
+                                >
+                                    {i18nplus("contact.submit", "contact.submit")}
+                                </motion.button>
                             </div>
-                        ): null}
-                        {failedSend ? (
-                            <div className="alert alert-danger col-12 my-5 px-5" role="alert">
-                                {i18nplus("contact.failed", "contact.failed")}
-                            </div>
-                        ): null}
-                        <button type="submit" disabled={contactHaveErrors} className="sr-contact-submit col-12">{i18nplus("contact.submit", "contact.submit")}</button>
+                        </AnimatePresence>
                     </form>
                 </section>
             </div>
