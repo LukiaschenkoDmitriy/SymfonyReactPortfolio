@@ -21,7 +21,8 @@ export default class APIService {
             password: APIService.USER_PASSWORD,
         }, {
             headers: {
-                "Content-Type": "application/json"
+            	"Accept": "application/json",
+                "Content-Type": "application/json; charset=UTF-8"
             }
         }).then((response) => {
             return response.data.token;
@@ -35,7 +36,8 @@ export default class APIService {
 
         return await axios.get(`${APIService.HOSTNAME}/${endpoint}`, {
             headers: {
-                "Content-Type": "application/json",
+            	"Accept": "application/json",
+                "Content-Type": "application/json; charset=UTF-8",
                 ...headers,
                 "Authorization": `Bearer ${APIService.TOKEN}`
             }
@@ -56,7 +58,7 @@ export default class APIService {
             recaptcha_token: recaptcha_token
         }, {
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json"
             }
         }).then((response) => {
