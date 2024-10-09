@@ -2,6 +2,13 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
+
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
@@ -15,12 +22,18 @@ use Symfony\Component\Serializer\Attribute\Groups;
 #[ORM\Entity(repositoryClass: ExperienceRepository::class)]
 // Define the API resource for this entity
 #[ApiResource(
-    // Only authenticated users can access this resource
-    security: "is_granted('IS_AUTHENTICATED_FULLY')",
     // Define the serialization groups for GET requests
     normalizationContext: ["groups" => ['experience.read']],
     // Define the serialization groups for POST/PUT/PATCH requests
-    denormalizationContext: ["groups" => ["experience.write"]]
+    denormalizationContext: ["groups" => ["experience.write"]],
+    operations: [
+        new GetCollection(security: "is_granted('PUBLIC_ACCESS')"),
+        new Get(security: "is_granted('PUBLIC_ACCESS')"),
+        new Post(security: "is_granted('IS_AUTHENTICATED_FULLY')"),
+        new Put(security: "is_granted('IS_AUTHENTICATED_FULLY')"),
+        new Patch(security: "is_granted('IS_AUTHENTICATED_FULLY')"),
+        new Delete(security: "is_granted('IS_AUTHENTICATED_FULLY')")
+    ]
 )]
 class Experience
 {

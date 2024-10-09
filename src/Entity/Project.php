@@ -2,11 +2,16 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
+
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
-use App\ApiResource\TestProjectController;
 use App\Entity\Translatble\ProjectTranslatble;
 use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\Collection;
@@ -20,7 +25,15 @@ use Symfony\Component\Serializer\Attribute\Groups;
     // Define the serialization groups for GET requests
     normalizationContext: ["groups" => ['project.read']],
     // Define the serialization groups for POST/PUT/PATCH requests
-    denormalizationContext: ["groups" => ["project.write"]]
+    denormalizationContext: ["groups" => ["project.write"]],
+    operations: [
+        new GetCollection(security: "is_granted('PUBLIC_ACCESS')"),
+        new Get(security: "is_granted('PUBLIC_ACCESS')"),
+        new Post(security: "is_granted('IS_AUTHENTICATED_FULLY')"),
+        new Put(security: "is_granted('IS_AUTHENTICATED_FULLY')"),
+        new Patch(security: "is_granted('IS_AUTHENTICATED_FULLY')"),
+        new Delete(security: "is_granted('IS_AUTHENTICATED_FULLY')")
+    ]
 )]
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
 class Project
