@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+    php:
+        build:
+            context: .
+            dockerfile: docker/php/Dockerfile
+        container_name: symfony-php
+        volumes:
+            - .:/var/www/html
+        depends_on:
+            - mysql
+        networks:
+            - p-network
+
+    nginx:
+        image: nginx:alpine
+        container_name: symfony-nginx
+        ports:
+            - "8085:80"
+        volumes:
+            - .:/var/www/html
+            - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - php
+        networks:
+            - p-network
+
+    mysql:
+        image: mysql:9.1
+        container_name: symfony-mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${DATABASE_NAME}
+            MYSQL_USER: ${DATABASE_USER}
+            MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+        ports:
+            - "3307:3306"
+        volumes:
+            - spr_mysql_data:/var/lib/mysql
+        networks:
+            - p-network
+
+networks:
+    p-network:
+        driver: bridge
+
+volumes:
+    spr_mysql_data:

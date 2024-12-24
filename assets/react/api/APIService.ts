@@ -5,7 +5,7 @@ import ContactEntity from '@data/ContactEntity';
 import axios, { HttpStatusCode } from 'axios';
 
 export default class APIService {
-    private static HOSTNAME: string = "https://127.0.0.1:8000/api";
+    private static HOSTNAME: string = "http://localhost:8085/api";
 
     // Generic method to make GET requests to the API endpoints
     public async getMethod(endpoint: string, headers: any) {
